@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -54,7 +53,38 @@ export function Contact() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContact) => {
-      return await apiRequest("POST", "/api/contact", data);
+      const sheetData = {
+        data: {
+          Nombre: data.name,
+          Email: data.email,
+          Empresa: data.company || "N/A",
+          Teléfono: data.phone || "N/A",
+          Servicio: data.service,
+          Mensaje: data.message,
+          Fecha: new Date().toLocaleString('es-MX', { 
+            timeZone: 'America/Mexico_City',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+          })
+        }
+      };
+
+      const response = await fetch("https://sheetdb.io/api/v1/y7kb31t5vwtv4", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sheetData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al enviar el formulario");
+      }
+
+      return response.json();
     },
     onSuccess: () => {
       toast({

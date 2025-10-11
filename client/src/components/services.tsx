@@ -58,7 +58,7 @@ const services = [
     icon: TrendingUp,
     title: "Social & Community",
     subtitle: "De 'publicar y esperar' a performance medible",
-    description: "Contenido nativo, pauta y community para elevar engagement y leads.",
+    description: "Contenido nativo, pauta y community para elevar engagement y liderazgo.",
     features: [
       "Estrategia de contenido",
       "Gestión de comunidades",

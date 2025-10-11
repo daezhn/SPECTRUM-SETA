@@ -77,16 +77,6 @@ const features = [
     icon: Award,
   },
   {
-    title: "Soporte Técnico Integral",
-    items: [
-      "Asistencia 24/7 en proyectos activos",
-      "Respuesta inmediata ante incidencias",
-      "Mantenimiento preventivo continuo",
-      "Resolución rápida de problemas",
-    ],
-    icon: CheckCircle2,
-  },
-  {
     title: "Gestión de Proyectos Profesional",
     items: [
       "Coordinación experta de equipos",

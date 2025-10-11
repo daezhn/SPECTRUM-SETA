@@ -84,7 +84,7 @@ export function Valor360() {
                 className="grid md:grid-cols-2 gap-0"
               >
                 {/* Image Section */}
-                <div className="relative h-64 md:h-auto overflow-hidden">
+                <div className="relative min-h-[400px] overflow-hidden">
                   <img
                     src={transformationCases[currentIndex].image}
                     alt={transformationCases[currentIndex].title}
@@ -94,13 +94,29 @@ export function Valor360() {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center">
-                  <h3 className="text-2xl md:text-3xl font-bold mb-6 text-accent">
+                <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center min-h-[400px]">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 text-accent leading-tight">
                     {transformationCases[currentIndex].title}
                   </h3>
-                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                    {transformationCases[currentIndex].description}
-                  </p>
+                  <div className="space-y-4">
+                    {transformationCases[currentIndex].description.includes('¿Nuestra respuesta?') ? (
+                      <>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                          {transformationCases[currentIndex].description.split('¿Nuestra respuesta?')[0].trim()}
+                        </p>
+                        <div className="border-l-4 border-accent/50 pl-4 bg-accent/5 py-3 rounded-r">
+                          <p className="text-sm font-semibold text-accent/80 mb-2">¿Nuestra respuesta?</p>
+                          <p className="text-lg text-foreground leading-relaxed">
+                            {transformationCases[currentIndex].description.split('¿Nuestra respuesta?')[1].trim()}
+                          </p>
+                        </div>
+                      </>
+                    ) : (
+                      <p className="text-lg text-muted-foreground leading-relaxed">
+                        {transformationCases[currentIndex].description}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>

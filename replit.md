@@ -127,3 +127,19 @@ Preferred communication style: Simple, everyday language.
 - Implemented hover state tracking for controlled animations (hoveredId state)
 - All interactive elements maintain data-testid attributes for e2e testing
 - Responsive gap utilities on all flex containers with justify-between/around for layout resilience
+
+### Deployment Configuration (October 11, 2025)
+- **Vercel Deployment Ready**: Configured for serverless deployment with Express backend and Vite frontend
+- **Files Created**:
+  - `api/index.js` - Serverless function entry point that exports the Express app
+  - `vercel.json` - Deployment configuration with proper builds and routes
+  - `README.md` - Complete deployment instructions for GitHub and Vercel
+  - Updated `.gitignore` - Excludes environment files, logs, and Replit-specific files
+- **Server Modifications**: 
+  - `server/index.ts` now exports the Express app as default export
+  - Server only starts listening when NOT in Vercel (checks process.env.VERCEL)
+- **Build Process**: 
+  - Frontend builds to `dist/public` (Vite)
+  - Backend builds to `dist/index.js` (esbuild)
+  - Both are deployed together: static files via @vercel/static, API via @vercel/node serverless function
+- **Deployment Strategy**: API routes (/api/*) handled by serverless function, all other routes serve static frontend from dist/public

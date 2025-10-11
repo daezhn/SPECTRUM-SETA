@@ -124,7 +124,7 @@ export function About() {
         >
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold mb-4">
-              Gestión de Calidad <span className="text-accent">ISO 9001:2015</span>
+              En proceso de certificación Gestión de Calidad <span className="text-accent">ISO 9001:2015</span>
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Nuestro Sistema de Gestión de Calidad está guiado por el ciclo PHVA (Planear–Hacer–Verificar–Actuar)

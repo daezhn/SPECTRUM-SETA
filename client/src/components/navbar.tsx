@@ -37,6 +37,7 @@ export function Navbar() {
     { label: "Inicio", href: "#hero" },
     { label: "Servicios", href: "#servicios" },
     { label: "Portafolio", href: "#portafolio" },
+    { label: "Equipo", href: "#equipo" },
     { label: "Nosotros", href: "#nosotros" },
     { label: "Contacto", href: "#contacto" },
   ];

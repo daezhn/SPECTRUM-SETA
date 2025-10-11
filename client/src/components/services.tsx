@@ -83,8 +83,8 @@ export function Services() {
   });
 
   return (
-    <section id="servicios" ref={containerRef} className="py-20 md:py-32 relative overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="servicios" className="py-20 md:py-32 relative overflow-hidden">
+      <div ref={containerRef} className="container mx-auto px-4 lg:px-8 relative">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}

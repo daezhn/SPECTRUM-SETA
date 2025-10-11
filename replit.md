@@ -39,7 +39,7 @@ Preferred communication style: Simple, everyday language.
 - No global state management library (component-level state with React hooks)
 
 **Layout & Sections**
-- Single-page layout with smooth scroll navigation to sections: Hero, Services, Testimonials Carousel, Gallery, About, Contact
+- Single-page layout with smooth scroll navigation to sections: Hero, Services, Clients Carousel, Gallery, Team (Conócenos), About, Contact
 - Continuous-flow design with translucent containers instead of rigid cards
 - Responsive design with mobile-first approach
 - Intersection Observer API via react-intersection-observer for scroll-triggered animations
@@ -112,3 +112,8 @@ Preferred communication style: Simple, everyday language.
 - Implemented hover state tracking for controlled animations (hoveredId state)
 - All interactive elements maintain data-testid attributes for e2e testing
 - Responsive gap utilities on all flex containers with justify-between/around for layout resilience
+
+### Content Updates
+- **Clients Carousel**: Transformed testimonials carousel into "Ellos confían en SAETA" showcasing client logos with auto-rotation every 4 seconds, grayscale-to-color hover effect
+- **Team Section**: Added "Conócenos" section featuring 4 team members with professional portraits, roles, bios, and contact links (LinkedIn, Email)
+- Both sections use stock images as placeholders for professional appearance

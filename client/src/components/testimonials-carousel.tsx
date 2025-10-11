@@ -1,157 +1,102 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import clientLogo1 from "@assets/stock_images/company_logos_brands_cba768a5.jpg";
+import clientLogo2 from "@assets/stock_images/company_logos_brands_06333bc5.jpg";
+import clientLogo3 from "@assets/stock_images/company_logos_brands_8df15b75.jpg";
+import clientLogo4 from "@assets/stock_images/company_logos_brands_4b88c9e7.jpg";
+import clientLogo5 from "@assets/stock_images/company_logos_brands_0abf67f6.jpg";
+import clientLogo6 from "@assets/stock_images/company_logos_brands_5f8b26e0.jpg";
 
-const testimonials = [
-  {
-    id: 1,
-    quote: "SAETA transformó nuestro evento gubernamental con una cobertura 4K impecable. La transmisión alcanzó más de 15,000 espectadores simultáneos sin interrupciones.",
-    author: "Director de Comunicación",
-    company: "Gobierno Estatal",
-    sector: "Gobierno",
-  },
-  {
-    id: 2,
-    quote: "La producción cinematográfica para nuestra campaña institucional superó nuestras expectativas. El nivel de profesionalismo y creatividad es excepcional.",
-    author: "Gerente de Marketing",
-    company: "Institución Educativa",
-    sector: "Educación",
-  },
-  {
-    id: 3,
-    quote: "Confiamos en SAETA para nuestros eventos corporativos más importantes. Su equipo multicámara y la calidad de transmisión son incomparables en la región.",
-    author: "Director de Eventos",
-    company: "Corporativo Internacional",
-    sector: "Corporativo",
-  },
+const clients = [
+  { id: 1, name: "Cliente Gubernamental", logo: clientLogo1, sector: "Gobierno" },
+  { id: 2, name: "Institución Educativa", logo: clientLogo2, sector: "Educación" },
+  { id: 3, name: "Corporativo Internacional", logo: clientLogo3, sector: "Corporativo" },
+  { id: 4, name: "Empresa Tecnológica", logo: clientLogo4, sector: "Tecnología" },
+  { id: 5, name: "Organización Cultural", logo: clientLogo5, sector: "Cultura" },
+  { id: 6, name: "Marca Comercial", logo: clientLogo6, sector: "Retail" },
 ];
 
-export function TestimonialsCarousel() {
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0);
+export function ClientsCarousel() {
+  const [currentSet, setCurrentSet] = useState(0);
+  const itemsPerPage = 4;
+  const totalSets = Math.ceil(clients.length / itemsPerPage);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setDirection(1);
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
+      setCurrentSet((prev) => (prev + 1) % totalSets);
+    }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [totalSets]);
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-    }),
+  const getVisibleClients = () => {
+    const startIdx = currentSet * itemsPerPage;
+    const visible = [];
+    for (let i = 0; i < itemsPerPage; i++) {
+      const idx = (startIdx + i) % clients.length;
+      visible.push(clients[idx]);
+    }
+    return visible;
   };
 
-  const paginate = (newDirection: number) => {
-    setDirection(newDirection);
-    setCurrent((prev) => {
-      const next = prev + newDirection;
-      if (next < 0) return testimonials.length - 1;
-      if (next >= testimonials.length) return 0;
-      return next;
-    });
-  };
+  const visibleClients = getVisibleClients();
 
   return (
     <div className="relative py-20 md:py-32 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Lo que dicen nuestros <span className="text-primary">clientes</span>
-            </h2>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Ellos confían en <span className="text-primary">SAETA</span>
+          </h2>
+          <p className="text-xl text-muted-foreground">
+            Marcas líderes que han confiado en nuestra experiencia
+          </p>
+        </motion.div>
 
-          <div className="relative min-h-[300px] flex items-center">
-            <AnimatePresence initial={false} custom={direction} mode="wait">
-              <motion.div
-                key={current}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.2 },
-                }}
-                className="absolute w-full"
-              >
-                <div className="relative bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/50 rounded-2xl p-8 md:p-12">
-                  <Quote className="w-12 h-12 text-primary/20 mb-6" />
-                  <p className="text-xl md:text-2xl font-light mb-8 leading-relaxed">
-                    "{testimonials[current].quote}"
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg">
-                      {testimonials[current].author.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-semibold">{testimonials[current].author}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {testimonials[current].company} · {testimonials[current].sector}
-                      </p>
-                    </div>
-                  </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          {visibleClients.map((client, index) => (
+            <motion.div
+              key={client.id}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              className="group"
+              data-testid={`client-logo-${client.id}`}
+            >
+              <div className="relative aspect-square rounded-xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/30 p-6 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20">
+                <div className="absolute inset-0 flex items-center justify-center p-6">
+                  <motion.img
+                    src={client.logo}
+                    alt={client.name}
+                    className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300 filter grayscale group-hover:grayscale-0"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </div>
-              </motion.div>
-            </AnimatePresence>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+              </div>
+              <p className="text-center mt-4 text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                {client.sector}
+              </p>
+            </motion.div>
+          ))}
+        </div>
 
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => paginate(-1)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-12 h-12 rounded-full bg-background/80 backdrop-blur-sm border border-border hover:border-primary/50"
-              data-testid="button-prev-testimonial"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => paginate(1)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-12 h-12 rounded-full bg-background/80 backdrop-blur-sm border border-border hover:border-primary/50"
-              data-testid="button-next-testimonial"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </Button>
-          </div>
-
-          <div className="flex justify-center gap-2 mt-8">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setDirection(index > current ? 1 : -1);
-                  setCurrent(index);
-                }}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === current ? "bg-primary w-8" : "bg-muted-foreground/30"
-                }`}
-                data-testid={`testimonial-dot-${index}`}
-              />
-            ))}
-          </div>
+        <div className="flex justify-center gap-2 mt-12">
+          {Array.from({ length: totalSets }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSet(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentSet ? "bg-primary w-8" : "bg-muted-foreground/30"
+              }`}
+              data-testid={`client-carousel-dot-${index}`}
+            />
+          ))}
         </div>
       </div>
     </div>

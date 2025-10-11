@@ -2,7 +2,7 @@
 
 Sitio web corporativo premium para SAETA, empresa especializada en producción audiovisual y streaming en vivo.
 
-## 🚀 Tecnologías
+## Tecnologías
 
 - **Frontend**: React 18 + TypeScript + Vite
 - **Backend**: Express.js + Node.js  
@@ -10,7 +10,7 @@ Sitio web corporativo premium para SAETA, empresa especializada en producción a
 - **Animaciones**: Framer Motion
 - **Almacenamiento**: En memoria (listo para PostgreSQL)
 
-## 🎨 Características de Diseño
+## Características de Diseño
 
 - Diseño continuo estilo Accenture con contenedores translúcidos
 - Paleta de colores: Rojo (0°), Violeta (270°), Negro
@@ -18,7 +18,7 @@ Sitio web corporativo premium para SAETA, empresa especializada en producción a
 - Modo oscuro optimizado con efectos backdrop-blur
 - Carruseles auto-rotativos para testimonios y casos de éxito
 
-## 📦 Instalación Local
+## Instalación Local
 
 ```bash
 # Instalar dependencias
@@ -34,7 +34,7 @@ npm run build
 npm start
 ```
 
-## 🌐 Deployment a Vercel
+##  Deployment a Vercel
 
 ### Paso 1: Conectar a GitHub desde Replit
 
@@ -89,7 +89,7 @@ npm start
 3. Agrega tu dominio personalizado (ej: `saeta.com`)
 4. Sigue las instrucciones para configurar los DNS
 
-## 🔄 Actualizaciones Automáticas
+## Actualizaciones Automáticas
 
 Cada vez que hagas cambios y los subas a GitHub:
 1. Haz commit en Replit o directamente en GitHub
@@ -97,7 +97,7 @@ Cada vez que hagas cambios y los subas a GitHub:
 3. Construirá y desplegará la nueva versión
 4. En 2-3 minutos, los cambios estarán en vivo
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 saeta-website/
@@ -116,7 +116,7 @@ saeta-website/
 └── dist/                # Build de producción (generado)
 ```
 
-## 🎯 Secciones del Sitio
+## Secciones del Sitio
 
 - **Video Demo Reel** - Showcase de trabajos destacados
 - **Hero** - Presentación principal con estadísticas
@@ -130,7 +130,7 @@ saeta-website/
 - **Clientes** - Testimonios y carrusel
 - **Contacto** - Formulario de contacto
 
-## 🔧 Comandos Útiles
+## Comandos Útiles
 
 ```bash
 # Verificar TypeScript
@@ -143,14 +143,14 @@ rm -rf node_modules dist && npm install
 npm run build --verbose
 ```
 
-## 📝 Notas Técnicas
+## Notas Técnicas
 
 - El proyecto usa almacenamiento en memoria por defecto
 - La configuración de base de datos PostgreSQL está lista pero no activada
 - Para activar PostgreSQL: descomentar código en `server/storage.ts` y configurar `DATABASE_URL`
 - Las animaciones están optimizadas con `will-change` para mejor rendimiento
 
-## 🆘 Solución de Problemas
+## Solución de Problemas
 
 ### Error de build en Vercel
 - Verifica que todas las dependencias estén en `dependencies` (no en `devDependencies`)

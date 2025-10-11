@@ -1,43 +1,37 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Users, Zap, Award, BarChart, HeadphonesIcon, Handshake } from "lucide-react";
+import { Clock, Brain, Users, Layers, Heart } from "lucide-react";
 
 const benefits = [
   {
-    id: "equipo-multidisciplinario",
+    id: "rapidez",
+    icon: Clock,
+    title: "RAPIDEZ",
+    description: "Nuestra promesa es que su proyecto estará terminado en menos de dos semanas.",
+  },
+  {
+    id: "multiples-enfoques",
+    icon: Brain,
+    title: "USO DE MÚLTIPLES ENFOQUES",
+    description: "El diseño sigue no sólo las guías de mercadotecnia, sino que se rompe con los enfoques tradicionales al utilizar técnicas psicológicas para transmitir el mensaje correcto y adecuado a sus clientes potenciales.",
+  },
+  {
+    id: "trato-directo",
     icon: Users,
-    title: "Equipo Multidisciplinario Experto",
-    description: "Profesionales técnicos y creativos trabajando en conjunto: directores, operadores certificados, editores y especialistas en estrategia digital que aportan visiones complementarias a cada proyecto.",
+    title: "TRATO DIRECTO",
+    description: "Hablarán directamente con el equipo a cargo de su proyecto, así que tendremos una comunicación personal que facilitará el entendimiento.",
   },
   {
-    id: "tecnologia-vanguardia",
-    icon: Zap,
-    title: "Tecnología de Vanguardia",
-    description: "Equipamiento HD/4K de última generación, soluciones en la nube para colaboración remota, integración con IA para post-producción y analítica, garantizando resultados al más alto nivel técnico.",
+    id: "conocimiento-campos",
+    icon: Layers,
+    title: "CONOCIMIENTO EN VARIOS CAMPOS",
+    description: "Trabajamos no sólo en el desarrollo web, sino en la producción de video, diseño gráfico, efectos especiales, comerciales para TV, fotomontajes, modelaje 3D, etc.",
   },
   {
-    id: "procesos-certificados",
-    icon: Award,
-    title: "Procesos Certificados",
-    description: "En proceso de certificación ISO 9001:2015, aplicamos estándares internacionales de calidad en cada etapa: planificación, ejecución, verificación y mejora continua para asegurar excelencia consistente.",
-  },
-  {
-    id: "resultados-medibles",
-    icon: BarChart,
-    title: "Resultados Medibles",
-    description: "Integración de Google Analytics y herramientas de tracking en tiempo real, reportes de ROI detallados, métricas de engagement y performance que convierten cada proyecto en data accionable.",
-  },
-  {
-    id: "soporte-integral",
-    icon: HeadphonesIcon,
-    title: "Soporte Integral 24/7",
-    description: "Acompañamiento completo durante todo el ciclo de vida del proyecto: desde la conceptualización hasta la distribución, con asistencia técnica inmediata en eventos críticos y mantenimiento post-entrega.",
-  },
-  {
-    id: "partners-estrategicos",
-    icon: Handshake,
-    title: "Partners Estratégicos",
-    description: "Relaciones comerciales con líderes globales como Meta, Google, Sony y OpenAI, permitiéndonos acceder a tecnologías exclusivas, certificaciones oficiales y mejores prácticas internacionales.",
+    id: "entusiasmo",
+    icon: Heart,
+    title: "ENTUSIASMO",
+    description: "Nos gusta nuestra labor y la disfrutamos, por eso le aseguramos que obtendrán un excelente trabajo.",
   },
 ];
 
@@ -65,7 +59,7 @@ export function WhyHireUs() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
@@ -77,16 +71,16 @@ export function WhyHireUs() {
                 data-testid={`benefit-card-${index}`}
                 className="group"
               >
-                <div className="h-full bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/30 rounded-xl p-8 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
+                <div className="h-full bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/30 rounded-xl p-8 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 transition-all duration-500">
                   <motion.div
-                    className="w-16 h-16 rounded-xl bg-primary/10 backdrop-blur-md border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors"
+                    className="w-16 h-16 rounded-xl bg-accent/10 backdrop-blur-md border border-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <Icon className="w-8 h-8 text-primary" />
+                    <Icon className="w-8 h-8 text-accent" />
                   </motion.div>
                   
-                  <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-bold mb-4 group-hover:text-accent transition-colors duration-300">
                     {benefit.title}
                   </h3>
                   
@@ -98,20 +92,6 @@ export function WhyHireUs() {
             );
           })}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-block bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-full px-8 py-4 border border-primary/20">
-            <p className="text-lg font-medium">
-              <span className="text-primary">Más de 100 proyectos</span> completados exitosamente con{" "}
-              <span className="text-accent">98% de satisfacción</span> del cliente
-            </p>
-          </div>
-        </motion.div>
       </div>
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />

@@ -2,22 +2,28 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useInView } from "react-intersection-observer";
+import globalStreamingImg from "@assets/stock_images/global_streaming_net_fd5127a0.jpg";
+import cinematicProductionImg from "@assets/stock_images/cinematic_video_prod_ea16184d.jpg";
+import aiAutomationImg from "@assets/stock_images/ai_automation_techno_fdce41e7.jpg";
 
 const transformationCases = [
   {
     id: 1,
     title: "Del pensamiento aislado a operaciones globales conectadas",
-    description: "El crecimiento exponencial de plataformas digitales cambió la forma de comunicar. ¿La solución? Streaming multicámara con analítica en tiempo real que permite decisiones inmediatas basadas en datos de audiencia.",
+    description: "El crecimiento exponencial de plataformas digitales cambió la forma de comunicar. Streaming multicámara con analítica en tiempo real que permite decisiones inmediatas basadas en datos de audiencia.",
+    image: globalStreamingImg,
   },
   {
     id: 2,
     title: "De contenido genérico a narrativas que convierten",
-    description: "Los consumidores ignoran mensajes que no resuenan con su experiencia. ¿La solución? Producción cinematográfica con storytelling estratégico que eleva recordación de marca y genera engagement medible.",
+    description: "Los consumidores ignoran mensajes que no resuenan con su experiencia. Producción cinematográfica con storytelling estratégico que eleva recordación de marca y genera engagement medible.",
+    image: cinematicProductionImg,
   },
   {
     id: 3,
     title: "De procesos manuales a automatización inteligente",
-    description: "La producción tradicional consume tiempo y recursos limitados. ¿La solución? Integración de IA para edición automatizada, motion graphics generativos y optimización de contenido multiplataforma.",
+    description: "La producción tradicional consume tiempo y recursos limitados. Integración de IA para edición automatizada, motion graphics generativos y optimización de contenido multiplataforma.",
+    image: aiAutomationImg,
   },
 ];
 
@@ -56,16 +62,16 @@ export function Valor360() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nuestro valor <span className="text-primary">360°</span>
+            Nuestro valor <span className="text-accent">360°</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Transformamos desafíos empresariales en ventajas competitivas
           </p>
         </motion.div>
 
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-6xl mx-auto">
           <div
-            className="bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/30 rounded-2xl p-8 md:p-12 lg:p-16 min-h-[300px] flex items-center"
+            className="bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/30 rounded-2xl overflow-hidden"
             data-testid="carousel-valor-360"
           >
             <AnimatePresence mode="wait">
@@ -75,36 +81,49 @@ export function Valor360() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.5 }}
-                className="w-full"
+                className="grid md:grid-cols-2 gap-0"
               >
-                <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary">
-                  {transformationCases[currentIndex].title}
-                </h3>
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                  {transformationCases[currentIndex].description}
-                </p>
+                {/* Image Section */}
+                <div className="relative h-64 md:h-auto overflow-hidden">
+                  <img
+                    src={transformationCases[currentIndex].image}
+                    alt={transformationCases[currentIndex].title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/80 md:to-background/90" />
+                </div>
+
+                {/* Content Section */}
+                <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 text-accent">
+                    {transformationCases[currentIndex].title}
+                  </h3>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                    {transformationCases[currentIndex].description}
+                  </p>
+                </div>
               </motion.div>
             </AnimatePresence>
 
             {/* Navigation Arrows */}
             <motion.button
               onClick={handlePrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/10 backdrop-blur-md border border-primary/30 flex items-center justify-center hover:bg-primary/20 transition-colors"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-accent/10 backdrop-blur-md border border-accent/30 flex items-center justify-center hover:bg-accent/20 transition-colors z-10"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               data-testid="button-prev-valor"
             >
-              <ChevronLeft className="w-6 h-6 text-primary" />
+              <ChevronLeft className="w-6 h-6 text-accent" />
             </motion.button>
 
             <motion.button
               onClick={handleNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/10 backdrop-blur-md border border-primary/30 flex items-center justify-center hover:bg-primary/20 transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-accent/10 backdrop-blur-md border border-accent/30 flex items-center justify-center hover:bg-accent/20 transition-colors z-10"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               data-testid="button-next-valor"
             >
-              <ChevronRight className="w-6 h-6 text-primary" />
+              <ChevronRight className="w-6 h-6 text-accent" />
             </motion.button>
           </div>
 

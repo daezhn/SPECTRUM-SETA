@@ -6,7 +6,7 @@ export function VideoDemoReel() {
   return (
     <section 
       id="demo-reel" 
-      className="relative min-h-[60vh] flex items-center justify-center overflow-hidden border-b border-border/50"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-border/50"
       data-testid="section-demo-reel"
     >
       {/* Background Image with Overlay */}

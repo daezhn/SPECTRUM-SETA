@@ -16,8 +16,8 @@ const services = [
     description: "Cobertura sin interrupciones y audiencia ampliada con trazabilidad completa.",
     features: [
       "Multicámara HD/4K con DVR",
-      "Hasta 8 cámaras XDCAM/NXCAM",
-      "Grúa, steady cam, dolly, drone 4K",
+      "Cámaras XDCAM/NXCAM",
+      "Grúa, steady cam, dolly, drone",
       "Bitrate adaptable + Google Analytics",
     ],
     image: liveStreamingImg,

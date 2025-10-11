@@ -37,10 +37,9 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="text-white">Transformamos </span>
-              <span className="text-primary">audiencia</span>
-              <span className="text-white"> en </span>
-              <span className="text-accent">resultados</span>
+              <span className="text-white">Redefinimos cómo </span>
+              <span className="text-primary">conectas</span>
+              <span className="text-white">.</span>
             </h1>
           </motion.div>
 
@@ -87,9 +86,9 @@ export function Hero() {
             className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto"
           >
             {[
-              { value: "8", label: "Multicámara HD/4K" },
-              { value: "4K", label: "Video Aéreo" },
-              { value: "24/7", label: "Soporte Técnico" },
+              { label: "Multicámara HD/4K" },
+              { label: "Video Aéreo" },
+              { label: "Soporte Técnico" },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -99,10 +98,7 @@ export function Hero() {
                 className="text-center"
                 data-testid={`stat-${index}`}
               >
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                  {stat.value}
-                </div>
-                <div className="text-sm text-white/70">{stat.label}</div>
+                <div className="text-lg md:text-xl font-semibold text-white">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>

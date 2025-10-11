@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
+import { useState } from "react";
 import demoReelImage from "@assets/stock_images/professional_video_p_4c4e9095.jpg";
 
 export function VideoDemoReel() {
+  const [showVideo, setShowVideo] = useState(false);
+  
   return (
     <section 
       id="demo-reel" 
@@ -32,44 +35,63 @@ export function VideoDemoReel() {
             </h2>
           </motion.div>
 
-          {/* Play Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-8"
-          >
-            <button
-              data-testid="button-play-video"
-              className="group relative mx-auto"
-              aria-label="Play demo reel video"
+          {/* Video Player or Play Button */}
+          {showVideo ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mb-8 max-w-4xl mx-auto"
             >
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
+              <video
+                controls
+                autoPlay
+                className="w-full rounded-xl shadow-2xl"
+                data-testid="video-player"
               >
-                {/* Outer pulsing ring */}
+                <source src="/attached_assets/demo-reel.mp4" type="video/mp4" />
+                Tu navegador no soporta el elemento de video.
+              </video>
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-8"
+            >
+              <button
+                onClick={() => setShowVideo(true)}
+                data-testid="button-play-video"
+                className="group relative mx-auto"
+                aria-label="Play demo reel video"
+              >
                 <motion.div
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 0, 0.5]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="absolute inset-0 rounded-full bg-primary/30 backdrop-blur-sm"
-                />
-                
-                {/* Play button */}
-                <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full bg-white/10 backdrop-blur-md border-2 border-white/30 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/20 group-hover:border-primary/50">
-                  <Play className="w-10 h-10 md:w-14 md:h-14 text-white ml-2 transition-transform duration-300 group-hover:scale-110" fill="white" />
-                </div>
-              </motion.div>
-            </button>
-          </motion.div>
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative"
+                >
+                  {/* Outer pulsing ring */}
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      opacity: [0.5, 0, 0.5]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute inset-0 rounded-full bg-primary/30 backdrop-blur-sm"
+                  />
+                  
+                  {/* Play button */}
+                  <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full bg-white/10 backdrop-blur-md border-2 border-white/30 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/20 group-hover:border-primary/50">
+                    <Play className="w-10 h-10 md:w-14 md:h-14 text-white ml-2 transition-transform duration-300 group-hover:scale-110" fill="white" />
+                  </div>
+                </motion.div>
+              </button>
+            </motion.div>
+          )}
 
           {/* Caption */}
           <motion.p

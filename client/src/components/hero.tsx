@@ -29,14 +29,14 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 py-32">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 py-20 md:py-32">
+        <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-10 leading-tight">
               <span className="text-white">Redefinimos cómo </span>
               <span className="text-primary">conectas</span>
               <span className="text-white">.</span>
@@ -47,7 +47,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto font-light"
+            className="text-2xl md:text-3xl lg:text-4xl text-white/90 mb-12 max-w-5xl mx-auto font-light leading-relaxed"
           >
             Diseñamos, producimos y distribuimos contenido premium y experiencias en vivo que conectan marcas e instituciones con sus audiencias clave
           </motion.p>
@@ -56,25 +56,25 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center flex-wrap"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center flex-wrap mb-20"
           >
             <Button
               size="lg"
               onClick={() => scrollToSection("contacto")}
               data-testid="button-cta-contact"
-              className="text-lg px-8 h-14 gap-2 bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="text-xl px-12 h-16 gap-3 bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               Comienza tu proyecto
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-6 h-6" />
             </Button>
             <Button
               size="lg"
               variant="outline"
               onClick={() => scrollToSection("portafolio")}
               data-testid="button-cta-portfolio"
-              className="text-lg px-8 h-14 gap-2 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
+              className="text-xl px-12 h-16 gap-3 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
             >
-              <Play className="w-5 h-5" />
+              <Play className="w-6 h-6" />
               Ver nuestro trabajo
             </Button>
           </motion.div>
@@ -83,7 +83,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto"
+            className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-12 max-w-4xl mx-auto"
           >
             {[
               { label: "Multicámara HD/4K" },
@@ -98,7 +98,7 @@ export function Hero() {
                 className="text-center"
                 data-testid={`stat-${index}`}
               >
-                <div className="text-lg md:text-xl font-semibold text-white">{stat.label}</div>
+                <div className="text-xl md:text-2xl font-semibold text-white">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>

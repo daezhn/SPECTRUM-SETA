@@ -93,7 +93,7 @@ export function Services() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nuestras <span className="text-primary">Soluciones</span>
+            Nuestras <span className="text-accent">Soluciones</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Cuatro suites integrales que transforman tu visión en resultados medibles

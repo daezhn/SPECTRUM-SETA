@@ -87,7 +87,7 @@ export function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Inicia tu <span className="text-primary">Proyecto</span>
+            Inicia tu <span className="text-accent">Proyecto</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Cuéntanos sobre tu visión y descubre cómo podemos transformarla en resultados medibles
@@ -264,8 +264,8 @@ export function Contact() {
               <h3 className="text-2xl font-bold mb-6">Información de contacto</h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-accent" />
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Email</h4>
@@ -298,8 +298,8 @@ export function Contact() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-accent" />
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Ubicación</h4>

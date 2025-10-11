@@ -52,7 +52,7 @@ export function WhyHireUs() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            ¿Por qué contratar <span className="text-primary">nuestros servicios</span>?
+            ¿Por qué contratar <span className="text-accent">nuestros servicios</span>?
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Experiencia comprobada, tecnología de punta y compromiso con resultados medibles que transforman tu inversión en impacto real

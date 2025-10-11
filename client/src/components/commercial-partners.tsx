@@ -46,7 +46,7 @@ export function CommercialPartners() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nuestros <span className="text-primary">Aliados Comerciales</span>
+            Nuestros <span className="text-accent">Aliados Comerciales</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Trabajamos de la mano con líderes tecnológicos globales para ofrecer soluciones de vanguardia a nuestros clientes

@@ -78,7 +78,7 @@ export function Footer() {
                 <li key={link.label}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-muted-foreground hover:text-primary transition-colors text-left"
+                    className="text-muted-foreground hover:text-accent transition-colors text-left"
                     data-testid={`footer-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                   >
                     {link.label}
@@ -96,7 +96,7 @@ export function Footer() {
                 <li key={link.label}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-muted-foreground hover:text-primary transition-colors text-left"
+                    className="text-muted-foreground hover:text-accent transition-colors text-left"
                     data-testid={`footer-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                   >
                     {link.label}
@@ -111,12 +111,12 @@ export function Footer() {
             <h4 className="font-semibold mb-4">Contacto</h4>
             <ul className="space-y-3 text-muted-foreground">
               <li>
-                <a href="mailto:saeta.producciones@gmail.com" className="hover:text-primary transition-colors" data-testid="footer-link-email">
+                <a href="mailto:saeta.producciones@gmail.com" className="hover:text-accent transition-colors" data-testid="footer-link-email">
                   saeta.producciones@gmail.com
                 </a>
               </li>
               <li>
-                <a href="tel:+526141318497" className="hover:text-primary transition-colors" data-testid="footer-link-phone">
+                <a href="tel:+526141318497" className="hover:text-accent transition-colors" data-testid="footer-link-phone">
                   +52 (614) 131 8497
                 </a>
               </li>

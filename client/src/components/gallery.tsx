@@ -108,7 +108,7 @@ export function Gallery() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Casos de <span className="text-primary">Impacto</span>
+            Casos de <span className="text-accent">Impacto</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Resultados medidos con integración a Analytics y monitoreo en tiempo real

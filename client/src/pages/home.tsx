@@ -14,10 +14,10 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Services />
-      <ClientsCarousel />
       <Gallery />
-      <Team />
       <About />
+      <Team />
+      <ClientsCarousel />
       <Contact />
       <Footer />
     </div>

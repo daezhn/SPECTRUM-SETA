@@ -39,7 +39,7 @@ Preferred communication style: Simple, everyday language.
 - No global state management library (component-level state with React hooks)
 
 **Layout & Sections**
-- Single-page layout with smooth scroll navigation to sections: Hero, Services, Clients Carousel, Gallery, Team (Conócenos), About, Contact
+- Single-page layout with smooth scroll navigation to sections: Hero, Services, Gallery, About, Team (Conócenos), Clients Carousel, Contact
 - Continuous-flow design with translucent containers instead of rigid cards
 - Responsive design with mobile-first approach
 - Intersection Observer API via react-intersection-observer for scroll-triggered animations

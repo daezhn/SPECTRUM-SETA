@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, Shield, Award, Zap } from "lucide-react";
 
 const isoSteps = [

@@ -2,7 +2,16 @@
 
 ## Overview
 
-SAETA is a premium production and live streaming company website built with React, Express, and TypeScript. The application showcases professional audiovisual services including 4K streaming, cinematic content production, brand experiences, and social media management. The website features a modern, dark-themed design inspired by corporate aesthetics with emphasis on visual impact and smooth interactions.
+SAETA is a premium production and live streaming company website built with React, Express, and TypeScript. The application showcases professional audiovisual services including 4K streaming, cinematic content production, brand experiences, and social media management. 
+
+The website features a sophisticated, Accenture-inspired design with continuous-flow aesthetic, translucent containers with backdrop-blur effects, and premium micro-animations. The design emphasizes a seamless, single-canvas experience rather than traditional sectioned panels, creating a fluid, high-end corporate presence.
+
+**Key Design Features:**
+- Continuous flow layout without harsh divisions between sections
+- Translucent containers with backdrop-blur for premium depth
+- Auto-rotating testimonials carousel with smooth transitions
+- Micro-animations: icons that scale/rotate on hover, list items with interactive states, gradient overlays
+- Dark mode with magenta/purple color palette (320° hue primary, 270° hue accent)
 
 ## User Preferences
 
@@ -30,9 +39,11 @@ Preferred communication style: Simple, everyday language.
 - No global state management library (component-level state with React hooks)
 
 **Layout & Sections**
-- Single-page layout with smooth scroll navigation to sections: Hero, Services, Gallery, About, Contact
+- Single-page layout with smooth scroll navigation to sections: Hero, Services, Testimonials Carousel, Gallery, About, Contact
+- Continuous-flow design with translucent containers instead of rigid cards
 - Responsive design with mobile-first approach
 - Intersection Observer API via react-intersection-observer for scroll-triggered animations
+- Premium micro-interactions throughout (icon rotations, list item scaling, gradient overlays on hover)
 
 ### Backend Architecture
 
@@ -80,3 +91,24 @@ Preferred communication style: Simple, everyday language.
 - Replit-specific plugins for development environment integration
 
 **Why This Stack**: The combination provides type safety end-to-end (TypeScript + Zod + Drizzle), excellent developer experience (Vite + HMR), and production-ready component library (Shadcn/ui + Radix) while maintaining flexibility to add database persistence when needed.
+
+## Recent Changes (October 11, 2025)
+
+### Premium Redesign - Accenture-Inspired Continuous Flow
+- **Design Transformation**: Replaced rigid Card components with translucent containers using backdrop-blur and subtle borders for a premium, flowing aesthetic
+- **Testimonials Carousel**: Added auto-rotating testimonials section with 6-second intervals, smooth transitions, navigation arrows, and dot indicators
+- **Micro-Animations Overhaul**:
+  - Icons scale and rotate on hover with spring animations
+  - List item bullets grow on hover with smooth transitions
+  - Service cards have layered gradient overlays that appear on hover
+  - Gallery images use controlled zoom with Framer Motion
+  - Dynamic shadow effects with primary/accent color tints
+- **Continuous Flow**: Eliminated harsh section divisions by using consistent translucent backgrounds, subtle borders (border/30 opacity), and seamless transitions between sections
+- **Visual Depth**: Multi-layer gradient system (from-card/50 to-transparent) creates depth without solid backgrounds
+
+### Technical Improvements
+- Enhanced motion design with Framer Motion whileHover and transition controls
+- Added scroll-based animations with useScroll hook for parallax-like effects
+- Implemented hover state tracking for controlled animations (hoveredId state)
+- All interactive elements maintain data-testid attributes for e2e testing
+- Responsive gap utilities on all flex containers with justify-between/around for layout resilience

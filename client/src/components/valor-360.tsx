@@ -1,0 +1,130 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useInView } from "react-intersection-observer";
+
+const transformationCases = [
+  {
+    id: 1,
+    title: "Del pensamiento aislado a operaciones globales conectadas",
+    description: "El crecimiento exponencial de plataformas digitales cambió la forma de comunicar. ¿La solución? Streaming multicámara con analítica en tiempo real que permite decisiones inmediatas basadas en datos de audiencia.",
+  },
+  {
+    id: 2,
+    title: "De contenido genérico a narrativas que convierten",
+    description: "Los consumidores ignoran mensajes que no resuenan con su experiencia. ¿La solución? Producción cinematográfica con storytelling estratégico que eleva recordación de marca y genera engagement medible.",
+  },
+  {
+    id: 3,
+    title: "De procesos manuales a automatización inteligente",
+    description: "La producción tradicional consume tiempo y recursos limitados. ¿La solución? Integración de IA para edición automatizada, motion graphics generativos y optimización de contenido multiplataforma.",
+  },
+];
+
+export function Valor360() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % transformationCases.length);
+    }, 6000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + transformationCases.length) % transformationCases.length);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % transformationCases.length);
+  };
+
+  const handleDotClick = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  return (
+    <section id="valor-360" className="py-20 md:py-32 relative overflow-hidden">
+      <div className="container mx-auto px-4 lg:px-8">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Nuestro valor <span className="text-primary">360°</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Transformamos desafíos empresariales en ventajas competitivas
+          </p>
+        </motion.div>
+
+        <div className="relative max-w-5xl mx-auto">
+          <div
+            className="bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/30 rounded-2xl p-8 md:p-12 lg:p-16 min-h-[300px] flex items-center"
+            data-testid="carousel-valor-360"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.5 }}
+                className="w-full"
+              >
+                <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary">
+                  {transformationCases[currentIndex].title}
+                </h3>
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  {transformationCases[currentIndex].description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Arrows */}
+            <motion.button
+              onClick={handlePrev}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/10 backdrop-blur-md border border-primary/30 flex items-center justify-center hover:bg-primary/20 transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              data-testid="button-prev-valor"
+            >
+              <ChevronLeft className="w-6 h-6 text-primary" />
+            </motion.button>
+
+            <motion.button
+              onClick={handleNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/10 backdrop-blur-md border border-primary/30 flex items-center justify-center hover:bg-primary/20 transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              data-testid="button-next-valor"
+            >
+              <ChevronRight className="w-6 h-6 text-primary" />
+            </motion.button>
+          </div>
+
+          {/* Dot Indicators */}
+          <div className="flex justify-center gap-3 mt-8">
+            {transformationCases.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleDotClick(index)}
+                className={`transition-all duration-300 rounded-full ${
+                  index === currentIndex
+                    ? "bg-primary w-12 h-3"
+                    : "bg-muted-foreground/30 w-3 h-3 hover:bg-muted-foreground/50"
+                }`}
+                data-testid={`dot-indicator-${index}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

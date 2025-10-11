@@ -9,9 +9,9 @@ The website features a sophisticated, Accenture-inspired design with continuous-
 **Key Design Features:**
 - Continuous flow layout without harsh divisions between sections
 - Translucent containers with backdrop-blur for premium depth
-- Auto-rotating testimonials carousel with smooth transitions
+- Auto-rotating carousels with smooth transitions (testimonials, valor 360)
 - Micro-animations: icons that scale/rotate on hover, list items with interactive states, gradient overlays
-- Dark mode with magenta/purple color palette (320° hue primary, 270° hue accent)
+- Dark mode with red/violet/black color palette (0° hue primary/red, 270° hue accent/violet)
 
 ## User Preferences
 
@@ -94,9 +94,24 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes (October 11, 2025)
 
+### Management Meeting Updates - Major Feature Additions
+- **Video Demo Reel**: Added prominent video demo reel section at top of page with play button overlay and professional production imagery
+- **Why Hire Us Section**: Created "¿Por qué contratar nuestros servicios?" showcasing 6 key differentiators (expert team, cutting-edge tech, certified processes, measurable results, 24/7 support, strategic partners)
+- **Valor 360 Carousel**: Implemented auto-rotating "Nuestro valor 360" carousel with 3 transformation case studies demonstrating SAETA's business impact
+- **Commercial Partners Section**: Added "Nuestros aliados comerciales" displaying strategic partnerships with Meta, Google, Sony, and OpenAI with grayscale-to-color hover effects
+- **Color Scheme Update**: Changed from magenta/purple to red/violet/black palette (primary: 0° red, accent: 270° violet) for stronger corporate presence
+- **Section Reordering**: Optimized flow to Video Demo → Hero → Why Hire Us → Valor 360 → Services → Gallery → About → Commercial Partners → Team → Clients → Contact
+
+### Content & Copy Updates
+- **Hero Stats**: Updated from equipment-focused ("Multicámara HD/4K", "Video Aéreo", "Soporte Técnico") to service-focused ("Streaming / Producción", "Marketing / Diseño", "IA Solutions")
+- **Services Enhancement**: Changed "Cámaras XDCAM/NXCAM" to "Operadores profesionales" emphasizing human expertise
+- **Sector Reordering**: Reorganized target sectors to: Industria, Corporativo, Servicios Profesionales, Gobierno
+- **Trust & Continuity**: Converted from paragraph text to bullet points, added 2 new features (Soporte Técnico Integral, Gestión de Proyectos), added "Capacitación constante" to technological renewal
+- **ISO Certification**: Updated status to "En proceso de certificación Gestión de Calidad ISO 9001:2015"
+
 ### Premium Redesign - Accenture-Inspired Continuous Flow
 - **Design Transformation**: Replaced rigid Card components with translucent containers using backdrop-blur and subtle borders for a premium, flowing aesthetic
-- **Testimonials Carousel**: Added auto-rotating testimonials section with 6-second intervals, smooth transitions, navigation arrows, and dot indicators
+- **Auto-Rotating Carousels**: Multiple carousels (Testimonials/Clients, Valor 360) with 4-6 second intervals, smooth transitions, navigation arrows, and dot indicators
 - **Micro-Animations Overhaul**:
   - Icons scale and rotate on hover with spring animations
   - List item bullets grow on hover with smooth transitions
@@ -112,8 +127,3 @@ Preferred communication style: Simple, everyday language.
 - Implemented hover state tracking for controlled animations (hoveredId state)
 - All interactive elements maintain data-testid attributes for e2e testing
 - Responsive gap utilities on all flex containers with justify-between/around for layout resilience
-
-### Content Updates
-- **Clients Carousel**: Transformed testimonials carousel into "Ellos confían en SAETA" showcasing client logos with auto-rotation every 4 seconds, grayscale-to-color hover effect
-- **Team Section**: Added "Conócenos" section featuring 4 team members with professional portraits, roles, bios, and contact links (LinkedIn, Email)
-- Both sections use stock images as placeholders for professional appearance

@@ -67,10 +67,12 @@ npm start
    - Haz clic en "Import"
 
 3. **Configurar el proyecto**
-   - **Framework Preset**: Vite
-   - **Build Command**: `npm run build` (ya está configurado)
-   - **Output Directory**: `dist` (ya está configurado)
-   - **Install Command**: `npm install` (ya está configurado)
+   - **Framework Preset**: Other (no seleccionar Vite)
+   - **Build Command**: `npm run build`
+   - **Output Directory**: (dejar vacío o poner ".")
+   - **Install Command**: `npm install`
+   
+   **Importante**: No uses el preset de Vite ya que este proyecto usa serverless functions de Vercel para el backend Express.
 
 4. **Variables de entorno** (opcional)
    - Si necesitas variables de entorno, agrégalas en esta sección

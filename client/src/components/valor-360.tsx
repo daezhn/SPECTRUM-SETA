@@ -9,21 +9,21 @@ import aiAutomationImg from "@assets/stock_images/ai_automation_techno_fdce41e7.
 const transformationCases = [
   {
     id: 1,
-    title: "Del pensamiento aislado a operaciones globales conectadas",
-    description: "El crecimiento exponencial de plataformas digitales cambió la forma de comunicar. Streaming multicámara con analítica en tiempo real que permite decisiones inmediatas basadas en datos de audiencia.",
-    image: globalStreamingImg,
+    title: "De procesos manuales a automatización inteligente",
+    description: "Los plazos se acortan y la IA creativa cambió las reglas de la postproducción. ¿Nuestra respuesta? Flujos con IA para edición asistida, motion graphics generativos y versionado multiplataforma que aceleran la entrega y elevan la consistencia a escala.",
+    image: aiAutomationImg,
   },
   {
     id: 2,
-    title: "De contenido genérico a narrativas que convierten",
-    description: "Los consumidores ignoran mensajes que no resuenan con su experiencia. Producción cinematográfica con storytelling estratégico que eleva recordación de marca y genera engagement medible.",
-    image: cinematicProductionImg,
+    title: "Las audiencias híbridas y las plataformas que evolucionan minuto a minuto",
+    description: "Las audiencias híbridas y las plataformas que evolucionan minuto a minuto transformaron la forma de comunicar. ¿Nuestra respuesta? Analítica en tiempo real y tableros de decisión que permiten ajustar contenido y distribución al instante, local o globalmente.",
+    image: globalStreamingImg,
   },
   {
     id: 3,
-    title: "De procesos manuales a automatización inteligente",
-    description: "La producción tradicional consume tiempo y recursos limitados. Integración de IA para edición automatizada, motion graphics generativos y optimización de contenido multiplataforma.",
-    image: aiAutomationImg,
+    title: "De contenido genérico a narrativas que convierten",
+    description: "En un feed saturado, los mensajes planos se pierden. Por eso realizamos un Storytelling guiado por datos y pruebas creativas continuo para construir historias que resuenan y generan engagement medible.",
+    image: cinematicProductionImg,
   },
 ];
 
@@ -65,7 +65,7 @@ export function Valor360() {
             Nuestro valor <span className="text-accent">360°</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Transformamos desafíos empresariales en ventajas competitivas
+            Innovación en movimiento. Impacto en tiempo real.
           </p>
         </motion.div>
 

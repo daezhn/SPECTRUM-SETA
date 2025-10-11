@@ -78,7 +78,7 @@ export function VideoDemoReel() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-light"
           >
-            Descubre cómo transformamos ideas en experiencias visuales impactantes
+            Descubre cómo decirle al mundo cuan buena y mejor es tu empresa
           </motion.p>
         </div>
       </div>

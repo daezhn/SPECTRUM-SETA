@@ -86,9 +86,9 @@ export function Hero() {
             className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-12 max-w-4xl mx-auto"
           >
             {[
-              { label: "Multicámara HD/4K" },
-              { label: "Video Aéreo" },
-              { label: "Soporte Técnico" },
+              { label: "Streaming / Producción" },
+              { label: "Marketing / Diseño" },
+              { label: "IA Solutions" },
             ].map((stat, index) => (
               <motion.div
                 key={index}

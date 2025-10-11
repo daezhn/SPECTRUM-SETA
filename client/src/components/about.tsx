@@ -48,18 +48,53 @@ const isoSteps = [
 const features = [
   {
     title: "Renovación Tecnológica Constante",
-    description: "Equipo HD/4K renovado periódicamente con redundancia para calidad consistente y menor riesgo operativo.",
+    items: [
+      "Equipo HD/4K renovado periódicamente",
+      "Redundancia para calidad consistente",
+      "Capacitación constante del equipo",
+      "Actualización de software y herramientas",
+    ],
     icon: Zap,
   },
   {
     title: "Planes de Contingencia",
-    description: "Pruebas previas, doble enlace, backups y failover para garantizar continuidad en transmisiones críticas.",
+    items: [
+      "Pruebas previas en todos los proyectos",
+      "Doble enlace y sistemas de respaldo",
+      "Backups automáticos en la nube",
+      "Protocolos de failover inmediato",
+    ],
     icon: Shield,
   },
   {
     title: "Seguridad & Privacidad",
-    description: "NDA, control de accesos, protocolos de data privacy, backups automáticos y trazabilidad completa.",
+    items: [
+      "NDA y acuerdos de confidencialidad",
+      "Control de accesos y permisos",
+      "Protocolos de data privacy certificados",
+      "Trazabilidad completa de procesos",
+    ],
     icon: Award,
+  },
+  {
+    title: "Soporte Técnico Integral",
+    items: [
+      "Asistencia 24/7 en proyectos activos",
+      "Respuesta inmediata ante incidencias",
+      "Mantenimiento preventivo continuo",
+      "Resolución rápida de problemas",
+    ],
+    icon: CheckCircle2,
+  },
+  {
+    title: "Gestión de Proyectos Profesional",
+    items: [
+      "Coordinación experta de equipos",
+      "Seguimiento en tiempo real",
+      "Entregables en tiempo y forma",
+      "Comunicación constante con el cliente",
+    ],
+    icon: CheckCircle2,
   },
 ];
 
@@ -103,7 +138,7 @@ export function About() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">A quién servimos</h3>
                   <div className="flex flex-wrap gap-3">
-                    {["Gobierno", "Servicios Profesionales", "Corporativo"].map((sector) => (
+                    {["Industria", "Corporativo", "Servicios Profesionales", "Gobierno"].map((sector) => (
                       <div key={sector} className="px-4 py-2 rounded-full bg-primary/10 text-primary font-medium">
                         {sector}
                       </div>
@@ -189,17 +224,24 @@ export function About() {
                   transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                   data-testid={`feature-${index}`}
                 >
-                  <div className="h-full text-center bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/30 rounded-xl p-8 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 group">
+                  <div className="h-full text-left bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/30 rounded-xl p-8 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 group">
                     <div className="p-0">
                       <motion.div 
-                        className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-accent/20 transition-colors"
+                        className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors"
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
                         <Icon className="w-8 h-8 text-accent" />
                       </motion.div>
-                      <h4 className="text-xl font-bold mb-3">{feature.title}</h4>
-                      <p className="text-muted-foreground">{feature.description}</p>
+                      <h4 className="text-xl font-bold mb-4">{feature.title}</h4>
+                      <ul className="space-y-2">
+                        {feature.items.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                            <span className="text-muted-foreground">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </motion.div>

@@ -77,7 +77,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contacto" className="py-20 md:py-32 bg-muted/30">
+    <section id="contacto" className="py-20 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           ref={ref}
@@ -101,8 +101,8 @@ export function Contact() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="border-card-border">
-              <CardContent className="p-8">
+            <div className="border border-border/30 rounded-2xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm hover:border-primary/30 transition-all duration-500">
+              <div className="p-8">
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <FormField
@@ -249,8 +249,8 @@ export function Contact() {
                     </Button>
                   </form>
                 </Form>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
 
           {/* Contact Information */}
@@ -309,16 +309,16 @@ export function Contact() {
               </div>
             </div>
 
-            <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
-              <CardContent className="p-8">
+            <div className="bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-2xl backdrop-blur-sm hover:border-primary/40 transition-all duration-500">
+              <div className="p-8">
                 <h4 className="text-xl font-bold mb-4">Horario de atención</h4>
                 <div className="space-y-2 text-muted-foreground">
                   <p>Lunes a Viernes: 9:00 AM - 7:00 PM</p>
                   <p>Sábado: 10:00 AM - 2:00 PM</p>
                   <p>Domingo: Cerrado</p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

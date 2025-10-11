@@ -77,6 +77,7 @@ export function Gallery() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [selectedItem, setSelectedItem] = useState<typeof galleryItems[0] | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const filteredItems = selectedCategory === "Todos"
     ? galleryItems
@@ -97,7 +98,7 @@ export function Gallery() {
   };
 
   return (
-    <section id="portafolio" className="py-20 md:py-32 bg-muted/30">
+    <section id="portafolio" className="py-20 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           ref={ref}
@@ -147,31 +148,49 @@ export function Gallery() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 data-testid={`gallery-item-${item.id}`}
               >
-                <Card
-                  className="group overflow-hidden cursor-pointer hover-elevate active-elevate-2 transition-all duration-300 border-card-border"
+                <div
+                  className="group relative overflow-hidden cursor-pointer rounded-xl transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20"
                   onClick={() => setSelectedItem(item)}
+                  onMouseEnter={() => setHoveredId(item.id)}
+                  onMouseLeave={() => setHoveredId(null)}
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/30 group-hover:border-primary/50 transition-all duration-500">
+                    <motion.div
+                      className="absolute inset-0 bg-cover bg-center"
                       style={{ backgroundImage: `url(${item.image})` }}
+                      animate={{
+                        scale: hoveredId === item.id ? 1.1 : 1,
+                      }}
+                      transition={{ duration: 0.6 }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                     
-                    <div className="absolute top-4 left-4">
-                      <Badge className="bg-primary/90 text-primary-foreground backdrop-blur-sm">
+                    <motion.div 
+                      className="absolute top-4 left-4"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Badge className="bg-primary/90 text-primary-foreground backdrop-blur-md border border-primary/30 shadow-lg">
                         {item.category}
                       </Badge>
-                    </div>
+                    </motion.div>
 
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="text-xl font-bold mb-2" data-testid={`gallery-title-${item.id}`}>
+                    <motion.div 
+                      className="absolute bottom-0 left-0 right-0 p-6 text-white"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 + 0.2 }}
+                    >
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors" data-testid={`gallery-title-${item.id}`}>
                         {item.title}
                       </h3>
                       <p className="text-sm text-white/80 line-clamp-2">{item.description}</p>
-                    </div>
+                    </motion.div>
+                    
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
                   </div>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </AnimatePresence>

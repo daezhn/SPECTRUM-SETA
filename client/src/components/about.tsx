@@ -68,7 +68,7 @@ export function About() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="nosotros" className="py-20 md:py-32 bg-background">
+    <section id="nosotros" className="py-20 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           ref={ref}
@@ -92,8 +92,8 @@ export function About() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-20"
         >
-          <Card className="border-card-border p-8 md:p-12 bg-gradient-to-br from-primary/5 to-accent/5">
-            <CardContent className="p-0">
+          <div className="border border-border/30 rounded-2xl p-8 md:p-12 bg-gradient-to-br from-primary/5 to-accent/5 backdrop-blur-sm hover:border-primary/30 transition-all duration-500">
+            <div className="p-0">
               <div className="grid md:grid-cols-2 gap-12">
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Lo que hacemos</h3>
@@ -112,8 +112,8 @@ export function About() {
                   </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </motion.div>
 
         {/* ISO 9001:2015 PHVA Cycle */}
@@ -143,11 +143,15 @@ export function About() {
                   transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                   data-testid={`iso-step-${step.phase.toLowerCase()}`}
                 >
-                  <Card className="h-full hover-elevate active-elevate-2 transition-all border-card-border">
-                    <CardContent className="p-6">
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <div className="h-full bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/30 rounded-xl p-6 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group">
+                    <div className="p-0">
+                      <motion.div 
+                        className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
                         <Icon className="w-6 h-6 text-primary" />
-                      </div>
+                      </motion.div>
                       <h4 className="text-xl font-bold mb-4">{step.phase}</h4>
                       <ul className="space-y-2">
                         {step.items.map((item, idx) => (
@@ -157,8 +161,8 @@ export function About() {
                           </li>
                         ))}
                       </ul>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
@@ -186,15 +190,19 @@ export function About() {
                   transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                   data-testid={`feature-${index}`}
                 >
-                  <Card className="h-full text-center hover-elevate active-elevate-2 transition-all border-card-border">
-                    <CardContent className="p-8">
-                      <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
+                  <div className="h-full text-center bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/30 rounded-xl p-8 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 group">
+                    <div className="p-0">
+                      <motion.div 
+                        className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-accent/20 transition-colors"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
                         <Icon className="w-8 h-8 text-accent" />
-                      </div>
+                      </motion.div>
                       <h4 className="text-xl font-bold mb-3">{feature.title}</h4>
                       <p className="text-muted-foreground">{feature.description}</p>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}

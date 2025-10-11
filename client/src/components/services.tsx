@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Card, CardContent } from "@/components/ui/card";
 import { Video, Film, Palette, TrendingUp } from "lucide-react";
+import { useRef } from "react";
 import liveStreamingImg from "@assets/stock_images/multi_camera_video_p_7e46d6b3.jpg";
 import contentStudioImg from "@assets/stock_images/creative_content_pro_c51ec741.jpg";
 import brandingImg from "@assets/stock_images/brand_design_digital_468746c7.jpg";
@@ -75,9 +75,15 @@ export function Services() {
     triggerOnce: true,
     threshold: 0.1,
   });
+  
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
   return (
-    <section id="servicios" className="py-20 md:py-32 bg-background">
+    <section id="servicios" ref={containerRef} className="py-20 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           ref={ref}
@@ -106,46 +112,70 @@ export function Services() {
 
 function ServiceCard({ service, index, inView }: { service: typeof services[0], index: number, inView: boolean }) {
   const Icon = service.icon;
+  const cardRef = useRef<HTMLDivElement>(null);
 
   return (
     <motion.div
+      ref={cardRef}
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       data-testid={`service-card-${service.id}`}
+      className="group relative"
     >
-      <Card className="group overflow-hidden hover-elevate active-elevate-2 transition-all duration-300 h-full border-card-border">
-        <div className="relative h-48 overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+      <div className="relative overflow-hidden rounded-lg transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 h-full bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/50 hover:border-primary/30">
+        <div className="relative h-56 overflow-hidden">
+          <motion.div
+            className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${service.image})` }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.6 }}
           />
-          <div className={`absolute inset-0 bg-gradient-to-br ${service.color} transition-opacity duration-300`} />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute top-6 left-6">
-            <div className="w-14 h-14 rounded-lg bg-primary/20 backdrop-blur-sm border border-primary/30 flex items-center justify-center">
-              <Icon className="w-7 h-7 text-primary" />
+          <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-80 group-hover:opacity-70 transition-opacity duration-500`} />
+          <div className="absolute inset-0 bg-black/30" />
+          
+          <motion.div 
+            className="absolute top-6 left-6"
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div className="w-16 h-16 rounded-xl bg-primary/20 backdrop-blur-md border border-primary/40 flex items-center justify-center shadow-lg">
+              <Icon className="w-8 h-8 text-primary" />
             </div>
-          </div>
+          </motion.div>
+          
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
 
-        <CardContent className="p-6 md:p-8">
-          <h3 className="text-2xl font-bold mb-2" data-testid={`service-title-${service.id}`}>
+        <div className="p-8">
+          <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300" data-testid={`service-title-${service.id}`}>
             {service.title}
           </h3>
-          <p className="text-sm text-primary font-medium mb-3">{service.subtitle}</p>
-          <p className="text-muted-foreground mb-6">{service.description}</p>
+          <p className="text-sm text-primary/80 font-medium mb-4">{service.subtitle}</p>
+          <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
           
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {service.features.map((feature, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-sm">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>{feature}</span>
-              </li>
+              <motion.li
+                key={idx}
+                initial={{ opacity: 0, x: -10 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.8 + idx * 0.1 }}
+                className="flex items-start gap-3 text-sm group/item"
+              >
+                <motion.div 
+                  className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"
+                  whileHover={{ scale: 2 }}
+                  transition={{ type: "spring" }}
+                />
+                <span className="group-hover/item:text-foreground transition-colors">{feature}</span>
+              </motion.li>
             ))}
           </ul>
-        </CardContent>
-      </Card>
+        </div>
+        
+        <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/0 via-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      </div>
     </motion.div>
   );
 }

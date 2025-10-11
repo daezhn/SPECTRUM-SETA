@@ -58,7 +58,7 @@ export function Contact() {
           Nombre: data.name,
           Email: data.email,
           Empresa: data.company || "N/A",
-          Teléfono: data.phone || "N/A",
+          Telefono: data.phone || "N/A",
           Servicio: data.service,
           Mensaje: data.message,
           Fecha: new Date().toLocaleString('es-MX', { 
@@ -72,6 +72,8 @@ export function Contact() {
         }
       };
 
+      console.log("Enviando a SheetDB:", sheetData);
+
       const response = await fetch("https://sheetdb.io/api/v1/y7kb31t5vwtv4", {
         method: "POST",
         headers: {
@@ -80,11 +82,17 @@ export function Contact() {
         body: JSON.stringify(sheetData),
       });
 
+      console.log("Respuesta de SheetDB:", response.status, response.statusText);
+
       if (!response.ok) {
-        throw new Error("Error al enviar el formulario");
+        const errorText = await response.text();
+        console.error("Error de SheetDB:", errorText);
+        throw new Error(`Error ${response.status}: ${errorText}`);
       }
 
-      return response.json();
+      const result = await response.json();
+      console.log("Resultado exitoso:", result);
+      return result;
     },
     onSuccess: () => {
       toast({

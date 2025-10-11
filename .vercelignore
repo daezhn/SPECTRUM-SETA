@@ -1,0 +1,9 @@
+.git
+node_modules
+.env*
+*.log
+.replit
+.upm
+.config
+server/
+shared/

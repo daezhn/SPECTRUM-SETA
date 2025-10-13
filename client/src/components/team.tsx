@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { JoinTeamForm } from "@/components/join-team-form";
-import teamMember1 from "@assets/stock_images/professional_latino__44b49307.jpg";
+import teamMember1 from "@assets/WILY_1760390323004.jpg";
 import teamMember2 from "@assets/stock_images/professional_latino__da6bb506.jpg";
 import teamMember3 from "@assets/stock_images/professional_latino__5b7a43b7.jpg";
 import teamMember4 from "@assets/stock_images/professional_latino__bc7c0915.jpg";
@@ -34,43 +34,43 @@ const team = [
   {
     id: 4,
     name: "David Hernández",
-    role: "Sys",
+    role: "Sistemas e Inteligencia Artificial",
     image: teamMember4,
   },
   {
     id: 5,
-    name: "Miguel Ángel Torres",
-    role: "Editor Senior & Postproducción",
+    name: "David Valencia",
+    role: "Productor Audiovisual",
     image: teamMember5,
   },
   {
     id: 6,
-    name: "Sofía Ramírez",
-    role: "Motion Designer & Gráficos",
+    name: "Alexis Rosas",
+    role: "Animación",
     image: teamMember6,
   },
   {
     id: 7,
-    name: "Diego Fernández",
-    role: "Coordinador de Proyectos",
+    name: "Karla Ramos",
+    role: "Ejecutora de contenido",
     image: teamMember7,
   },
   {
     id: 8,
-    name: "Gabriela Castro",
-    role: "Social Media Manager & Community",
+    name: "David Marrufo",
+    role: "Camarografo",
     image: teamMember8,
   },
   {
     id: 9,
-    name: "Javier Morales",
-    role: "Director de Fotografía & Camarógrafo",
+    name: "Nancy ------- ",
+    role: "Fotografa",
     image: teamMember9,
   },
   {
     id: 10,
-    name: "Patricia Ruiz",
-    role: "Ingeniera de Audio & Sonido",
+    name: "--------",
+    role: "---------",
     image: teamMember10,
   },
 ];

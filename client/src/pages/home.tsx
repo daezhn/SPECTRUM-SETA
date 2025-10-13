@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { VideoDemoReel } from "@/components/video-demo-reel";
 import { Hero } from "@/components/hero";
+import { StatsCounter } from "@/components/stats-counter";
 import { WhyHireUs } from "@/components/why-hire-us";
 import { Valor360 } from "@/components/valor-360";
 import { Services } from "@/components/services";
@@ -18,6 +19,7 @@ export default function Home() {
       <Navbar />
       <VideoDemoReel />
       <Hero />
+      <StatsCounter />
       <WhyHireUs />
       <Valor360 />
       <Services />

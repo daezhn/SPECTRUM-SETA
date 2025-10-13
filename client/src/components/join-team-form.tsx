@@ -133,19 +133,6 @@ export function JoinTeamForm() {
           <h3 className="text-3xl md:text-4xl font-bold text-white">
             UNIRSE A <span className="text-primary">SAETA</span>
           </h3>
-          <motion.div
-            animate={{ 
-              rotate: [0, 15, -15, 0],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{ 
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <Sparkles className="w-6 h-6 text-accent" />
-          </motion.div>
         </div>
         
         <p className="text-white/70 mb-8">
@@ -191,13 +178,7 @@ export function JoinTeamForm() {
                 className="bg-primary hover:bg-primary/90 text-white px-8 h-12 whitespace-nowrap"
                 data-testid="button-join-submit"
               >
-                {joinTeamMutation.isPending ? (
-                  "Enviando..."
-                ) : (
-                  <>
-                    Enviar <Send className="ml-2 w-4 h-4" />
-                  </>
-                )}
+                {joinTeamMutation.isPending ? "Enviando..." : "Enviar"}
               </Button>
             </motion.div>
           </div>

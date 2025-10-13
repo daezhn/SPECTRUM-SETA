@@ -6,4 +6,3 @@ node_modules
 .upm
 .config
 server/
-shared/

@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useInView } from "react-intersection-observer";
-import globalStreamingImg from "@assets/stock_images/global_streaming_net_fd5127a0.jpg";
-import cinematicProductionImg from "@assets/stock_images/cinematic_video_prod_ea16184d.jpg";
-import aiAutomationImg from "@assets/stock_images/ai_automation_techno_fdce41e7.jpg";
+import aiAutomationImg from "@assets/valor360-automatizacion.jpg";
+import audienciasHibridasImg from "@assets/valor360-audiencias.jpg";
+import narrativasImg from "@assets/valor360-narrativas.jpg";
 
 const transformationCases = [
   {
@@ -17,13 +17,13 @@ const transformationCases = [
     id: 2,
     title: "Las audiencias híbridas y las plataformas que evolucionan minuto a minuto",
     description: "Las audiencias híbridas y las plataformas que evolucionan minuto a minuto transformaron la forma de comunicar. ¿Nuestra respuesta? Analítica en tiempo real y tableros de decisión que permiten ajustar contenido y distribución al instante, local o globalmente.",
-    image: globalStreamingImg,
+    image: audienciasHibridasImg,
   },
   {
     id: 3,
     title: "De contenido genérico a narrativas que convierten",
     description: "En un feed saturado, los mensajes planos se pierden. Por eso realizamos un Storytelling guiado por datos y pruebas creativas continuo para construir historias que resuenan y generan engagement medible.",
-    image: cinematicProductionImg,
+    image: narrativasImg,
   },
 ];
 

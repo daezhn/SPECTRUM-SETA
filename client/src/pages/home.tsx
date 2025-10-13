@@ -10,6 +10,7 @@ import { Gallery } from "@/components/gallery";
 import { Team } from "@/components/team";
 import { About } from "@/components/about";
 import { CommercialPartners } from "@/components/commercial-partners";
+import { SpectrumSection } from "@/components/spectrum-section";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 
@@ -26,6 +27,7 @@ export default function Home() {
       <Gallery />
       <About />
       <CommercialPartners />
+      <SpectrumSection />
       <Team />
       <ClientsCarousel />
       <Contact />

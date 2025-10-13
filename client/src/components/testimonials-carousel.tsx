@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import clientLogo1 from "@assets/stock_images/company_logos_brands_cba768a5.jpg";
-import clientLogo2 from "@assets/stock_images/company_logos_brands_06333bc5.jpg";
-import clientLogo3 from "@assets/stock_images/company_logos_brands_8df15b75.jpg";
-import clientLogo4 from "@assets/stock_images/company_logos_brands_4b88c9e7.jpg";
-import clientLogo5 from "@assets/stock_images/company_logos_brands_0abf67f6.jpg";
-import clientLogo6 from "@assets/stock_images/company_logos_brands_5f8b26e0.jpg";
+import algodoneros from "@assets/algodoneros.webp";
+import amistad from "@assets/amistad.webp";
+import aptiv from "@assets/aptiv.webp";
+import congresoEstado from "@assets/congresoestado.webp";
+import dhgas from "@assets/dhgas.webp";
+import doradosChihuahua from "@assets/dorados-chihuahua.webp";
+import fcJuarez from "@assets/fc-juarez.webp";
+import fiscalia from "@assets/fiscalia.webp";
 
 const clients = [
-  { id: 1, name: "Cliente Gubernamental", logo: clientLogo1, sector: "Gobierno" },
-  { id: 2, name: "Institución Educativa", logo: clientLogo2, sector: "Educación" },
-  { id: 3, name: "Corporativo Internacional", logo: clientLogo3, sector: "Corporativo" },
-  { id: 4, name: "Empresa Tecnológica", logo: clientLogo4, sector: "Tecnología" },
-  { id: 5, name: "Organización Cultural", logo: clientLogo5, sector: "Cultura" },
-  { id: 6, name: "Marca Comercial", logo: clientLogo6, sector: "Retail" },
+  { id: 1, name: "Algodoneros de Guasave", logo: algodoneros, sector: "Deportes" },
+  { id: 2, name: "Casa Amistad", logo: amistad, sector: "Organización" },
+  { id: 3, name: "APTIV", logo: aptiv, sector: "Corporativo" },
+  { id: 4, name: "Congreso del Estado", logo: congresoEstado, sector: "Gobierno" },
+  { id: 5, name: "DH Gas", logo: dhgas, sector: "Servicios" },
+  { id: 6, name: "Dorados de Chihuahua", logo: doradosChihuahua, sector: "Deportes" },
+  { id: 7, name: "F.C. Juárez", logo: fcJuarez, sector: "Deportes" },
+  { id: 8, name: "Fiscalía del Estado", logo: fiscalia, sector: "Gobierno" },
 ];
 
 export function ClientsCarousel() {

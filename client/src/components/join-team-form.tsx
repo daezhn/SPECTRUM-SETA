@@ -46,8 +46,7 @@ export function JoinTeamForm() {
 
       console.log("Enviando a SheetDB:", sheetData);
 
-      // TODO: Conectar con SheetDB para reclutamiento
-      const response = await fetch('https://sheetdb.io/api/v1/YOUR_RECRUITMENT_SHEET_ID', {
+      const response = await fetch('https://sheetdb.io/api/v1/wd03jo57ucmxc', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

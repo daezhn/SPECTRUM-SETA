@@ -8,6 +8,21 @@ export function VideoDemoReel() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-border/50"
       data-testid="section-demo-reel"
     >
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          playsInline
+          poster={demoReelImage}
+          className="absolute inset-0 w-full h-full object-cover"
+          data-testid="video-background"
+        >
+          <source src="/attached_assets/demo-reel.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-primary/30" />
+      </div>
+
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 relative z-10 py-16">
         <div className="max-w-5xl mx-auto text-center">
@@ -20,27 +35,6 @@ export function VideoDemoReel() {
             <h2 className="text-lg md:text-xl font-medium text-white/70 mb-8 uppercase tracking-wider">
               Nuestro Trabajo en Acción
             </h2>
-          </motion.div>
-
-          {/* Video Player */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8 max-w-5xl mx-auto"
-          >
-            <video
-              autoPlay
-              muted
-              playsInline
-              controls
-              poster={demoReelImage}
-              className="w-full rounded-xl shadow-2xl border border-white/10"
-              data-testid="video-player"
-            >
-              <source src="/attached_assets/demo-reel.mp4" type="video/mp4" />
-              Tu navegador no soporta el elemento de video.
-            </video>
           </motion.div>
 
           {/* Caption */}

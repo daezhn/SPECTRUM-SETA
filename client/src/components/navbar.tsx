@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "./theme-provider";
 import { motion, AnimatePresence } from "framer-motion";
-import saetaLogo from "@assets/Logo Saeta_HZL_1760395722690.png";
+import saetaLogo from "@assets/Logo Saeta_HZL_Negativo_1760397693781.png";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);

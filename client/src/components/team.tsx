@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Linkedin, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { JoinTeamForm } from "@/components/join-team-form";
 import teamMember1 from "@assets/stock_images/professional_latino__44b49307.jpg";
 import teamMember2 from "@assets/stock_images/professional_latino__da6bb506.jpg";
@@ -163,34 +161,9 @@ export function Team() {
                 </div>
 
                 <div className="p-6">
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {member.bio}
                   </p>
-                  
-                  <div className="flex gap-2">
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="rounded-full"
-                      asChild
-                      data-testid={`team-linkedin-${member.id}`}
-                    >
-                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="w-4 h-4" />
-                      </a>
-                    </Button>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="rounded-full"
-                      asChild
-                      data-testid={`team-email-${member.id}`}
-                    >
-                      <a href={`mailto:${member.email}`}>
-                        <Mail className="w-4 h-4" />
-                      </a>
-                    </Button>
-                  </div>
                 </div>
               </div>
             </motion.div>

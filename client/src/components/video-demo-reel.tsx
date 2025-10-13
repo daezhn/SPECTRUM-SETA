@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import demoReelImage from "@assets/stock_images/professional_video_p_4c4e9095.jpg";
+import demoReelVideo from "@assets/demo-reel.mp4";
 
 export function VideoDemoReel() {
   return (
@@ -18,7 +19,7 @@ export function VideoDemoReel() {
           className="absolute inset-0 w-full h-full object-cover"
           data-testid="video-background"
         >
-          <source src="/attached_assets/demo-reel.mp4" type="video/mp4" />
+          <source src={demoReelVideo} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-primary/30" />
       </div>

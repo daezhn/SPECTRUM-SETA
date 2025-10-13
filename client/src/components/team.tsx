@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { JoinTeamForm } from "@/components/join-team-form";
-import teamMember1 from "@assets/WILY_1760390323004.jpg";
+import teamMember1 from "@assets/stock_images/professional_latino__44b49307.jpg";
 import teamMember2 from "@assets/stock_images/professional_latino__da6bb506.jpg";
 import teamMember3 from "@assets/stock_images/professional_latino__5b7a43b7.jpg";
 import teamMember4 from "@assets/stock_images/professional_latino__bc7c0915.jpg";

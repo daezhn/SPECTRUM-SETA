@@ -12,18 +12,21 @@ const transformationCases = [
     title: "De procesos manuales a automatización inteligente",
     description: "Los plazos se acortan y la IA creativa cambió las reglas de la postproducción. ¿Nuestra respuesta? Flujos con IA para edición asistida, motion graphics generativos y versionado multiplataforma que aceleran la entrega y elevan la consistencia a escala.",
     image: aiAutomationImg,
+    imagePosition: "center",
   },
   {
     id: 2,
     title: "Las audiencias híbridas y las plataformas que evolucionan minuto a minuto",
     description: "Las audiencias híbridas y las plataformas que evolucionan minuto a minuto transformaron la forma de comunicar. ¿Nuestra respuesta? Analítica en tiempo real y tableros de decisión que permiten ajustar contenido y distribución al instante, local o globalmente.",
     image: audienciasHibridasImg,
+    imagePosition: "center",
   },
   {
     id: 3,
     title: "De contenido genérico a narrativas que convierten",
     description: "En un feed saturado, los mensajes planos se pierden. Por eso realizamos un Storytelling guiado por datos y pruebas creativas continuo para construir historias que resuenan y generan engagement medible.",
     image: narrativasImg,
+    imagePosition: "left center",
   },
 ];
 
@@ -89,6 +92,7 @@ export function Valor360() {
                     src={transformationCases[currentIndex].image}
                     alt={transformationCases[currentIndex].title}
                     className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectPosition: transformationCases[currentIndex].imagePosition }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/80 md:to-background/90" />
                 </div>

@@ -6,7 +6,7 @@ import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Send } from "lucide-react";
+import { Send, Sparkles, Users } from "lucide-react";
 
 const joinTeamSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
@@ -87,52 +87,140 @@ export function JoinTeamForm() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="bg-black border border-primary/30 rounded-2xl p-8 md:p-12"
+      className="relative bg-black border border-primary/30 rounded-2xl p-8 md:p-12 overflow-hidden"
     >
-      <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-        UNIRSE A ATYPICAL
-      </h3>
-      <p className="text-white/70 mb-8">
-        Siempre estamos buscando talento apasionado por la producción audiovisual
-      </p>
+      {/* Animated background elements */}
+      <motion.div
+        animate={{ 
+          rotate: [0, 360],
+          scale: [1, 1.2, 1]
+        }}
+        transition={{ 
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+        className="absolute -top-20 -right-20 w-40 h-40 bg-primary/5 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{ 
+          rotate: [360, 0],
+          scale: [1, 1.1, 1]
+        }}
+        transition={{ 
+          duration: 15,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+        className="absolute -bottom-20 -left-20 w-40 h-40 bg-accent/5 rounded-full blur-3xl"
+      />
 
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <div className="flex flex-col md:flex-row gap-4">
-          <Input
-            {...form.register("name")}
-            placeholder="Nombre completo"
-            className="flex-1 bg-white text-black placeholder:text-gray-500 border-0 h-12"
-            data-testid="input-join-name"
-          />
-          <Input
-            {...form.register("email")}
-            type="email"
-            placeholder="E-mail"
-            className="flex-1 bg-white text-black placeholder:text-gray-500 border-0 h-12"
-            data-testid="input-join-email"
-          />
-          <Button
-            type="submit"
-            disabled={joinTeamMutation.isPending}
-            className="bg-primary hover:bg-primary/90 text-white px-8 h-12 whitespace-nowrap"
-            data-testid="button-join-submit"
+      <div className="relative z-10">
+        {/* Header with animated icons */}
+        <div className="flex items-center gap-4 mb-4">
+          <motion.div
+            animate={{ 
+              y: [0, -10, 0],
+            }}
+            transition={{ 
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
           >
-            {joinTeamMutation.isPending ? (
-              "Enviando..."
-            ) : (
-              <>
-                Enviar <Send className="ml-2 w-4 h-4" />
-              </>
-            )}
-          </Button>
+            <Users className="w-8 h-8 text-primary" />
+          </motion.div>
+          <h3 className="text-3xl md:text-4xl font-bold text-white">
+            UNIRSE A <span className="text-primary">SAETA</span>
+          </h3>
+          <motion.div
+            animate={{ 
+              rotate: [0, 15, -15, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <Sparkles className="w-6 h-6 text-accent" />
+          </motion.div>
         </div>
-        {form.formState.errors.name && (
-          <p className="text-primary text-sm">{form.formState.errors.name.message}</p>
-        )}
-        {form.formState.errors.email && (
-          <p className="text-primary text-sm">{form.formState.errors.email.message}</p>
-        )}
-      </form>
+        
+        <p className="text-white/70 mb-8">
+          Siempre estamos buscando talento apasionado por la producción audiovisual
+        </p>
+
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <div className="flex flex-col md:flex-row gap-4">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileFocus={{ scale: 1.02 }}
+              className="flex-1"
+            >
+              <Input
+                {...form.register("name")}
+                placeholder="Nombre completo"
+                className="w-full bg-white text-black placeholder:text-gray-500 border-0 h-12 transition-all duration-300"
+                data-testid="input-join-name"
+              />
+            </motion.div>
+            
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileFocus={{ scale: 1.02 }}
+              className="flex-1"
+            >
+              <Input
+                {...form.register("email")}
+                type="email"
+                placeholder="E-mail"
+                className="w-full bg-white text-black placeholder:text-gray-500 border-0 h-12 transition-all duration-300"
+                data-testid="input-join-email"
+              />
+            </motion.div>
+            
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button
+                type="submit"
+                disabled={joinTeamMutation.isPending}
+                className="bg-primary hover:bg-primary/90 text-white px-8 h-12 whitespace-nowrap"
+                data-testid="button-join-submit"
+              >
+                {joinTeamMutation.isPending ? (
+                  "Enviando..."
+                ) : (
+                  <>
+                    Enviar <Send className="ml-2 w-4 h-4" />
+                  </>
+                )}
+              </Button>
+            </motion.div>
+          </div>
+          {form.formState.errors.name && (
+            <motion.p
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-primary text-sm"
+            >
+              {form.formState.errors.name.message}
+            </motion.p>
+          )}
+          {form.formState.errors.email && (
+            <motion.p
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-primary text-sm"
+            >
+              {form.formState.errors.email.message}
+            </motion.p>
+          )}
+        </form>
+      </div>
     </motion.div>
   );
 }

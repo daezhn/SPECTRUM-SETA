@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "rm -rf dist && npm run build",
+  "buildCommand": "rm -rf dist && npm run build:frontend",
   "outputDirectory": "dist/public",
   "framework": null,
   "cleanUrls": true

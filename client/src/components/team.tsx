@@ -142,7 +142,7 @@ export function Team() {
                   <motion.img
                     src={member.image}
                     alt={member.name}
-                    className={`w-full h-full object-cover ${member.id === 10 ? 'grayscale' : ''}`}
+                    className={`w-full h-full object-cover ${member.id === 11 ? 'grayscale' : ''}`}
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.6 }}
                   />

@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import aiAutomationImg from "@assets/valor360-automatizacion.jpg";
 import audienciasHibridasImg from "@assets/valor360-audiencias.jpg";
-import narrativasImg from "@assets/narrativas-nuevo.jpeg";
+import narrativasImg from "@assets/88220530_1049505392072982_934368232574287872_n_1760398681667.jpg";
 
 const transformationCases = [
   {

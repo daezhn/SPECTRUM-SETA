@@ -13,11 +13,11 @@ const clients = [
   { id: 7, name: "F.C. Juárez", logo: fcJuarez, sector: "Deportes" },
   { id: 2, name: "Casa Amistad", logo: amistad, sector: "Organización" },
   { id: 6, name: "Dorados de Chihuahua", logo: doradosChihuahua, sector: "Deportes" },
-  { id: 1, name: "Algodoneros de Guasave", logo: algodoneros, sector: "Deportes" },
+  { id: 8, name: "Fiscalía del Estado", logo: fiscalia, sector: "Gobierno" },
   { id: 3, name: "APTIV", logo: aptiv, sector: "Corporativo" },
   { id: 4, name: "Congreso del Estado", logo: congresoEstado, sector: "Gobierno" },
   { id: 5, name: "DH Gas", logo: dhgas, sector: "Servicios" },
-  { id: 8, name: "Fiscalía del Estado", logo: fiscalia, sector: "Gobierno" },
+  { id: 1, name: "Algodoneros de Guasave", logo: algodoneros, sector: "Deportes" },
 ];
 
 export function ClientsCarousel() {

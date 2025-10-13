@@ -11,6 +11,10 @@ import teamMember7 from "@assets/7.jpg";
 import teamMember8 from "@assets/stock_images/professional_latino__6a701fb1.jpg";
 import teamMember9 from "@assets/stock_images/professional_latino__65ea9a22.jpg";
 import teamMember10 from "@assets/stock_images/professional_latino__2aaf66ad.jpg";
+import teamMember11 from "@assets/efrain-hernandez.webp";
+import teamMember12 from "@assets/ricardo-vega.webp";
+import teamMember13 from "@assets/israel-galicia.webp";
+import teamMember14 from "@assets/ulises-holguin.webp";
 
 const team = [
   {
@@ -72,6 +76,30 @@ const team = [
     name: "--------",
     role: "---------",
     image: teamMember10,
+  },
+  {
+    id: 11,
+    name: "Efraín Hernández",
+    role: "Camarógrafo",
+    image: teamMember11,
+  },
+  {
+    id: 12,
+    name: "Ricardo Vega",
+    role: "Camarógrafo",
+    image: teamMember12,
+  },
+  {
+    id: 13,
+    name: "Israel Galicia",
+    role: "Camarógrafo",
+    image: teamMember13,
+  },
+  {
+    id: 14,
+    name: "Ulises Holguin",
+    role: "Camarógrafo",
+    image: teamMember14,
   },
 ];
 

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "./theme-provider";
 import { motion, AnimatePresence } from "framer-motion";
+import saetaLogo from "@assets/Logo Saeta_HZL_1760395722690.png";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,27 +61,15 @@ export function Navbar() {
             <Link href="/" data-testid="link-home">
               <motion.button
                 onClick={() => scrollToSection("hero")}
-                className="text-2xl font-bold tracking-tight hover-elevate active-elevate-2 rounded-md px-3 py-2 relative"
+                className="hover-elevate active-elevate-2 rounded-md p-2 relative"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <motion.span 
-                  className="text-primary"
-                  animate={isScrolled ? {
-                    textShadow: [
-                      "0 0 8px rgba(244, 63, 94, 0.3)",
-                      "0 0 12px rgba(244, 63, 94, 0.5)",
-                      "0 0 8px rgba(244, 63, 94, 0.3)",
-                    ]
-                  } : {}}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  SAETA
-                </motion.span>
+                <img 
+                  src={saetaLogo} 
+                  alt="SAETA Producciones" 
+                  className="h-10 md:h-12 w-auto"
+                />
               </motion.button>
             </Link>
 

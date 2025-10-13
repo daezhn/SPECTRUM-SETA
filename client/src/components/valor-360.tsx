@@ -26,7 +26,7 @@ const transformationCases = [
     title: "De contenido genérico a narrativas que convierten",
     description: "En un feed saturado, los mensajes planos se pierden. Por eso realizamos un Storytelling guiado por datos y pruebas creativas continuo para construir historias que resuenan y generan engagement medible.",
     image: narrativasImg,
-    imagePosition: "left center",
+    imagePosition: "60% center",
   },
 ];
 

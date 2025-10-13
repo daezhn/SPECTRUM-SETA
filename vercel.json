@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "rm -rf dist && npm run build:frontend",
+  "buildCommand": "rm -rf dist && npx vite build",
   "outputDirectory": "dist/public",
   "framework": null,
   "cleanUrls": true

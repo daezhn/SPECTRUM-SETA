@@ -58,12 +58,30 @@ export function Navbar() {
           <div className="flex items-center justify-between gap-4 h-20">
             {/* Logo */}
             <Link href="/" data-testid="link-home">
-              <button
+              <motion.button
                 onClick={() => scrollToSection("hero")}
-                className="text-2xl font-bold tracking-tight hover-elevate active-elevate-2 rounded-md px-3 py-2"
+                className="text-2xl font-bold tracking-tight hover-elevate active-elevate-2 rounded-md px-3 py-2 relative"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <span className="text-primary">SAETA</span>
-              </button>
+                <motion.span 
+                  className="text-primary"
+                  animate={isScrolled ? {
+                    textShadow: [
+                      "0 0 8px rgba(244, 63, 94, 0.3)",
+                      "0 0 12px rgba(244, 63, 94, 0.5)",
+                      "0 0 8px rgba(244, 63, 94, 0.3)",
+                    ]
+                  } : {}}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  SAETA
+                </motion.span>
+              </motion.button>
             </Link>
 
             {/* Desktop Navigation */}

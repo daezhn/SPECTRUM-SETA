@@ -58,25 +58,56 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center flex-wrap mb-20"
           >
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("contacto")}
-              data-testid="button-cta-contact"
-              className="text-xl px-12 h-16 gap-3 bg-primary hover:bg-primary/90 text-primary-foreground"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative group"
             >
-              Comienza tu proyecto
-              <ArrowRight className="w-6 h-6" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => scrollToSection("portafolio")}
-              data-testid="button-cta-portfolio"
-              className="text-xl px-12 h-16 gap-3 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
+              {/* Shimmer effect */}
+              <motion.div
+                animate={{
+                  x: ['-100%', '200%'],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatDelay: 5,
+                  ease: "easeInOut"
+                }}
+                className="absolute inset-0 w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                style={{ pointerEvents: 'none' }}
+              />
+              <Button
+                size="lg"
+                onClick={() => scrollToSection("contacto")}
+                data-testid="button-cta-contact"
+                className="text-xl px-12 h-16 gap-3 bg-primary hover:bg-primary/90 text-primary-foreground relative overflow-hidden"
+              >
+                Comienza tu proyecto
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <ArrowRight className="w-6 h-6" />
+                </motion.div>
+              </Button>
+            </motion.div>
+            
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <Play className="w-6 h-6" />
-              Ver nuestro trabajo
-            </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => scrollToSection("portafolio")}
+                data-testid="button-cta-portfolio"
+                className="text-xl px-12 h-16 gap-3 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
+              >
+                <Play className="w-6 h-6" />
+                Ver nuestro trabajo
+              </Button>
+            </motion.div>
           </motion.div>
 
           <motion.div

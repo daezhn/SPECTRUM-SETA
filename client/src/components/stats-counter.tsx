@@ -84,6 +84,43 @@ export function StatsCounter() {
             />
           ))}
         </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 1.5 }}
+          className="flex justify-center mt-16"
+        >
+          <motion.div
+            animate={{
+              y: [0, 10, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="flex flex-col items-center gap-2"
+          >
+            <div className="w-6 h-10 border-2 border-primary/40 rounded-full flex items-start justify-center p-2">
+              <motion.div
+                animate={{
+                  y: [0, 12, 0],
+                  opacity: [1, 0, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="w-1.5 h-1.5 bg-primary rounded-full"
+              />
+            </div>
+            <span className="text-xs text-primary/60 uppercase tracking-wider">Descubre más</span>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -269,22 +269,42 @@ export function Contact() {
                       )}
                     />
 
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full h-12 gap-2"
-                      disabled={contactMutation.isPending}
-                      data-testid="button-submit-contact"
+                    <motion.div 
+                      className="relative"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      {contactMutation.isPending ? (
-                        "Enviando..."
-                      ) : (
-                        <>
-                          <Send className="w-5 h-5" />
-                          Enviar mensaje
-                        </>
-                      )}
-                    </Button>
+                      {/* Shimmer effect for submit button */}
+                      <motion.div
+                        animate={{
+                          x: ['-100%', '200%'],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          repeatDelay: 4,
+                          ease: "easeInOut"
+                        }}
+                        className="absolute inset-0 w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                        style={{ pointerEvents: 'none' }}
+                      />
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="w-full h-12 gap-2 relative overflow-hidden"
+                        disabled={contactMutation.isPending}
+                        data-testid="button-submit-contact"
+                      >
+                        {contactMutation.isPending ? (
+                          "Enviando..."
+                        ) : (
+                          <>
+                            <Send className="w-5 h-5" />
+                            Enviar mensaje
+                          </>
+                        )}
+                      </Button>
+                    </motion.div>
                   </form>
                 </Form>
               </div>

@@ -2,10 +2,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Video, Film, Palette, TrendingUp } from "lucide-react";
 import { useRef } from "react";
-import liveStreamingImg from "@assets/stock_images/multi_camera_video_p_7e46d6b3.jpg";
-import contentStudioImg from "@assets/stock_images/creative_content_pro_c51ec741.jpg";
-import brandingImg from "@assets/stock_images/brand_design_digital_468746c7.jpg";
-import socialImg from "@assets/stock_images/social_media_analyti_638c9813.jpg";
+import liveStreamingImg from "@assets/solution-streaming.jpg";
+import contentStudioImg from "@assets/solution-content-story.jpg";
+import brandingImg from "@assets/solution-brand-digital.jpg";
+import socialImg from "@assets/solution-social-community.jpg";
 
 const services = [
   {

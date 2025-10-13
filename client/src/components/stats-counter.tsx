@@ -36,13 +36,13 @@ function StatCounter({ value, prefix = "", label, delay = 0 }: StatItemProps) {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={isInView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.8, delay }}
-      className="text-center py-12"
+      className="text-center"
       data-testid={`stat-${label.toLowerCase().replace(/\s+/g, "-")}`}
     >
-      <motion.div className="text-8xl md:text-9xl lg:text-[12rem] font-black text-primary mb-6 leading-none tracking-tight">
+      <motion.div className="text-7xl md:text-8xl lg:text-9xl font-black text-primary mb-4 leading-none tracking-tight">
         {rounded}
       </motion.div>
-      <p className="text-xl md:text-2xl lg:text-3xl text-white font-light max-w-md mx-auto leading-relaxed">
+      <p className="text-base md:text-lg lg:text-xl text-white font-light leading-relaxed">
         {label}
       </p>
     </motion.div>
@@ -52,28 +52,28 @@ function StatCounter({ value, prefix = "", label, delay = 0 }: StatItemProps) {
 export function StatsCounter() {
   const stats = [
     { value: 19, label: "Años de experiencia", delay: 0 },
-    { value: 184, label: "Marcas confían en nosotros", delay: 0.3 },
-    { value: 3055, prefix: "+", label: "Horas de producción y streaming profesional", delay: 0.6 },
+    { value: 184, label: "Marcas confían en nosotros", delay: 0.2 },
+    { value: 3055, prefix: "+", label: "Horas de producción y streaming profesional", delay: 0.4 },
   ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-black border-y border-primary/20">
-      <div className="container mx-auto px-4 lg:px-8 py-20">
+      <div className="container mx-auto px-4 lg:px-8 py-16">
         {/* Desde 2006 */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white/70 tracking-widest uppercase">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-white/70 tracking-widest uppercase">
             Desde <span className="font-bold text-primary">2006</span>
           </h2>
         </motion.div>
 
-        {/* Stats */}
-        <div className="space-y-16 md:space-y-24">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16">
           {stats.map((stat, index) => (
             <StatCounter
               key={index}

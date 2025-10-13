@@ -10,7 +10,7 @@ import teamMember6 from "@assets/6.jpg";
 import teamMember7 from "@assets/7.jpg";
 import teamMember8 from "@assets/Dsvid marrufo_1760397519730.jpg";
 import teamMember9 from "@assets/nancy balderrama_1760397518435.png";
-import teamMember10 from "@assets/stock_images/professional_latino__2aaf66ad.jpg";
+import teamMember10 from "@assets/rodrigo_1760397895601.jpg";
 import teamMember11 from "@assets/efrain-hernandez.webp";
 import teamMember12 from "@assets/ricardo-vega.webp";
 import teamMember13 from "@assets/israel-galicia.webp";

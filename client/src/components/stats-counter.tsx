@@ -50,7 +50,7 @@ function StatCounter({ value, prefix = "", label, delay = 0 }: StatItemProps) {
 }
 
 export function StatsCounter() {
-  const stats = [
+  const stats: { value: number; prefix?: string; label: string; delay: number }[] = [
     { value: 19, label: "Años de experiencia", delay: 0 },
     { value: 184, label: "Marcas confían en nosotros", delay: 0.2 },
     { value: 3055, label: "Horas de producción y streaming profesional", delay: 0.4 },

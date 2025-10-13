@@ -1,35 +1,39 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Clock, Brain, Users, Layers, Heart } from "lucide-react";
+import iconRapidez from "@assets/icon-rapidez.png";
+import iconEnfoques from "@assets/icon-enfoques.png";
+import iconTratoDirecto from "@assets/icon-trato-directo.png";
+import iconCampos from "@assets/icon-campos.png";
+import iconEntusiasmo from "@assets/icon-entusiasmo.png";
 
 const benefits = [
   {
     id: "rapidez",
-    icon: Clock,
+    icon: iconRapidez,
     title: "RAPIDEZ",
     description: "Nuestra promesa es que su proyecto estará terminado en menos de dos semanas.",
   },
   {
     id: "multiples-enfoques",
-    icon: Brain,
+    icon: iconEnfoques,
     title: "USO DE MÚLTIPLES ENFOQUES",
     description: "El diseño sigue no sólo las guías de mercadotecnia, sino que se rompe con los enfoques tradicionales al utilizar técnicas psicológicas para transmitir el mensaje correcto y adecuado a sus clientes potenciales.",
   },
   {
     id: "trato-directo",
-    icon: Users,
+    icon: iconTratoDirecto,
     title: "TRATO DIRECTO",
     description: "Hablarán directamente con el equipo a cargo de su proyecto, así que tendremos una comunicación personal que facilitará el entendimiento.",
   },
   {
     id: "conocimiento-campos",
-    icon: Layers,
+    icon: iconCampos,
     title: "CONOCIMIENTO EN VARIOS CAMPOS",
     description: "Trabajamos no sólo en el desarrollo web, sino en la producción de video, diseño gráfico, efectos especiales, comerciales para TV, fotomontajes, modelaje 3D, etc.",
   },
   {
     id: "entusiasmo",
-    icon: Heart,
+    icon: iconEntusiasmo,
     title: "ENTUSIASMO",
     description: "Nos gusta nuestra labor y la disfrutamos, por eso le aseguramos que obtendrán un excelente trabajo.",
   },
@@ -61,7 +65,6 @@ export function WhyHireUs() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
             return (
               <motion.div
                 key={benefit.id}
@@ -77,7 +80,14 @@ export function WhyHireUs() {
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <Icon className="w-8 h-8 text-accent" />
+                    <img 
+                      src={benefit.icon} 
+                      alt={benefit.title}
+                      className="w-8 h-8 object-contain brightness-0 saturate-100"
+                      style={{
+                        filter: 'invert(47%) sepia(89%) saturate(3592%) hue-rotate(249deg) brightness(99%) contrast(103%)'
+                      }}
+                    />
                   </motion.div>
                   
                   <h3 className="text-xl font-bold mb-4 group-hover:text-accent transition-colors duration-300">

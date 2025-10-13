@@ -7,6 +7,12 @@ import teamMember1 from "@assets/stock_images/professional_latino__44b49307.jpg"
 import teamMember2 from "@assets/stock_images/professional_latino__da6bb506.jpg";
 import teamMember3 from "@assets/stock_images/professional_latino__5b7a43b7.jpg";
 import teamMember4 from "@assets/stock_images/professional_latino__bc7c0915.jpg";
+import teamMember5 from "@assets/stock_images/professional_latino__3b619d55.jpg";
+import teamMember6 from "@assets/stock_images/professional_latino__029b061c.jpg";
+import teamMember7 from "@assets/stock_images/professional_latino__aa2914c3.jpg";
+import teamMember8 from "@assets/stock_images/professional_latino__6a701fb1.jpg";
+import teamMember9 from "@assets/stock_images/professional_latino__65ea9a22.jpg";
+import teamMember10 from "@assets/stock_images/professional_latino__2aaf66ad.jpg";
 
 const team = [
   {
@@ -45,6 +51,60 @@ const team = [
     linkedin: "https://www.linkedin.com/in/laura-gonzalez-saeta",
     email: "laura@saeta.mx",
   },
+  {
+    id: 5,
+    name: "Miguel Ángel Torres",
+    role: "Editor Senior & Postproducción",
+    bio: "Especialista en edición multicámara, color grading y efectos visuales para producciones de alto nivel.",
+    image: teamMember5,
+    linkedin: "https://www.linkedin.com/in/miguel-torres-saeta",
+    email: "miguel@saeta.mx",
+  },
+  {
+    id: 6,
+    name: "Sofía Ramírez",
+    role: "Motion Designer & Gráficos",
+    bio: "Creativa con visión cinematográfica especializada en motion graphics y diseño visual para broadcast.",
+    image: teamMember6,
+    linkedin: "https://www.linkedin.com/in/sofia-ramirez-saeta",
+    email: "sofia@saeta.mx",
+  },
+  {
+    id: 7,
+    name: "Diego Fernández",
+    role: "Coordinador de Proyectos",
+    bio: "Gestión integral de producciones audiovisuales con enfoque en logística y entrega de resultados.",
+    image: teamMember7,
+    linkedin: "https://www.linkedin.com/in/diego-fernandez-saeta",
+    email: "diego@saeta.mx",
+  },
+  {
+    id: 8,
+    name: "Gabriela Castro",
+    role: "Social Media Manager & Community",
+    bio: "Estratega digital enfocada en crear comunidades activas y contenido viral para redes sociales.",
+    image: teamMember8,
+    linkedin: "https://www.linkedin.com/in/gabriela-castro-saeta",
+    email: "gabriela@saeta.mx",
+  },
+  {
+    id: 9,
+    name: "Javier Morales",
+    role: "Director de Fotografía & Camarógrafo",
+    bio: "Cinematógrafo con ojo artístico para capturar historias visuales impactantes en 4K y formatos premium.",
+    image: teamMember9,
+    linkedin: "https://www.linkedin.com/in/javier-morales-saeta",
+    email: "javier@saeta.mx",
+  },
+  {
+    id: 10,
+    name: "Patricia Ruiz",
+    role: "Ingeniera de Audio & Sonido",
+    bio: "Experta en diseño de audio profesional, mezcla en vivo y masterización para producciones broadcast.",
+    image: teamMember10,
+    linkedin: "https://www.linkedin.com/in/patricia-ruiz-saeta",
+    email: "patricia@saeta.mx",
+  },
 ];
 
 export function Team() {
@@ -71,7 +131,7 @@ export function Team() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {team.map((member, index) => (
             <motion.div
               key={member.id}

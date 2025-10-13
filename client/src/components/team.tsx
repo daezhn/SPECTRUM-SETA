@@ -17,9 +17,9 @@ import teamMember10 from "@assets/stock_images/professional_latino__2aaf66ad.jpg
 const team = [
   {
     id: 1,
-    name: "Carlos Hernández",
-    role: "Director General & Productor Ejecutivo",
-    bio: "15+ años de experiencia en producción audiovisual y transmisiones en vivo para eventos de alto impacto.",
+    name: "Wilhelmy Guzman",
+    role: "Director General",
+    bio: "Lic. Mercadotecnia",
     image: teamMember1,
     linkedin: "https://www.linkedin.com/in/carlos-hernandez-saeta",
     email: "carlos@saeta.mx",

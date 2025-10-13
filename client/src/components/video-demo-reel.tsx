@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { SiWhatsapp, SiFacebook, SiLinkedin } from "react-icons/si";
 import demoReelImage from "@assets/stock_images/professional_video_p_4c4e9095.jpg";
 import demoReelVideo from "@assets/demo-reel.mp4";
 
@@ -6,7 +7,7 @@ export function VideoDemoReel() {
   return (
     <section 
       id="demo-reel" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-border/50"
+      className="relative min-h-screen flex items-end justify-center overflow-hidden border-b border-border/50"
       data-testid="section-demo-reel"
     >
       {/* Background Video */}
@@ -21,11 +22,11 @@ export function VideoDemoReel() {
         >
           <source src={demoReelVideo} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-primary/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 py-16">
+      {/* Content - Bottom aligned */}
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 pb-20 pt-16">
         <div className="max-w-5xl mx-auto text-center">
           {/* Heading */}
           <motion.div
@@ -33,7 +34,7 @@ export function VideoDemoReel() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-lg md:text-xl font-medium text-white/70 mb-8 uppercase tracking-wider">
+            <h2 className="text-lg md:text-xl font-medium text-white/70 mb-6 uppercase tracking-wider">
               Nuestro Trabajo en Acción
             </h2>
           </motion.div>
@@ -42,11 +43,55 @@ export function VideoDemoReel() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-light"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light mb-8"
           >
             Descubre cómo decirle al mundo cuan buena y mejor es tu empresa
           </motion.p>
+
+          {/* Social Media Icons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex items-center justify-center gap-6"
+          >
+            <motion.a
+              href="https://api.whatsapp.com/send/?phone=526141318497&text&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="link-whatsapp"
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:border-white/40 transition-all duration-300"
+            >
+              <SiWhatsapp className="w-6 h-6" />
+            </motion.a>
+
+            <motion.a
+              href="https://www.facebook.com/saetapromx"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="link-facebook"
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:border-white/40 transition-all duration-300"
+            >
+              <SiFacebook className="w-6 h-6" />
+            </motion.a>
+
+            <motion.a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="link-linkedin"
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:border-white/40 transition-all duration-300"
+            >
+              <SiLinkedin className="w-6 h-6" />
+            </motion.a>
+          </motion.div>
         </div>
       </div>
     </section>

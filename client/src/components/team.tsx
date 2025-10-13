@@ -17,7 +17,7 @@ const team = [
     id: 1,
     name: "Wilhelmy Guzman",
     role: "Director General",
-    bio: "Lic. Mercadotecnia",
+    bio: "",
     image: teamMember1,
     linkedin: "https://www.linkedin.com/in/carlos-hernandez-saeta",
     email: "carlos@saeta.mx",

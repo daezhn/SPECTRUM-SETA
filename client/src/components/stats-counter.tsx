@@ -53,7 +53,7 @@ export function StatsCounter() {
   const stats = [
     { value: 19, label: "Años de experiencia", delay: 0 },
     { value: 184, label: "Marcas confían en nosotros", delay: 0.2 },
-    { value: 3055, prefix: "+", label: "Horas de producción y streaming profesional", delay: 0.4 },
+    { value: 3055, label: "Horas de producción y streaming profesional", delay: 0.4 },
   ];
 
   return (

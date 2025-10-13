@@ -21,20 +21,20 @@ const team = [
   },
   {
     id: 2,
-    name: "Ana Martínez",
-    role: "Directora de Contenido & Storytelling",
+    name: "Angel Coronado",
+    role: "Director de arte",
     image: teamMember2,
   },
   {
     id: 3,
-    name: "Roberto Sánchez",
-    role: "Director Técnico & Live Streaming",
+    name: "José Montañez",
+    role: "Jefe de producción",
     image: teamMember3,
   },
   {
     id: 4,
-    name: "Laura González",
-    role: "Gerente de Experiencia de Marca",
+    name: "David Hernández",
+    role: "Sys",
     image: teamMember4,
   },
   {

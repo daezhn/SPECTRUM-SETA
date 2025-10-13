@@ -17,91 +17,61 @@ const team = [
     id: 1,
     name: "Wilhelmy Guzman",
     role: "Director General",
-    bio: "",
     image: teamMember1,
-    linkedin: "https://www.linkedin.com/in/carlos-hernandez-saeta",
-    email: "carlos@saeta.mx",
   },
   {
     id: 2,
     name: "Ana Martínez",
     role: "Directora de Contenido & Storytelling",
-    bio: "Especialista en narrativas cinematográficas y estrategia de contenido para marcas premium.",
     image: teamMember2,
-    linkedin: "https://www.linkedin.com/in/ana-martinez-saeta",
-    email: "ana@saeta.mx",
   },
   {
     id: 3,
     name: "Roberto Sánchez",
     role: "Director Técnico & Live Streaming",
-    bio: "Experto en sistemas multicámara 4K y transmisiones de alta disponibilidad con tecnología de punta.",
     image: teamMember3,
-    linkedin: "https://www.linkedin.com/in/roberto-sanchez-saeta",
-    email: "roberto@saeta.mx",
   },
   {
     id: 4,
     name: "Laura González",
     role: "Gerente de Experiencia de Marca",
-    bio: "Enfocada en crear experiencias digitales memorables y estrategias de branding que convierten.",
     image: teamMember4,
-    linkedin: "https://www.linkedin.com/in/laura-gonzalez-saeta",
-    email: "laura@saeta.mx",
   },
   {
     id: 5,
     name: "Miguel Ángel Torres",
     role: "Editor Senior & Postproducción",
-    bio: "Especialista en edición multicámara, color grading y efectos visuales para producciones de alto nivel.",
     image: teamMember5,
-    linkedin: "https://www.linkedin.com/in/miguel-torres-saeta",
-    email: "miguel@saeta.mx",
   },
   {
     id: 6,
     name: "Sofía Ramírez",
     role: "Motion Designer & Gráficos",
-    bio: "Creativa con visión cinematográfica especializada en motion graphics y diseño visual para broadcast.",
     image: teamMember6,
-    linkedin: "https://www.linkedin.com/in/sofia-ramirez-saeta",
-    email: "sofia@saeta.mx",
   },
   {
     id: 7,
     name: "Diego Fernández",
     role: "Coordinador de Proyectos",
-    bio: "Gestión integral de producciones audiovisuales con enfoque en logística y entrega de resultados.",
     image: teamMember7,
-    linkedin: "https://www.linkedin.com/in/diego-fernandez-saeta",
-    email: "diego@saeta.mx",
   },
   {
     id: 8,
     name: "Gabriela Castro",
     role: "Social Media Manager & Community",
-    bio: "Estratega digital enfocada en crear comunidades activas y contenido viral para redes sociales.",
     image: teamMember8,
-    linkedin: "https://www.linkedin.com/in/gabriela-castro-saeta",
-    email: "gabriela@saeta.mx",
   },
   {
     id: 9,
     name: "Javier Morales",
     role: "Director de Fotografía & Camarógrafo",
-    bio: "Cinematógrafo con ojo artístico para capturar historias visuales impactantes en 4K y formatos premium.",
     image: teamMember9,
-    linkedin: "https://www.linkedin.com/in/javier-morales-saeta",
-    email: "javier@saeta.mx",
   },
   {
     id: 10,
     name: "Patricia Ruiz",
     role: "Ingeniera de Audio & Sonido",
-    bio: "Experta en diseño de audio profesional, mezcla en vivo y masterización para producciones broadcast.",
     image: teamMember10,
-    linkedin: "https://www.linkedin.com/in/patricia-ruiz-saeta",
-    email: "patricia@saeta.mx",
   },
 ];
 
@@ -160,11 +130,6 @@ export function Team() {
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                <div className="p-6">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {member.bio}
-                  </p>
-                </div>
               </div>
             </motion.div>
           ))}

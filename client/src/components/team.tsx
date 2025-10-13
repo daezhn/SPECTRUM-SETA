@@ -11,7 +11,7 @@ import teamMember7 from "@assets/7.jpg";
 import teamMember8 from "@assets/Dsvid marrufo_1760397519730.jpg";
 import teamMember9 from "@assets/nancy balderrama_1760397518435.png";
 import teamMember10 from "@assets/rodrigo_1760397895601.jpg";
-import teamMember11 from "@assets/efrain-hernandez.webp";
+import teamMember11 from "@assets/efra_1760398148373.jpg";
 import teamMember12 from "@assets/ricardo-vega.webp";
 import teamMember13 from "@assets/israel-galicia.webp";
 import teamMember14 from "@assets/ulises-holguin.webp";
@@ -142,7 +142,7 @@ export function Team() {
                   <motion.img
                     src={member.image}
                     alt={member.name}
-                    className={`w-full h-full object-cover ${member.id === 11 ? 'grayscale' : ''}`}
+                    className={`w-full h-full object-cover ${(member.id === 10 || member.id === 11) ? 'grayscale' : ''}`}
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.6 }}
                   />

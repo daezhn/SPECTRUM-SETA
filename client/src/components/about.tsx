@@ -156,7 +156,7 @@ export function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {isoSteps.map((step, index) => {
               const Icon = step.icon;
               return (
@@ -166,6 +166,7 @@ export function About() {
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                   data-testid={`iso-step-${step.phase.toLowerCase()}`}
+                  className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] max-w-xs"
                 >
                   <div className="h-full bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/30 rounded-xl p-6 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group">
                     <div className="p-0">
@@ -203,7 +204,7 @@ export function About() {
             <h3 className="text-3xl font-bold mb-4">Confianza y Continuidad</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -213,6 +214,7 @@ export function About() {
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                   data-testid={`feature-${index}`}
+                  className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(50%-1rem)] max-w-md"
                 >
                   <div className="h-full text-left bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/30 rounded-xl p-8 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 group">
                     <div className="p-0">

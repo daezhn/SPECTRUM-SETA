@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { JoinTeamForm } from "@/components/join-team-form";
 import teamMember1 from "@assets/stock_images/professional_latino__44b49307.jpg";
 import teamMember2 from "@assets/stock_images/professional_latino__da6bb506.jpg";
 import teamMember3 from "@assets/stock_images/professional_latino__5b7a43b7.jpg";
@@ -136,22 +137,9 @@ export function Team() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-block bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-2xl p-8 backdrop-blur-sm">
-            <p className="text-lg font-semibold mb-2">¿Quieres unirte al equipo?</p>
-            <p className="text-muted-foreground mb-4">
-              Siempre estamos buscando talento apasionado por la producción audiovisual
-            </p>
-            <Button variant="default" data-testid="button-join-team">
-              Ver posiciones abiertas
-            </Button>
-          </div>
-        </motion.div>
+        <div className="mt-16">
+          <JoinTeamForm />
+        </div>
       </div>
     </section>
   );

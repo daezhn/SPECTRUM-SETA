@@ -128,6 +128,16 @@ Preferred communication style: Simple, everyday language.
 - All interactive elements maintain data-testid attributes for e2e testing
 - Responsive gap utilities on all flex containers with justify-between/around for layout resilience
 
+### Animation Refinement (October 14, 2025)
+- **Removed All Jumping/Bouncing Animations**: Eliminated all vertical movement (y-axis) animations for a more elegant, professional appearance
+- **Components Updated**: Gallery (Casos de Impacto), About (Conócenos), Team, Join Team Form, Services, Stats Counter, Hero, Loading Animation, Spectrum Section, Video Demo Reel, Valor 360, Why Hire Us, Commercial Partners, and Contact
+- **New Animation Strategy**: 
+  - Replaced vertical movements with subtle scale effects (1.02-1.1x)
+  - Maintained opacity transitions for smooth fade-ins
+  - Kept functional animations like carousels, rotations, and horizontal slides
+  - Created consistent, refined user experience without jarring movements
+- **Result**: More sophisticated, professional aesthetic aligned with modern corporate standards
+
 ### Deployment Configuration (October 11, 2025)
 - **Vercel Deployment Ready**: Configured for serverless deployment with Express backend and Vite frontend
 - **Files Created**:

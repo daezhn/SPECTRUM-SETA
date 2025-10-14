@@ -62,7 +62,7 @@ export function StatsCounter() {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-black border-y border-primary/20">
+    <section className="relative min-h-screen flex items-center justify-center bg-black">
       <div className="container mx-auto px-4 lg:px-8 py-16">
         {/* Desde 2006 */}
         <motion.div

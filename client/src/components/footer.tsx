@@ -1,7 +1,9 @@
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
 
   const footerLinks = {
     servicios: [
@@ -48,7 +50,7 @@ export function Footer() {
               <span className="text-primary">SAETA</span>
             </h3>
             <p className="text-muted-foreground mb-6">
-              Cine · Eventos en vivo · Experiencias digitales · Growth & Analytics
+              {t("footer.tagline")}
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => {
@@ -72,7 +74,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold mb-4">Servicios</h4>
+            <h4 className="font-semibold mb-4">{t("footer.services")}</h4>
             <ul className="space-y-3">
               {footerLinks.servicios.map((link) => (
                 <li key={link.label}>
@@ -90,7 +92,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold mb-4">Empresa</h4>
+            <h4 className="font-semibold mb-4">{t("footer.company")}</h4>
             <ul className="space-y-3">
               {footerLinks.empresa.map((link) => (
                 <li key={link.label}>
@@ -108,7 +110,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold mb-4">Contacto</h4>
+            <h4 className="font-semibold mb-4">{t("footer.contact")}</h4>
             <ul className="space-y-3 text-muted-foreground">
               <li>
                 <a href="mailto:saeta.producciones@gmail.com" className="hover:text-accent transition-colors" data-testid="footer-link-email">

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Globe } from "lucide-react";
 import { useTheme } from "./theme-provider";
+import { useTranslation } from "@/hooks/use-translation";
 import { motion, AnimatePresence } from "framer-motion";
 import saetaLogo from "@assets/Logo Saeta_HZL_Negativo_1760397693781.png";
 
@@ -11,6 +12,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
   const { theme, setTheme } = useTheme();
+  const { t, language, setLanguage } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,12 +37,12 @@ export function Navbar() {
   };
 
   const navLinks = [
-    { label: "Inicio", href: "#hero" },
-    { label: "Servicios", href: "#servicios" },
-    { label: "Portafolio", href: "#portafolio" },
-    { label: "Equipo", href: "#equipo" },
-    { label: "Nosotros", href: "#nosotros" },
-    { label: "Contacto", href: "#contacto" },
+    { label: t("nav.home"), href: "#hero" },
+    { label: t("nav.services"), href: "#servicios" },
+    { label: t("nav.portfolio"), href: "#portafolio" },
+    { label: t("nav.team"), href: "#equipo" },
+    { label: t("nav.about"), href: "#nosotros" },
+    { label: t("nav.contact"), href: "#contacto" },
   ];
 
   return (
@@ -88,8 +90,21 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* Theme Toggle & Mobile Menu */}
+            {/* Language Switch, Theme Toggle & Mobile Menu */}
             <div className="flex items-center gap-2">
+              <motion.button
+                onClick={() => setLanguage(language === "es" ? "en" : "es")}
+                className="relative px-3 py-1.5 rounded-full bg-accent/10 backdrop-blur-md border border-accent/30 hover:bg-accent/20 hover:border-accent/40 transition-all duration-300 flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                data-testid="button-language-toggle"
+              >
+                <Globe className="w-4 h-4 text-accent" />
+                <span className="text-sm font-semibold text-accent">
+                  {language === "es" ? "EN" : "ES"}
+                </span>
+              </motion.button>
+
               <Button
                 variant="ghost"
                 size="icon"

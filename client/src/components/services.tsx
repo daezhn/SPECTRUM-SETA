@@ -4,23 +4,24 @@ import { LazyImage } from "@/components/lazy-image";
 import { CinematicTextReveal } from "@/hooks/use-animations";
 import { Video, Film, Palette, TrendingUp } from "lucide-react";
 import { useRef } from "react";
+import { useTranslation } from "@/hooks/use-translation";
 import liveStreamingImg from "@assets/solution-streaming.jpg";
 import contentStudioImg from "@assets/solution-content-story.jpg";
 import brandingImg from "@assets/solution-brand-digital.jpg";
 import socialImg from "@assets/solution-social-community.jpg";
 
-const services = [
+const getServices = (t: (key: string) => string) => [
   {
     id: "live-streaming",
     icon: Video,
-    title: "Live & Streaming 4K",
-    subtitle: "Del en vivo incierto a experiencias estables que convierten",
-    description: "Cobertura sin interrupciones y audiencia ampliada con trazabilidad completa.",
+    title: t("services.items.liveStreaming.title"),
+    subtitle: t("services.items.liveStreaming.subtitle"),
+    description: t("services.items.liveStreaming.description"),
     features: [
-      "Multicámara HD/4K con DVR",
-      "Operadores profesionales",
-      "Grúa, steady cam, dolly, drone",
-      "Bitrate adaptable + Google Analytics",
+      t("services.items.liveStreaming.features.0"),
+      t("services.items.liveStreaming.features.1"),
+      t("services.items.liveStreaming.features.2"),
+      t("services.items.liveStreaming.features.3"),
     ],
     image: liveStreamingImg,
     color: "from-primary/20 to-primary/5",
@@ -28,14 +29,14 @@ const services = [
   {
     id: "content-studio",
     icon: Film,
-    title: "Content & StoryStudio",
-    subtitle: "Del contenido aislado a un motor creativo escalable",
-    description: "Narrativas cinematográficas que elevan reputación y recordación de marca.",
+    title: t("services.items.contentStudio.title"),
+    subtitle: t("services.items.contentStudio.subtitle"),
+    description: t("services.items.contentStudio.description"),
     features: [
-      "Spots HD, documentales y cortometrajes",
-      "Fotografía profesional y aérea",
-      "Post producción y motion graphics",
-      "Entrega ágil para social/web/TV",
+      t("services.items.contentStudio.features.0"),
+      t("services.items.contentStudio.features.1"),
+      t("services.items.contentStudio.features.2"),
+      t("services.items.contentStudio.features.3"),
     ],
     image: contentStudioImg,
     color: "from-accent/20 to-accent/5",
@@ -43,14 +44,14 @@ const services = [
   {
     id: "brand-digital",
     icon: Palette,
-    title: "Brand & Digital Experience",
-    subtitle: "Marca consistente y páginas que marcan",
-    description: "Identidades sólidas y sitios que convierten, coherentes con cada experiencia.",
+    title: t("services.items.brandDigital.title"),
+    subtitle: t("services.items.brandDigital.subtitle"),
+    description: t("services.items.brandDigital.description"),
     features: [
-      "Identidad visual y branding",
-      "Diseño web con analítica integrada",
-      "Landings de alto impacto",
-      "Soporte y mantenimiento web",
+      t("services.items.brandDigital.features.0"),
+      t("services.items.brandDigital.features.1"),
+      t("services.items.brandDigital.features.2"),
+      t("services.items.brandDigital.features.3"),
     ],
     image: brandingImg,
     color: "from-chart-2/20 to-chart-2/5",
@@ -58,14 +59,14 @@ const services = [
   {
     id: "social-community",
     icon: TrendingUp,
-    title: "Social & Community",
-    subtitle: "De 'publicar y esperar' a performance medible",
-    description: "Contenido nativo, pauta y community para elevar engagement y liderazgo.",
+    title: t("services.items.socialCommunity.title"),
+    subtitle: t("services.items.socialCommunity.subtitle"),
+    description: t("services.items.socialCommunity.description"),
     features: [
-      "Estrategia de contenido",
-      "Gestión de comunidades",
-      "Pauta digital optimizada",
-      "Analítica y reportes en tiempo real",
+      t("services.items.socialCommunity.features.0"),
+      t("services.items.socialCommunity.features.1"),
+      t("services.items.socialCommunity.features.2"),
+      t("services.items.socialCommunity.features.3"),
     ],
     image: socialImg,
     color: "from-primary/20 to-accent/10",
@@ -73,6 +74,7 @@ const services = [
 ];
 
 export function Services() {
+  const { t } = useTranslation();
   const { ref: titleRef, controls: titleControls } = useReveal({ threshold: 0.1 });
   const { ref: gridRef, controls: gridControls } = useReveal({ threshold: 0.05, delay: 0.2 });
   
@@ -81,6 +83,8 @@ export function Services() {
     target: containerRef,
     offset: ["start end", "end start"]
   });
+  
+  const services = getServices(t);
 
   return (
     <section id="servicios" className="py-20 md:py-32 relative overflow-hidden">
@@ -93,10 +97,10 @@ export function Services() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nuestras <span className="text-accent">Soluciones</span>
+            {t("services.title")} <span className="text-accent">{t("services.titleHighlight")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Cuatro suites integrales que transforman tu visión en resultados medibles
+            {t("services.subtitle")}
           </p>
         </motion.div>
 
@@ -116,7 +120,7 @@ export function Services() {
   );
 }
 
-function ServiceCard({ service, index }: { service: typeof services[0], index: number }) {
+function ServiceCard({ service, index }: { service: ReturnType<typeof getServices>[0], index: number }) {
   const Icon = service.icon;
   const cardRef = useRef<HTMLDivElement>(null);
 

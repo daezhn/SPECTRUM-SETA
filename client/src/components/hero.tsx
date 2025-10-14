@@ -5,9 +5,11 @@ import { ArrowRight, Play } from "lucide-react";
 import { useBackgroundParallax } from "@/hooks/use-parallax";
 import { scrollToSection } from "@/hooks/use-smooth-scroll";
 import { CinematicTextReveal, useMagneticHover, pulsingGlowVariants, useKenBurnsEffect } from "@/hooks/use-animations";
+import { useTranslation } from "@/hooks/use-translation";
 const heroImage = "/professional_live_ev_418b5596.jpg";
 
 export function Hero() {
+  const { t } = useTranslation();
   const parallaxY = useBackgroundParallax(0.5);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
@@ -51,18 +53,18 @@ export function Hero() {
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-10 leading-tight">
             <CinematicTextReveal delay={0.2} className="text-white">
-              Redefinimos cómo
+              {t("hero.title")}
             </CinematicTextReveal>
             {" "}
             <CinematicTextReveal delay={0.5} className="text-primary">
-              conectas
+              {t("hero.titleHighlight")}
             </CinematicTextReveal>
             <span className="text-white">.</span>
           </h1>
 
           <p className="text-2xl md:text-3xl lg:text-4xl text-white/90 mb-12 max-w-5xl mx-auto font-light leading-relaxed">
             <CinematicTextReveal delay={0.8}>
-              Diseñamos, producimos y distribuimos contenido premium y experiencias en vivo que conectan marcas e instituciones con sus audiencias clave
+              {t("hero.subtitle")}
             </CinematicTextReveal>
           </p>
 
@@ -99,7 +101,7 @@ export function Hero() {
                 data-testid="button-cta-contact"
                 className="text-xl px-12 h-16 gap-3 bg-primary hover:bg-primary/90 text-primary-foreground relative overflow-hidden"
               >
-                Comienza tu proyecto
+                {t("hero.cta.contact")}
                 <motion.div
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
@@ -122,7 +124,7 @@ export function Hero() {
                 className="text-xl px-12 h-16 gap-3 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
               >
                 <Play className="w-6 h-6" />
-                Ver nuestro trabajo
+                {t("hero.cta.portfolio")}
               </Button>
             </motion.div>
           </motion.div>

@@ -1,0 +1,352 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "team": "Team",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Redefining how you",
+    "titleHighlight": "connect",
+    "subtitle": "We design, produce and distribute premium content and live experiences that connect brands and institutions with their key audiences",
+    "cta": {
+      "contact": "Start Your Project",
+      "portfolio": "View Impact Cases"
+    },
+    "stats": {
+      "yearsExperience": "Years of Experience",
+      "projectsDelivered": "Brands Trust Us",
+      "satisfactionRate": "Hours of Production & Streaming"
+    }
+  },
+  "services": {
+    "title": "Our",
+    "titleHighlight": "Solutions",
+    "subtitle": "Four comprehensive suites that transform your vision into measurable results",
+    "items": {
+      "liveStreaming": {
+        "title": "Live & Streaming 4K",
+        "subtitle": "From uncertain live events to stable experiences that convert",
+        "description": "Uninterrupted coverage and expanded audience with complete traceability.",
+        "features": [
+          "HD/4K multicamera with DVR",
+          "Professional operators",
+          "Crane, steady cam, dolly, drone",
+          "Adaptive bitrate + Google Analytics"
+        ]
+      },
+      "contentStudio": {
+        "title": "Content & StoryStudio",
+        "subtitle": "From isolated content to a scalable creative engine",
+        "description": "Cinematic narratives that elevate reputation and brand recall.",
+        "features": [
+          "HD spots, documentaries and short films",
+          "Professional and aerial photography",
+          "Post production and motion graphics",
+          "Agile delivery for social/web/TV"
+        ]
+      },
+      "brandDigital": {
+        "title": "Brand & Digital Experience",
+        "subtitle": "Consistent branding and pages that make an impact",
+        "description": "Solid identities and sites that convert, coherent with every experience.",
+        "features": [
+          "Visual identity and branding",
+          "Web design with integrated analytics",
+          "High-impact landing pages",
+          "Web support and maintenance"
+        ]
+      },
+      "socialCommunity": {
+        "title": "Social & Community",
+        "subtitle": "From 'post and hope' to measurable performance",
+        "description": "Native content, digital advertising and community to elevate engagement and leadership.",
+        "features": [
+          "Content strategy",
+          "Community management",
+          "Optimized digital advertising",
+          "Real-time analytics and reporting"
+        ]
+      }
+    }
+  },
+  "gallery": {
+    "title": "Impact",
+    "titleHighlight": "Cases",
+    "subtitle": "Real results that transform visions into measurable success",
+    "categories": {
+      "all": "All",
+      "liveStreaming": "Live & Streaming",
+      "contentStudio": "Content Studio",
+      "brandDigital": "Brand & Digital"
+    },
+    "viewDetails": "View Details",
+    "client": "Client",
+    "results": "Results",
+    "items": {
+      "rendicionCuentas": {
+        "title": "Government Accountability Report",
+        "description": "4K live broadcast with multicamera for high-impact government event"
+      },
+      "simposioHibrido": {
+        "title": "B2B Hybrid Symposium",
+        "description": "Professional coverage of corporate event with streaming and recording"
+      },
+      "townhallEjecutivo": {
+        "title": "Executive Townhall",
+        "description": "Internal corporate broadcast with real-time analytics"
+      },
+      "videoAereo": {
+        "title": "4K Aerial Video - Industrial Complex",
+        "description": "Professional aerial cinematography for industrial promotion"
+      },
+      "campanaBranding": {
+        "title": "Institutional Branding Campaign",
+        "description": "Complete production of spots and corporate audiovisual material"
+      },
+      "serieDocumental": {
+        "title": "Corporate Documentary Series",
+        "description": "Documentary series production about processes and innovation"
+      }
+    }
+  },
+  "about": {
+    "title": "About",
+    "titleHighlight": "SAETA",
+    "subtitle": "All-in-one operation: cinematic creativity + live multicamera coverage with integrated analytics",
+    "whatWeDo": {
+      "title": "What We Do",
+      "description": "We design, produce and distribute premium content and live experiences that connect brands and institutions with their key audiences."
+    },
+    "howWeDoIt": {
+      "title": "How We Do It",
+      "description": "Creating impactful stories and immersive experiences that elevate your brand reputation and guarantee measurable results."
+    },
+    "isoSteps": {
+      "plan": {
+        "title": "PLAN",
+        "items": [
+          "Client requirements analysis",
+          "Scope and objectives definition",
+          "Technical resources planning",
+          "KPIs establishment"
+        ]
+      },
+      "do": {
+        "title": "DO",
+        "items": [
+          "Execution with certified team",
+          "Production with cutting-edge technology",
+          "Real-time monitoring",
+          "Continuous quality control"
+        ]
+      },
+      "check": {
+        "title": "CHECK",
+        "items": [
+          "Deliverables review",
+          "Metrics validation",
+          "Results analysis",
+          "Client feedback"
+        ]
+      },
+      "act": {
+        "title": "ACT",
+        "items": [
+          "Improvements implementation",
+          "Process updates",
+          "Continuous training",
+          "Technological innovation"
+        ]
+      }
+    },
+    "features": {
+      "technology": {
+        "title": "Constant Technological Renewal",
+        "items": [
+          "Periodically renewed HD/4K equipment",
+          "Redundancy for consistent quality",
+          "Constant team training",
+          "Software and tools updates"
+        ]
+      },
+      "contingency": {
+        "title": "Contingency Plans",
+        "items": [
+          "Pre-tests for all projects",
+          "Double link and backup systems",
+          "Automatic cloud backups",
+          "Immediate failover protocols"
+        ]
+      },
+      "security": {
+        "title": "Security & Privacy",
+        "items": [
+          "NDA and confidentiality agreements",
+          "Access and permissions control",
+          "Certified data privacy protocols",
+          "Complete process traceability"
+        ]
+      },
+      "management": {
+        "title": "Professional Project Management",
+        "items": [
+          "Expert team coordination",
+          "Real-time monitoring",
+          "On-time deliverables",
+          "Constant client communication"
+        ]
+      }
+    }
+  },
+  "team": {
+    "title": "Meet Our Team",
+    "subtitle": "The professionals behind every successful project",
+    "roles": {
+      "ceo": "Chief Executive Officer",
+      "artDirector": "Art Director",
+      "productionHead": "Head of Production",
+      "aiSystems": "Systems & Artificial Intelligence",
+      "audiovisualProducer": "Audiovisual Producer",
+      "animation": "Animation",
+      "contentExecutor": "Content Executor",
+      "cameraman": "Cameraman"
+    },
+    "joinTeam": {
+      "title": "Join our team",
+      "subtitle": "We're looking for passionate talent to create extraordinary experiences",
+      "form": {
+        "name": "Full name",
+        "email": "Email address",
+        "phone": "Phone",
+        "position": "Position of interest",
+        "portfolio": "Portfolio link",
+        "message": "Why do you want to be part of SAETA?",
+        "submit": "Send Application",
+        "submitting": "Sending...",
+        "positions": {
+          "audiovisual": "Audiovisual Production",
+          "camera": "Camera Operator",
+          "editing": "Editing and Post-production",
+          "design": "Graphic Design",
+          "development": "Web Development",
+          "marketing": "Digital Marketing",
+          "other": "Other position"
+        }
+      },
+      "success": "Application sent!",
+      "successMessage": "Your information has been received. We'll contact you soon.",
+      "error": "Submission error",
+      "errorMessage": "Please try again later."
+    }
+  },
+  "whyHireUs": {
+    "title": "Why choose",
+    "titleHighlight": "our services",
+    "subtitle": "Proven experience, cutting-edge technology and commitment to measurable results that transform your investment into real impact",
+    "benefits": {
+      "speed": {
+        "title": "SPEED",
+        "description": "Our promise is that your project will be completed in less than two weeks."
+      },
+      "multipleApproaches": {
+        "title": "MULTIPLE APPROACHES",
+        "description": "Design follows not only marketing guidelines, but breaks with traditional approaches by using psychological techniques to convey the right message to your potential clients."
+      },
+      "directCommunication": {
+        "title": "DIRECT COMMUNICATION",
+        "description": "You'll speak directly with the team in charge of your project, ensuring personal communication that facilitates understanding."
+      },
+      "multiFieldKnowledge": {
+        "title": "MULTI-FIELD EXPERTISE",
+        "description": "We work not only in web development, but in video production, graphic design, special effects, TV commercials, photomontages, 3D modeling, etc."
+      },
+      "enthusiasm": {
+        "title": "ENTHUSIASM",
+        "description": "We love our work and enjoy it, that's why we guarantee you'll get excellent results."
+      }
+    }
+  },
+  "valor360": {
+    "title": "Our",
+    "titleHighlight": "360° Value",
+    "subtitle": "Innovation in motion. Real-time impact.",
+    "cases": {
+      "automation": {
+        "title": "From manual processes to intelligent automation",
+        "problem": "Deadlines are shortening and creative AI has changed the rules of post-production.",
+        "solution": "AI workflows for assisted editing, generative motion graphics and multiplatform versioning that accelerate delivery and elevate consistency at scale."
+      },
+      "hybridAudiences": {
+        "title": "Hybrid audiences and platforms that evolve by the minute",
+        "problem": "Hybrid audiences and platforms that evolve by the minute have transformed the way we communicate.",
+        "solution": "Real-time analytics and decision dashboards that allow instant content and distribution adjustments, locally or globally."
+      },
+      "narratives": {
+        "title": "From generic content to narratives that convert",
+        "problem": "In a saturated feed, flat messages get lost.",
+        "solution": "That's why we perform data-driven Storytelling and continuous creative testing to build stories that resonate and generate measurable engagement."
+      }
+    },
+    "ourResponse": "Our response?"
+  },
+  "spectrum": {
+    "description": "Integrated into an ecosystem specialized in communication, technology and multimedia production, Saeta offers audiovisual services with international reach and focus."
+  },
+  "contact": {
+    "title": "Start Your",
+    "titleHighlight": "Project",
+    "subtitle": "Tell us about your vision and discover how we can transform it into measurable results",
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Your name",
+      "email": "Email address",
+      "emailPlaceholder": "your@email.com",
+      "company": "Company",
+      "companyPlaceholder": "Your company (optional)",
+      "phone": "Phone",
+      "phonePlaceholder": "+52 (000) 000 0000",
+      "service": "Service of interest",
+      "servicePlaceholder": "Select a service",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project...",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "services": {
+        "liveStreaming": "Live & Streaming 4K",
+        "contentStudio": "Content & StoryStudio",
+        "brandDigital": "Brand & Digital Experience",
+        "socialCommunity": "Social & Community",
+        "integral": "Integral Package",
+        "consulting": "Consulting"
+      }
+    },
+    "info": {
+      "title": "Ready to elevate your content?",
+      "description": "Transform your vision into measurable results with our team of professionals.",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "locationValue": "Chihuahua, Mexico"
+    },
+    "success": "Message sent!",
+    "successMessage": "We'll contact you soon.",
+    "error": "Submission error",
+    "errorMessage": "Please try again later."
+  },
+  "footer": {
+    "tagline": "Cinema · Live Events · Digital Experiences · Growth & Analytics",
+    "services": "Services",
+    "company": "Company",
+    "contact": "Contact",
+    "aboutSaeta": "About SAETA",
+    "portfolio": "Portfolio",
+    "iso": "ISO 9001:2015",
+    "location": "Chihuahua, Mexico",
+    "copyright": "© {{year}} SAETA. All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  }
+}

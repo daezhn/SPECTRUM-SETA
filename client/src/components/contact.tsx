@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "@/hooks/use-translation";
 import { Button } from "@/components/ui/button";
 import { useMagneticHover, pulsingGlowVariants } from "@/hooks/use-animations";
 import { Input } from "@/components/ui/input";
@@ -27,18 +28,19 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 
-const services = [
-  "Live & Streaming 4K",
-  "Content & StoryStudio",
-  "Brand & Digital Experience",
-  "Social & Community",
-  "Paquete Integral",
-  "Consultoría",
-];
-
 export function Contact() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const { toast } = useToast();
+  const { t } = useTranslation();
+
+  const services = [
+    t("contact.form.services.liveStreaming"),
+    t("contact.form.services.contentStudio"),
+    t("contact.form.services.brandDigital"),
+    t("contact.form.services.socialCommunity"),
+    t("contact.form.services.integral"),
+    t("contact.form.services.consulting"),
+  ];
 
   const form = useForm<InsertContact>({
     resolver: zodResolver(insertContactSchema),
@@ -97,15 +99,15 @@ export function Contact() {
     },
     onSuccess: () => {
       toast({
-        title: "¡Mensaje enviado!",
-        description: "Nos pondremos en contacto contigo pronto.",
+        title: t("contact.success"),
+        description: t("contact.successMessage"),
       });
       form.reset();
     },
     onError: () => {
       toast({
-        title: "Error al enviar",
-        description: "Por favor intenta de nuevo más tarde.",
+        title: t("contact.error"),
+        description: t("contact.errorMessage"),
         variant: "destructive",
       });
     },

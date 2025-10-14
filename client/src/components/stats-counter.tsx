@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { useScrambleNumber } from "@/hooks/use-animations";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface StatItemProps {
   value: number;
@@ -55,16 +56,18 @@ function StatCounter({ value, prefix = "", label, delay = 0 }: StatItemProps) {
 }
 
 export function StatsCounter() {
-  const stats: { value: number; prefix?: string; label: string; delay: number }[] = [
-    { value: 19, label: "Años de experiencia", delay: 0 },
-    { value: 184, label: "Marcas confían en nosotros", delay: 0.2 },
-    { value: 3055, label: "Horas de producción y streaming profesional", delay: 0.4 },
+  const { t, language } = useTranslation();
+  
+  const stats: { value: number; prefix?: string; labelKey: string; delay: number }[] = [
+    { value: 19, labelKey: "hero.stats.yearsExperience", delay: 0 },
+    { value: 184, labelKey: "hero.stats.projectsDelivered", delay: 0.2 },
+    { value: 3055, labelKey: "hero.stats.satisfactionRate", delay: 0.4 },
   ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-black">
       <div className="container mx-auto px-4 lg:px-8 py-16">
-        {/* Desde 2006 */}
+        {/* Desde 2006 / Since 2006 */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +76,7 @@ export function StatsCounter() {
           className="text-center mb-16"
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-white/70 tracking-widest uppercase">
-            Desde <span className="font-bold text-primary">2006</span>
+            {language === "es" ? "Desde" : "Since"} <span className="font-bold text-primary">2006</span>
           </h2>
         </motion.div>
 
@@ -84,7 +87,7 @@ export function StatsCounter() {
               key={index}
               value={stat.value}
               prefix={stat.prefix}
-              label={stat.label}
+              label={t(stat.labelKey)}
               delay={stat.delay}
             />
           ))}

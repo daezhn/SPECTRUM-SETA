@@ -17,35 +17,35 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Ken Burns Effect */}
-      <motion.div 
-        className="absolute inset-0 z-0"
-        style={{ y: parallaxY }}
-      >
-        <motion.div
-          className="absolute inset-0 bg-cover bg-center"
-          variants={kenBurnsVariants}
-          initial="initial"
-          animate="animate"
-          style={{ 
-            backgroundImage: `url(${heroImage})`,
-          }}
-        />
-        {/* Fallback img tag to ensure image loads */}
-        <motion.img 
-          src={heroImage}
-          alt="Professional event production"
-          className="absolute inset-0 w-full h-full object-cover"
-          variants={kenBurnsVariants}
-          initial="initial"
-          animate="animate"
-          style={{ zIndex: -1 }}
-          onError={(e) => {
-            console.error("Hero image failed to load:", e);
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-primary/20" />
-      </motion.div>
+      {/* Background Image with full visibility of professional equipment */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center bg-black">
+        {/* Background pattern for aesthetic */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(139 92 246 / 0.3) 1px, transparent 1px)',
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
+        
+        {/* Main hero image - full professional camera equipment visible */}
+        <div className="relative w-full h-full flex items-center justify-center">
+          <img 
+            src={heroImage}
+            alt="Professional event production equipment"
+            className="w-full h-full object-contain max-w-none"
+            style={{ 
+              maxHeight: '100vh',
+              objectPosition: 'center',
+            }}
+            onError={(e) => {
+              console.error("Hero image failed to load:", e);
+            }}
+          />
+        </div>
+        
+        {/* Overlay gradient for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+      </div>
 
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 relative z-10 py-20 md:py-32">

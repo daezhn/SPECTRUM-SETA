@@ -42,8 +42,8 @@ function StatCounter({ value, prefix = "", label, delay = 0 }: StatItemProps) {
       className="text-center"
       data-testid={`stat-${label.toLowerCase().replace(/\s+/g, "-")}`}
     >
-      <div className="text-7xl md:text-8xl lg:text-9xl font-black text-primary mb-4 leading-none tracking-tight font-mono">
-        <span className="inline-block min-w-[4ch] text-right">
+      <div className="text-7xl md:text-8xl lg:text-9xl font-black text-primary mb-4 leading-none tracking-tight font-mono flex justify-center">
+        <span className="inline-block min-w-[6ch] text-center tabular-nums">
           {formattedValue()}
         </span>
       </div>

@@ -3,25 +3,47 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { useBackgroundParallax } from "@/hooks/use-parallax";
 import { scrollToSection } from "@/hooks/use-smooth-scroll";
+import { CinematicTextReveal, useMagneticHover, pulsingGlowVariants, useKenBurnsEffect } from "@/hooks/use-animations";
 import heroImage from "@assets/stock_images/professional_live_ev_418b5596.jpg";
 
 export function Hero() {
   const parallaxY = useBackgroundParallax(0.5);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const kenBurnsVariants = useKenBurnsEffect(12);
+  const magneticCTA = useMagneticHover(0.3);
+  const magneticPortfolio = useMagneticHover(0.25);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Parallax */}
+      {/* Background Image with Ken Burns Effect */}
       <motion.div 
         className="absolute inset-0 z-0"
         style={{ y: parallaxY }}
       >
         <motion.div
           className="absolute inset-0 bg-cover bg-center scale-110"
+          variants={kenBurnsVariants}
+          initial="initial"
+          animate="animate"
           style={{ 
             backgroundImage: `url(${heroImage})`,
-            y: parallaxY,
+          }}
+        />
+        {/* Fallback img tag in case CSS background doesn't load */}
+        <motion.img 
+          src={heroImage}
+          alt="Professional event production"
+          className="absolute inset-0 w-full h-full object-cover scale-110 opacity-0"
+          variants={kenBurnsVariants}
+          initial="initial"
+          animate="animate"
+          onError={(e) => {
+            console.error("Hero image failed to load:", e);
+            e.currentTarget.style.opacity = "0";
+          }}
+          onLoad={(e) => {
+            e.currentTarget.style.opacity = "0";
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-primary/20" />

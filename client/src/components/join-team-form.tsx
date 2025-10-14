@@ -74,8 +74,8 @@ export function JoinTeamForm() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       className="relative bg-black border border-primary/30 rounded-2xl p-8 md:p-12 overflow-hidden"
@@ -111,7 +111,7 @@ export function JoinTeamForm() {
         <div className="flex items-center gap-4 mb-4">
           <motion.div
             animate={{ 
-              y: [0, -10, 0],
+              scale: [1, 1.1, 1],
             }}
             transition={{ 
               duration: 2,

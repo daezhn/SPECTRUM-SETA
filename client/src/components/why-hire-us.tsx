@@ -50,8 +50,8 @@ export function WhyHireUs() {
       <div className="container mx-auto px-4 lg:px-8 relative">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -68,8 +68,8 @@ export function WhyHireUs() {
             return (
               <motion.div
                 key={benefit.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 data-testid={`benefit-card-${index}`}
                 className="group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm"

@@ -40,8 +40,8 @@ export function CommercialPartners() {
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -57,8 +57,8 @@ export function CommercialPartners() {
           {partners.map((partner, index) => (
             <motion.div
               key={partner.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               data-testid={`partner-card-${partner.id}`}
               className="group"
@@ -99,8 +99,8 @@ export function CommercialPartners() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 text-center"
         >

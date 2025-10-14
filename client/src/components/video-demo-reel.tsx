@@ -30,8 +30,8 @@ export function VideoDemoReel() {
         <div className="max-w-5xl mx-auto text-center">
           {/* Heading */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-lg md:text-xl font-medium text-white/70 mb-6 uppercase tracking-wider">
@@ -41,8 +41,8 @@ export function VideoDemoReel() {
 
           {/* Caption */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light mb-8"
           >
@@ -51,8 +51,8 @@ export function VideoDemoReel() {
 
           {/* Social Media Icons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex items-center justify-center gap-6"
           >

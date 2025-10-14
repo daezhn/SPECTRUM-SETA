@@ -153,7 +153,7 @@ export function Gallery() {
                 key={item.id}
                 layout
                 variants={itemRevealVariants}
-                whileHover={{ y: -10 }}
+                whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 data-testid={`gallery-item-${item.id}`}
               >
@@ -175,8 +175,8 @@ export function Gallery() {
                     
                     <motion.div 
                       className="absolute top-4 left-4"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
                       transition={{ delay: index * 0.1 }}
                     >
                       <Badge className="bg-primary/90 text-primary-foreground backdrop-blur-md border border-primary/30 shadow-lg">
@@ -186,8 +186,8 @@ export function Gallery() {
 
                     <motion.div 
                       className="absolute bottom-0 left-0 right-0 p-6 text-white"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
                       transition={{ delay: index * 0.1 + 0.2 }}
                     >
                       <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors" data-testid={`gallery-title-${item.id}`}>

@@ -139,7 +139,7 @@ export function Team() {
               variants={itemRevealVariants}
               data-testid={`team-member-${member.id}`}
               className="group"
-              whileHover={{ y: -10 }}
+              whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/30 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20">

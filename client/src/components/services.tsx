@@ -127,7 +127,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       initial="hidden"
       animate={controls}
       variants={itemRevealVariants}
-      whileHover={{ y: -10 }}
+      whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300 }}
       data-testid={`service-card-${service.id}`}
       className="group relative"

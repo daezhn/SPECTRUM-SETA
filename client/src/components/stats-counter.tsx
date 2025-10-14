@@ -94,21 +94,15 @@ export function StatsCounter() {
           className="flex justify-center mt-16"
         >
           <motion.div
-            animate={{
-              y: [0, 10, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
             className="flex flex-col items-center gap-2"
           >
             <div className="w-6 h-10 border-2 border-primary/40 rounded-full flex items-start justify-center p-2">
               <motion.div
                 animate={{
-                  y: [0, 12, 0],
-                  opacity: [1, 0, 1],
+                  opacity: [0.3, 1, 0.3],
                 }}
                 transition={{
                   duration: 2,

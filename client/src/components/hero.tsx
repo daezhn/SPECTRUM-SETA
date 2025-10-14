@@ -143,11 +143,12 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2"
         >
-          <motion.div className="w-1 h-2 bg-white/50 rounded-full" />
+          <div className="w-1 h-2 bg-white/50 rounded-full" />
         </motion.div>
       </motion.div>
     </section>

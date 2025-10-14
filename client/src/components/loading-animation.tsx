@@ -86,10 +86,10 @@ export function LoadingAnimation({ isLoading }: LoadingAnimationProps) {
                     key={i}
                     className="text-sm font-medium text-muted-foreground"
                     animate={{
-                      y: [0, -5, 0],
+                      opacity: [0.5, 1, 0.5],
                     }}
                     transition={{
-                      duration: 0.8,
+                      duration: 1.5,
                       repeat: Infinity,
                       delay: i * 0.1,
                       ease: "easeInOut",

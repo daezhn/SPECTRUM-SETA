@@ -28,13 +28,12 @@ export function Hero() {
         </div>
         
         {/* Main hero image - full professional camera equipment visible */}
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="absolute inset-0">
           <img 
             src={heroImage}
             alt="Professional event production equipment"
-            className="w-full h-full object-contain max-w-none"
+            className="w-full h-full object-cover"
             style={{ 
-              maxHeight: '100vh',
               objectPosition: 'center',
             }}
             onError={(e) => {

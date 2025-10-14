@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useReveal, staggerRevealVariants, itemRevealVariants } from "@/hooks/use-reveal";
 import { LazyImage } from "@/components/lazy-image";
+import { useKenBurnsEffect } from "@/hooks/use-animations";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -164,13 +165,20 @@ export function Gallery() {
                   onMouseLeave={() => setHoveredId(null)}
                 >
                   <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/30 group-hover:border-primary/50 transition-all duration-500">
-                    <LazyImage
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      containerClassName="absolute inset-0"
-                      aspectRatio="4/3"
-                    />
+                    <motion.div 
+                      className="absolute inset-0"
+                      variants={useKenBurnsEffect(7)}
+                      initial="initial"
+                      whileHover="animate"
+                    >
+                      <LazyImage
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover scale-105"
+                        containerClassName="absolute inset-0"
+                        aspectRatio="4/3"
+                      />
+                    </motion.div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                     
                     <motion.div 

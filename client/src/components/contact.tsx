@@ -6,6 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
+import { useMagneticHover, pulsingGlowVariants } from "@/hooks/use-animations";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -271,7 +272,8 @@ export function Contact() {
 
                     <motion.div 
                       className="relative"
-                      whileHover={{ scale: 1.02 }}
+                      variants={pulsingGlowVariants}
+                      animate="animate"
                       whileTap={{ scale: 0.98 }}
                     >
                       {/* Shimmer effect for submit button */}

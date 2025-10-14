@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import { motion, useMotionValue, useTransform, useSpring, animate } from "framer-motion";
 
 // Text Reveal Mask Animation Hook
@@ -73,14 +73,20 @@ export function useScrambleNumber(value: number, duration: number = 2500) {
     }, 50);
     
     return () => clearInterval(scrambleInterval);
-  }, [value, duration, targetValue, chars]);
+  }, [value, duration]);
   
   return { displayValue, isScrambling };
 }
 
 // Magnetic Hover Effect Hook
-export function useMagneticHover(strength: number = 0.3) {
-  const ref = useRef<HTMLElement>(null);
+export function useMagneticHover(strength: number = 0.3): {
+  ref: RefObject<HTMLDivElement>;
+  style: {
+    x: any;
+    y: any;
+  };
+} {
+  const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   
@@ -196,18 +202,16 @@ export function useSplitText(text: string) {
 export function CinematicTextReveal({ 
   children, 
   delay = 0,
-  className = "",
-  as: Component = "span" as any
+  className = ""
 }: {
   children: string;
   delay?: number;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
 }) {
   const { words } = useSplitText(children);
   
   return (
-    <Component className={className}>
+    <span className={className}>
       {words.map((word, index) => (
         <motion.span
           key={word.key}
@@ -231,6 +235,6 @@ export function CinematicTextReveal({
           {word.text}
         </motion.span>
       ))}
-    </Component>
+    </span>
   );
 }

@@ -1,5 +1,6 @@
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { useScrambleNumber } from "@/hooks/use-animations";
 
 interface StatItemProps {
   value: number;
@@ -11,24 +12,26 @@ interface StatItemProps {
 function StatCounter({ value, prefix = "", label, delay = 0 }: StatItemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => {
-    if (prefix === "+") {
-      return prefix + " " + Math.round(latest).toLocaleString();
-    }
-    return Math.round(latest).toLocaleString();
-  });
+  const [hasStarted, setHasStarted] = useState(false);
+  const { displayValue } = useScrambleNumber(hasStarted ? value : 0, 2500);
 
   useEffect(() => {
-    if (isInView) {
-      const controls = animate(count, value, {
-        duration: 2.5,
-        delay,
-        ease: "easeOut",
-      });
-      return controls.stop;
+    if (isInView && !hasStarted) {
+      const timeout = setTimeout(() => {
+        setHasStarted(true);
+      }, delay * 1000);
+      return () => clearTimeout(timeout);
     }
-  }, [isInView, count, value, delay]);
+  }, [isInView, delay, hasStarted]);
+
+  const formattedValue = () => {
+    if (!hasStarted) return "0";
+    const numValue = parseInt(displayValue);
+    if (prefix === "+") {
+      return prefix + " " + numValue.toLocaleString();
+    }
+    return numValue.toLocaleString();
+  };
 
   return (
     <motion.div
@@ -39,9 +42,11 @@ function StatCounter({ value, prefix = "", label, delay = 0 }: StatItemProps) {
       className="text-center"
       data-testid={`stat-${label.toLowerCase().replace(/\s+/g, "-")}`}
     >
-      <motion.div className="text-7xl md:text-8xl lg:text-9xl font-black text-primary mb-4 leading-none tracking-tight">
-        {rounded}
-      </motion.div>
+      <div className="text-7xl md:text-8xl lg:text-9xl font-black text-primary mb-4 leading-none tracking-tight font-mono">
+        <span className="inline-block min-w-[4ch] text-right">
+          {formattedValue()}
+        </span>
+      </div>
       <p className="text-base md:text-lg lg:text-xl text-white font-light leading-relaxed">
         {label}
       </p>

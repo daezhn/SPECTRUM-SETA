@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useReveal, staggerRevealVariants, itemRevealVariants } from "@/hooks/use-reveal";
 import { LazyImage } from "@/components/lazy-image";
+import { CinematicTextReveal } from "@/hooks/use-animations";
 import { Video, Film, Palette, TrendingUp } from "lucide-react";
 import { useRef } from "react";
 import liveStreamingImg from "@assets/solution-streaming.jpg";

@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { type RefObject } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { useBackgroundParallax } from "@/hooks/use-parallax";
@@ -30,20 +31,17 @@ export function Hero() {
             backgroundImage: `url(${heroImage})`,
           }}
         />
-        {/* Fallback img tag in case CSS background doesn't load */}
+        {/* Fallback img tag to ensure image loads */}
         <motion.img 
           src={heroImage}
           alt="Professional event production"
-          className="absolute inset-0 w-full h-full object-cover scale-110 opacity-0"
+          className="absolute inset-0 w-full h-full object-cover scale-110"
           variants={kenBurnsVariants}
           initial="initial"
           animate="animate"
+          style={{ zIndex: -1 }}
           onError={(e) => {
             console.error("Hero image failed to load:", e);
-            e.currentTarget.style.opacity = "0";
-          }}
-          onLoad={(e) => {
-            e.currentTarget.style.opacity = "0";
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-primary/20" />
@@ -52,26 +50,22 @@ export function Hero() {
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 relative z-10 py-20 md:py-32">
         <div className="max-w-6xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-10 leading-tight">
-              <span className="text-white">Redefinimos cómo </span>
-              <span className="text-primary">conectas</span>
-              <span className="text-white">.</span>
-            </h1>
-          </motion.div>
+          <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-10 leading-tight">
+            <CinematicTextReveal delay={0.2} className="text-white">
+              Redefinimos cómo
+            </CinematicTextReveal>
+            {" "}
+            <CinematicTextReveal delay={0.5} className="text-primary">
+              conectas
+            </CinematicTextReveal>
+            <span className="text-white">.</span>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-2xl md:text-3xl lg:text-4xl text-white/90 mb-12 max-w-5xl mx-auto font-light leading-relaxed"
-          >
-            Diseñamos, producimos y distribuimos contenido premium y experiencias en vivo que conectan marcas e instituciones con sus audiencias clave
-          </motion.p>
+          <p className="text-2xl md:text-3xl lg:text-4xl text-white/90 mb-12 max-w-5xl mx-auto font-light leading-relaxed">
+            <CinematicTextReveal delay={0.8}>
+              Diseñamos, producimos y distribuimos contenido premium y experiencias en vivo que conectan marcas e instituciones con sus audiencias clave
+            </CinematicTextReveal>
+          </p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -80,9 +74,11 @@ export function Hero() {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center flex-wrap mb-20"
           >
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              ref={magneticCTA.ref as RefObject<HTMLDivElement>}
+              style={magneticCTA.style}
               className="relative group"
+              variants={pulsingGlowVariants}
+              animate="animate"
             >
               {/* Shimmer effect */}
               <motion.div
@@ -115,7 +111,8 @@ export function Hero() {
             </motion.div>
             
             <motion.div
-              whileHover={{ scale: 1.05 }}
+              ref={magneticPortfolio.ref as RefObject<HTMLDivElement>}
+              style={magneticPortfolio.style}
               whileTap={{ scale: 0.95 }}
             >
               <Button

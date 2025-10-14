@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { SiWhatsapp, SiFacebook, SiLinkedin } from "react-icons/si";
+import { useMagneticHover } from "@/hooks/use-animations";
 import demoReelImage from "@assets/stock_images/professional_video_p_4c4e9095.jpg";
 import demoReelVideo from "@assets/demo-reel.mp4";
 

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { CheckCircle2, Shield, Award, Zap } from "lucide-react";
+import { CinematicTextReveal } from "@/hooks/use-animations";
 
 const isoSteps = [
   {

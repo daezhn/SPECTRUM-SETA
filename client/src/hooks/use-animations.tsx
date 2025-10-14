@@ -167,9 +167,9 @@ export function useKenBurnsEffect(duration: number = 8) {
       y: 0,
     },
     animate: {
-      scale: [1, 1.05, 1.03, 1.05, 1],
-      x: [0, -10, 5, -5, 0],
-      y: [0, 5, -10, 5, 0],
+      scale: [1, 1.02, 1.01, 1.02, 1],
+      x: [0, -5, 2, -2, 0],
+      y: [0, 2, -5, 2, 0],
       transition: {
         duration,
         ease: "linear",

@@ -26,7 +26,7 @@ export default function App() {
 
   useEffect(() => {
     // Simulate minimum loading time for better UX
-    const minLoadTime = new Promise(resolve => setTimeout(resolve, 1500));
+    const minLoadTime = new Promise(resolve => setTimeout(resolve, 500));
 
     minLoadTime.then(() => {
       setIsLoading(false);

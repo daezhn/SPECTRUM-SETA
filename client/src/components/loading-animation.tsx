@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import logoImage from "@assets/Logo Saeta_HZL_Negativo_1760397693781.png";
+const logoImage = "/logo-negativo.png";
 
 interface LoadingAnimationProps {
   isLoading: boolean;

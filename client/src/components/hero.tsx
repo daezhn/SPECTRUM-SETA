@@ -5,7 +5,7 @@ import { ArrowRight, Play } from "lucide-react";
 import { useBackgroundParallax } from "@/hooks/use-parallax";
 import { scrollToSection } from "@/hooks/use-smooth-scroll";
 import { CinematicTextReveal, useMagneticHover, pulsingGlowVariants, useKenBurnsEffect } from "@/hooks/use-animations";
-import heroImage from "@assets/stock_images/professional_live_ev_418b5596.jpg";
+const heroImage = "/professional_live_ev_418b5596.jpg";
 
 export function Hero() {
   const parallaxY = useBackgroundParallax(0.5);
@@ -23,7 +23,7 @@ export function Hero() {
         style={{ y: parallaxY }}
       >
         <motion.div
-          className="absolute inset-0 bg-cover bg-center scale-110"
+          className="absolute inset-0 bg-cover bg-center"
           variants={kenBurnsVariants}
           initial="initial"
           animate="animate"
@@ -35,7 +35,7 @@ export function Hero() {
         <motion.img 
           src={heroImage}
           alt="Professional event production"
-          className="absolute inset-0 w-full h-full object-cover scale-110"
+          className="absolute inset-0 w-full h-full object-cover"
           variants={kenBurnsVariants}
           initial="initial"
           animate="animate"

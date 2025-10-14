@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { useReveal, staggerRevealVariants, itemRevealVariants } from "@/hooks/use-reveal";
+import { LazyImage } from "@/components/lazy-image";
 import { Video, Film, Palette, TrendingUp } from "lucide-react";
 import { useRef } from "react";
 import liveStreamingImg from "@assets/solution-streaming.jpg";
@@ -71,10 +72,8 @@ const services = [
 ];
 
 export function Services() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const { ref: titleRef, controls: titleControls } = useReveal({ threshold: 0.1 });
+  const { ref: gridRef, controls: gridControls } = useReveal({ threshold: 0.05, delay: 0.2 });
   
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -86,10 +85,10 @@ export function Services() {
     <section id="servicios" className="py-20 md:py-32 relative overflow-hidden">
       <div ref={containerRef} className="container mx-auto px-4 lg:px-8 relative">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          ref={titleRef}
+          initial="hidden"
+          animate={titleControls}
+          variants={staggerRevealVariants}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -100,36 +99,47 @@ export function Services() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <motion.div 
+          ref={gridRef}
+          initial="hidden"
+          animate={gridControls}
+          variants={staggerRevealVariants}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
           {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} inView={inView} />
+            <ServiceCard key={service.id} service={service} index={index} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-function ServiceCard({ service, index, inView }: { service: typeof services[0], index: number, inView: boolean }) {
+function ServiceCard({ service, index }: { service: typeof services[0], index: number }) {
   const Icon = service.icon;
   const cardRef = useRef<HTMLDivElement>(null);
 
+  const { ref, controls, inView } = useReveal({ threshold: 0.05, delay: index * 0.1 });
+
   return (
     <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={itemRevealVariants}
+      whileHover={{ y: -10 }}
+      transition={{ type: "spring", stiffness: 300 }}
       data-testid={`service-card-${service.id}`}
       className="group relative"
     >
       <div className="relative overflow-hidden rounded-lg transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 h-full bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm border border-border/50 hover:border-primary/30">
         <div className="relative h-56 overflow-hidden">
-          <motion.div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${service.image})` }}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.6 }}
+          <LazyImage
+            src={service.image}
+            alt={service.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            containerClassName="absolute inset-0"
+            aspectRatio="16/9"
           />
           <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-80 group-hover:opacity-70 transition-opacity duration-500`} />
           <div className="absolute inset-0 bg-black/30" />
@@ -159,7 +169,7 @@ function ServiceCard({ service, index, inView }: { service: typeof services[0], 
               <motion.li
                 key={idx}
                 initial={{ opacity: 0, x: -10 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.8 + idx * 0.1 }}
                 className="flex items-start gap-3 text-sm group/item"
               >

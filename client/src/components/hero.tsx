@@ -1,32 +1,31 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
+import { useBackgroundParallax } from "@/hooks/use-parallax";
+import { scrollToSection } from "@/hooks/use-smooth-scroll";
 import heroImage from "@assets/stock_images/professional_live_ev_418b5596.jpg";
 
 export function Hero() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
+  const parallaxY = useBackgroundParallax(0.5);
+  const { scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroImage})` }}
+      {/* Background Image with Parallax */}
+      <motion.div 
+        className="absolute inset-0 z-0"
+        style={{ y: parallaxY }}
+      >
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center scale-110"
+          style={{ 
+            backgroundImage: `url(${heroImage})`,
+            y: parallaxY,
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-primary/20" />
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 relative z-10 py-20 md:py-32">

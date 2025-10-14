@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { LazyImage } from "@/components/lazy-image";
 import algodoneros from "@assets/algodoneros.webp";
 import amistad from "@assets/amistad.webp";
 import aptiv from "@assets/aptiv.webp";
@@ -72,13 +73,13 @@ export function ClientsCarousel() {
               data-testid={`client-logo-${client.id}`}
             >
               <div className="relative aspect-square rounded-xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/30 p-6 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20">
-                <div className="absolute inset-0 flex items-center justify-center p-6">
-                  <motion.img
+                <div className="absolute inset-0 p-6">
+                  <LazyImage
                     src={client.logo}
                     alt={client.name}
-                    className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300 filter grayscale group-hover:grayscale-0"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
+                    className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300 filter grayscale group-hover:grayscale-0 group-hover:scale-105"
+                    containerClassName="relative w-full h-full"
+                    aspectRatio="1/1"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />

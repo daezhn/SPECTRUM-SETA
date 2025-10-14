@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { useReveal, staggerRevealVariants, itemRevealVariants } from "@/hooks/use-reveal";
 import { JoinTeamForm } from "@/components/join-team-form";
+import { LazyImage } from "@/components/lazy-image";
 import teamMember1 from "@assets/WILY_1760390323004.jpg";
 import teamMember2 from "@assets/2.jpg";
 import teamMember3 from "@assets/3.jpg";
@@ -104,49 +105,53 @@ const team = [
 ];
 
 export function Team() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const { ref: titleRef, controls: titleControls } = useReveal({ threshold: 0.1 });
+  const { ref: gridRef, controls: gridControls } = useReveal({ threshold: 0.05, delay: 0.2 });
 
   return (
     <section id="equipo" className="py-20 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          ref={titleRef}
+          initial="hidden"
+          animate={titleControls}
+          variants={staggerRevealVariants}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <motion.h2 variants={itemRevealVariants} className="text-4xl md:text-5xl font-bold mb-4">
             Conócenos
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p variants={itemRevealVariants} className="text-xl text-muted-foreground max-w-3xl mx-auto">
             El equipo de profesionales detrás de cada proyecto exitoso
-          </p>
+          </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <motion.div 
+          ref={gridRef}
+          initial="hidden"
+          animate={gridControls}
+          variants={staggerRevealVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8"
+        >
           {team.map((member, index) => (
             <motion.div
               key={member.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              variants={itemRevealVariants}
               data-testid={`team-member-${member.id}`}
               className="group"
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/30 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20">
                 <div className="relative aspect-[3/4] overflow-hidden">
-                  <motion.img
+                  <LazyImage
                     src={member.image}
                     alt={member.name}
-                    className={`w-full h-full object-cover ${member.id === 10 ? "grayscale" : ""}`}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.6 }}
+                    className={`w-full h-full object-cover ${member.id === 10 ? "grayscale" : ""} group-hover:scale-110 transition-transform duration-700`}
+                    containerClassName="absolute inset-0"
+                    aspectRatio="3/4"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
                   
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                     <h3 className="text-xl font-bold mb-1" data-testid={`team-name-${member.id}`}>
@@ -161,7 +166,7 @@ export function Team() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <div className="mt-16">
           <JoinTeamForm />

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { useReveal, staggerRevealVariants, itemRevealVariants } from "@/hooks/use-reveal";
+import { LazyImage } from "@/components/lazy-image";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -74,7 +75,9 @@ const galleryItems = [
 const categories = ["Todos", "Live & Streaming", "Content Studio", "Brand & Digital"];
 
 export function Gallery() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: titleRef, controls: titleControls } = useReveal({ threshold: 0.1 });
+  const { ref: filtersRef, controls: filtersControls } = useReveal({ threshold: 0.1, delay: 0.2 });
+  const { ref: gridRef, controls: gridControls } = useReveal({ threshold: 0.05, delay: 0.3 });
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [selectedItem, setSelectedItem] = useState<typeof galleryItems[0] | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -101,25 +104,26 @@ export function Gallery() {
     <section id="portafolio" className="py-20 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          ref={titleRef}
+          initial="hidden"
+          animate={titleControls}
+          variants={staggerRevealVariants}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <motion.h2 variants={itemRevealVariants} className="text-4xl md:text-5xl font-bold mb-4">
             Casos de <span className="text-accent">Impacto</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p variants={itemRevealVariants} className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Resultados medidos con integración a Analytics y monitoreo en tiempo real
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Category Filters */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          ref={filtersRef}
+          initial="hidden"
+          animate={filtersControls}
+          variants={staggerRevealVariants}
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
           {categories.map((category) => (
@@ -136,16 +140,21 @@ export function Gallery() {
         </motion.div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div 
+          ref={gridRef}
+          initial="hidden"
+          animate={gridControls}
+          variants={staggerRevealVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => (
               <motion.div
                 key={item.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                variants={itemRevealVariants}
+                whileHover={{ y: -10 }}
+                transition={{ type: "spring", stiffness: 300 }}
                 data-testid={`gallery-item-${item.id}`}
               >
                 <div
@@ -155,13 +164,12 @@ export function Gallery() {
                   onMouseLeave={() => setHoveredId(null)}
                 >
                   <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/30 group-hover:border-primary/50 transition-all duration-500">
-                    <motion.div
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${item.image})` }}
-                      animate={{
-                        scale: hoveredId === item.id ? 1.1 : 1,
-                      }}
-                      transition={{ duration: 0.6 }}
+                    <LazyImage
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      containerClassName="absolute inset-0"
+                      aspectRatio="4/3"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                     
@@ -194,7 +202,7 @@ export function Gallery() {
               </motion.div>
             ))}
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
 
       {/* Lightbox Dialog */}

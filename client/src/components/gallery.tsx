@@ -10,7 +10,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useTranslation } from "@/hooks/use-translation";
 
-import eventImg1 from "@assets/stock_images/corporate_event_conf_8208ce6e.jpg";
+import eventImg1 from "/INFORME DE GOBIERNO.jpg";
 import eventImg2 from "@assets/stock_images/corporate_event_conf_40f4a11e.jpg";
 import eventImg3 from "@assets/stock_images/corporate_event_conf_83e553b2.jpg";
 import droneImg from "@assets/stock_images/aerial_drone_cinemat_6a2018be.jpg";
@@ -20,12 +20,12 @@ import contentImg from "@assets/stock_images/creative_content_pro_c51ec741.jpg";
 const galleryItems = [
   {
     id: "1",
-    title: "Rendición de Cuentas Gobierno",
+    title: "Informe de Gobierno",
     category: "Live & Streaming",
     image: eventImg1,
-    description: "Transmisión en vivo 4K con multicámara para evento gubernamental de alto impacto",
+    description: "Transmisión en vivo Full HD con multicámara para evento gubernamental de alto impacto",
     client: "Gobierno Estatal",
-    results: ["15K+ espectadores simultáneos", "98% uptime", "Cobertura en 3 plataformas"],
+    results: ["11 cámaras", "6 pantallas LED", "Grabación Full HD"],
   },
   {
     id: "2",

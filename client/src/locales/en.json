@@ -273,6 +273,12 @@
     "title": "Our",
     "titleHighlight": "360° Value",
     "subtitle": "Innovation in motion. Real-time impact.",
+    "ourResponse": "Our response?",
+    "navigation": {
+      "previous": "Previous",
+      "next": "Next",
+      "goToSlide": "Go to slide"
+    },
     "cases": {
       "automation": {
         "title": "From manual processes to intelligent automation",
@@ -289,8 +295,7 @@
         "problem": "In a saturated feed, flat messages get lost.",
         "solution": "That's why we perform data-driven Storytelling and continuous creative testing to build stories that resonate and generate measurable engagement."
       }
-    },
-    "ourResponse": "Our response?"
+    }
   },
   "spectrum": {
     "description": "Integrated into an ecosystem specialized in communication, technology and multimedia production, Saeta offers audiovisual services with international reach and focus."
@@ -348,5 +353,61 @@
     "copyright": "© {{year}} SAETA. All rights reserved.",
     "privacy": "Privacy",
     "terms": "Terms"
+  },
+  "commercialPartners": {
+    "title": "Our",
+    "titleHighlight": "Commercial Partners",
+    "subtitle": "We work hand in hand with global technology leaders to offer cutting-edge solutions to our clients",
+    "partners": {
+      "meta": {
+        "name": "Meta",
+        "description": "Strategic alliance for advanced social media solutions, digital advertising and immersive experiences that connect brands with global audiences."
+      },
+      "google": {
+        "name": "Google",
+        "description": "Technology partner in advanced analytics, cloud solutions and measurement tools to optimize every project's performance."
+      },
+      "sony": {
+        "name": "Sony",
+        "description": "Collaboration in world-class professional imaging and sound equipment for highest quality cinematographic productions."
+      },
+      "openai": {
+        "name": "OpenAI",
+        "description": "Cutting-edge artificial intelligence integration to enhance content creation, automation and personalized experiences."
+      }
+    },
+    "footer": "These strategic alliances allow us to be at the technological forefront and offer innovative solutions that exceed our clients' expectations."
+  },
+  "testimonials": {
+    "title": "They trust",
+    "subtitle": "Leading brands that have trusted our experience",
+    "sectors": {
+      "sports": "Sports",
+      "organization": "Organization",
+      "government": "Government",
+      "corporate": "Corporate",
+      "services": "Services"
+    }
+  },
+  "videoDemoReel": {
+    "title": "Our Work in Action",
+    "subtitle": "Discover how to tell the world how good and better your company is",
+    "watchReel": "Watch Demo Reel"
+  },
+  "joinTeam": {
+    "title": "JOIN",
+    "subtitle": "We're always looking for passionate talent in audiovisual production",
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Your full name",
+      "email": "Email address",
+      "emailPlaceholder": "your@email.com",
+      "submit": "Submit",
+      "submitting": "Submitting..."
+    },
+    "successTitle": "Thank you for your interest!",
+    "successMessage": "We'll contact you soon.",
+    "errorTitle": "Error",
+    "errorMessage": "There was a problem submitting your information. Please try again."
   }
 }

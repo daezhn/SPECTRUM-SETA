@@ -273,6 +273,12 @@
     "title": "Nuestro valor",
     "titleHighlight": "360°",
     "subtitle": "Innovación en movimiento. Impacto en tiempo real.",
+    "ourResponse": "¿Nuestra respuesta?",
+    "navigation": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "goToSlide": "Ir a diapositiva"
+    },
     "cases": {
       "automation": {
         "title": "De procesos manuales a automatización inteligente",
@@ -289,8 +295,7 @@
         "problem": "En un feed saturado, los mensajes planos se pierden.",
         "solution": "Por eso realizamos un Storytelling guiado por datos y pruebas creativas continuo para construir historias que resuenan y generan engagement medible."
       }
-    },
-    "ourResponse": "¿Nuestra respuesta?"
+    }
   },
   "spectrum": {
     "description": "Integrada a un ecosistema especializado en comunicación, tecnología y producción multimedia, Saeta ofrece servicios audiovisuales con alcance y enfoque internacional."
@@ -348,5 +353,61 @@
     "copyright": "© {{year}} SAETA. Todos los derechos reservados.",
     "privacy": "Privacidad",
     "terms": "Términos"
+  },
+  "commercialPartners": {
+    "title": "Nuestros",
+    "titleHighlight": "Aliados Comerciales",
+    "subtitle": "Trabajamos de la mano con líderes tecnológicos globales para ofrecer soluciones de vanguardia a nuestros clientes",
+    "partners": {
+      "meta": {
+        "name": "Meta",
+        "description": "Alianza estratégica para soluciones avanzadas en redes sociales, publicidad digital y experiencias inmersivas que conectan marcas con audiencias globales."
+      },
+      "google": {
+        "name": "Google",
+        "description": "Partner tecnológico en analítica avanzada, soluciones cloud y herramientas de medición para optimizar el rendimiento de cada proyecto."
+      },
+      "sony": {
+        "name": "Sony", 
+        "description": "Colaboración en equipamiento profesional de imagen y sonido de clase mundial para producciones cinematográficas de máxima calidad."
+      },
+      "openai": {
+        "name": "OpenAI",
+        "description": "Integración de inteligencia artificial de vanguardia para potenciar la creación de contenido, automatización y experiencias personalizadas."
+      }
+    },
+    "footer": "Estas alianzas estratégicas nos permiten estar a la vanguardia tecnológica y ofrecer soluciones innovadoras que superan las expectativas de nuestros clientes."
+  },
+  "testimonials": {
+    "title": "Ellos confían en",
+    "subtitle": "Marcas líderes que han confiado en nuestra experiencia",
+    "sectors": {
+      "sports": "Deportes",
+      "organization": "Organización",
+      "government": "Gobierno",
+      "corporate": "Corporativo",
+      "services": "Servicios"
+    }
+  },
+  "videoDemoReel": {
+    "title": "Nuestro Trabajo en Acción",
+    "subtitle": "Descubre cómo decirle al mundo cuán buena y mejor es tu empresa",
+    "watchReel": "Ver Demo Reel"
+  },
+  "joinTeam": {
+    "title": "ÚNETE A",
+    "subtitle": "Siempre estamos buscando talento apasionado por la producción audiovisual",
+    "form": {
+      "name": "Nombre completo",
+      "namePlaceholder": "Tu nombre completo",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "tu@email.com",
+      "submit": "Enviar",
+      "submitting": "Enviando..."
+    },
+    "successTitle": "¡Gracias por tu interés!",
+    "successMessage": "Nos pondremos en contacto contigo pronto.",
+    "errorTitle": "Error",
+    "errorMessage": "Hubo un problema al enviar tu información. Intenta de nuevo."
   }
 }

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useTranslation } from "@/hooks/use-translation";
 import metaLogo from "@assets/stock_images/meta_facebook_logo_w_5e6cb8bf.jpg";
 import googleLogo from "@assets/stock_images/google_logo_colorful_f7b42a92.jpg";
 import sonyLogo from "@assets/stock_images/sony_corporation_log_1269efb8.jpg";
@@ -33,6 +34,7 @@ const partners = [
 ];
 
 export function CommercialPartners() {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
@@ -46,10 +48,10 @@ export function CommercialPartners() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nuestros <span className="text-accent">Aliados Comerciales</span>
+            {t("commercialPartners.title")} <span className="text-accent">{t("commercialPartners.titleHighlight")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Trabajamos de la mano con líderes tecnológicos globales para ofrecer soluciones de vanguardia a nuestros clientes
+            {t("commercialPartners.subtitle")}
           </p>
         </motion.div>
 

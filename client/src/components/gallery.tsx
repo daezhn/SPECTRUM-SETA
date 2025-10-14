@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useTranslation } from "@/hooks/use-translation";
 
 import eventImg1 from "@assets/stock_images/corporate_event_conf_8208ce6e.jpg";
 import eventImg2 from "@assets/stock_images/corporate_event_conf_40f4a11e.jpg";
@@ -76,10 +77,11 @@ const galleryItems = [
 const categories = ["Todos", "Live & Streaming", "Content Studio", "Brand & Digital"];
 
 export function Gallery() {
+  const { t } = useTranslation();
   const { ref: titleRef, controls: titleControls } = useReveal({ threshold: 0.1 });
   const { ref: filtersRef, controls: filtersControls } = useReveal({ threshold: 0.1, delay: 0.2 });
   const { ref: gridRef, controls: gridControls } = useReveal({ threshold: 0.05, delay: 0.3 });
-  const [selectedCategory, setSelectedCategory] = useState("Todos");
+  const [selectedCategory, setSelectedCategory] = useState(t("gallery.categories.all"));
   const [selectedItem, setSelectedItem] = useState<typeof galleryItems[0] | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
@@ -112,10 +114,10 @@ export function Gallery() {
           className="text-center mb-12"
         >
           <motion.h2 variants={itemRevealVariants} className="text-4xl md:text-5xl font-bold mb-4">
-            Casos de <span className="text-accent">Impacto</span>
+            {t("gallery.title")} <span className="text-accent">{t("gallery.titleHighlight")}</span>
           </motion.h2>
           <motion.p variants={itemRevealVariants} className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Resultados medidos con integración a Analytics y monitoreo en tiempo real
+            {t("gallery.subtitle")}
           </motion.p>
         </motion.div>
 

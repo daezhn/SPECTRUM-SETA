@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { SiWhatsapp, SiFacebook, SiLinkedin } from "react-icons/si";
 import { useMagneticHover } from "@/hooks/use-animations";
+import { useTranslation } from "@/hooks/use-translation";
 import demoReelImage from "@assets/stock_images/professional_video_p_4c4e9095.jpg";
 import demoReelVideo from "@assets/demo-reel.mp4";
 
 export function VideoDemoReel() {
+  const { t } = useTranslation();
   return (
     <section 
       id="demo-reel" 
@@ -36,7 +38,7 @@ export function VideoDemoReel() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-lg md:text-xl font-medium text-white/70 mb-6 uppercase tracking-wider">
-              Nuestro Trabajo en Acción
+              {t("videoDemoReel.title")}
             </h2>
           </motion.div>
 
@@ -47,7 +49,7 @@ export function VideoDemoReel() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light mb-8"
           >
-            Descubre cómo decirle al mundo cuan buena y mejor es tu empresa
+            {t("videoDemoReel.subtitle")}
           </motion.p>
 
           {/* Social Media Icons */}

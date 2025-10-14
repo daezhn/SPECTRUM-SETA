@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useTranslation } from "@/hooks/use-translation";
 import spectrumLogo from "@assets/Spectrum-03_1760395506893.png";
 
 export function SpectrumSection() {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -43,7 +45,7 @@ export function SpectrumSection() {
                 className="flex-1"
               >
                 <p className="text-lg md:text-xl text-foreground leading-relaxed">
-                  Integrada a un ecosistema especializado en comunicación, tecnología y producción multimedia, Saeta ofrece servicios audiovisuales con alcance y enfoque internacional.
+                  {t("spectrum.description")}
                 </p>
               </motion.div>
             </div>

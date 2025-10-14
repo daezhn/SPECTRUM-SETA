@@ -1,49 +1,51 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useTranslation } from "@/hooks/use-translation";
 import iconRapidez from "@assets/icon-rapidez.png";
 import iconEnfoques from "@assets/icon-enfoques.png";
 import iconTratoDirecto from "@assets/icon-trato-directo.png";
 import iconCampos from "@assets/icon-campos.png";
 import iconEntusiasmo from "@assets/icon-entusiasmo.png";
 
-const benefits = [
-  {
-    id: "rapidez",
-    icon: iconRapidez,
-    title: "RAPIDEZ",
-    description: "Nuestra promesa es que su proyecto estará terminado en menos de dos semanas.",
-  },
-  {
-    id: "multiples-enfoques",
-    icon: iconEnfoques,
-    title: "USO DE MÚLTIPLES ENFOQUES",
-    description: "El diseño sigue no sólo las guías de mercadotecnia, sino que se rompe con los enfoques tradicionales al utilizar técnicas psicológicas para transmitir el mensaje correcto y adecuado a sus clientes potenciales.",
-  },
-  {
-    id: "trato-directo",
-    icon: iconTratoDirecto,
-    title: "TRATO DIRECTO",
-    description: "Hablarán directamente con el equipo a cargo de su proyecto, así que tendremos una comunicación personal que facilitará el entendimiento.",
-  },
-  {
-    id: "conocimiento-campos",
-    icon: iconCampos,
-    title: "CONOCIMIENTO EN VARIOS CAMPOS",
-    description: "Trabajamos no sólo en el desarrollo web, sino en la producción de video, diseño gráfico, efectos especiales, comerciales para TV, fotomontajes, modelaje 3D, etc.",
-  },
-  {
-    id: "entusiasmo",
-    icon: iconEntusiasmo,
-    title: "ENTUSIASMO",
-    description: "Nos gusta nuestra labor y la disfrutamos, por eso le aseguramos que obtendrán un excelente trabajo.",
-  },
-];
-
 export function WhyHireUs() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  const { t } = useTranslation();
+
+  const benefits = [
+    {
+      id: "rapidez",
+      icon: iconRapidez,
+      title: t("whyHireUs.benefits.speed.title"),
+      description: t("whyHireUs.benefits.speed.description"),
+    },
+    {
+      id: "multiples-enfoques",
+      icon: iconEnfoques,
+      title: t("whyHireUs.benefits.multipleApproaches.title"),
+      description: t("whyHireUs.benefits.multipleApproaches.description"),
+    },
+    {
+      id: "trato-directo",
+      icon: iconTratoDirecto,
+      title: t("whyHireUs.benefits.directCommunication.title"),
+      description: t("whyHireUs.benefits.directCommunication.description"),
+    },
+    {
+      id: "conocimiento-campos",
+      icon: iconCampos,
+      title: t("whyHireUs.benefits.multiFieldKnowledge.title"),
+      description: t("whyHireUs.benefits.multiFieldKnowledge.description"),
+    },
+    {
+      id: "entusiasmo",
+      icon: iconEntusiasmo,
+      title: t("whyHireUs.benefits.enthusiasm.title"),
+      description: t("whyHireUs.benefits.enthusiasm.description"),
+    },
+  ];
 
   return (
     <section id="por-que-contratar" className="py-20 md:py-32 relative overflow-hidden" data-testid="section-why-hire-us">
@@ -56,10 +58,10 @@ export function WhyHireUs() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            ¿Por qué contratar <span className="text-accent">nuestros servicios</span>?
+            {t("whyHireUs.title")} <span className="text-accent">{t("whyHireUs.titleHighlight")}</span>?
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Experiencia comprobada, tecnología de punta y compromiso con resultados medibles que transforman tu inversión en impacto real
+            {t("whyHireUs.subtitle")}
           </p>
         </motion.div>
 

@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "@/hooks/use-translation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send, Sparkles, Users } from "lucide-react";
@@ -16,6 +17,7 @@ const joinTeamSchema = z.object({
 type JoinTeamForm = z.infer<typeof joinTeamSchema>;
 
 export function JoinTeamForm() {
+  const { t } = useTranslation();
   const { toast } = useToast();
 
   const form = useForm<JoinTeamForm>({
@@ -54,15 +56,15 @@ export function JoinTeamForm() {
     },
     onSuccess: () => {
       toast({
-        title: "¡Gracias por tu interés!",
-        description: "Nos pondremos en contacto contigo pronto.",
+        title: t("joinTeam.successTitle"),
+        description: t("joinTeam.successMessage"),
       });
       form.reset();
     },
     onError: () => {
       toast({
-        title: "Error",
-        description: "Hubo un problema al enviar tu información. Intenta de nuevo.",
+        title: t("joinTeam.errorTitle"),
+        description: t("joinTeam.errorMessage"),
         variant: "destructive",
       });
     },
@@ -122,12 +124,12 @@ export function JoinTeamForm() {
             <Users className="w-8 h-8 text-primary" />
           </motion.div>
           <h3 className="text-3xl md:text-4xl font-bold text-white">
-            UNIRSE A <span className="text-primary">SAETA</span>
+            {t("joinTeam.title")} <span className="text-primary">SAETA</span>
           </h3>
         </div>
         
         <p className="text-white/70 mb-8">
-          Siempre estamos buscando talento apasionado por la producción audiovisual
+          {t("joinTeam.subtitle")}
         </p>
 
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -139,7 +141,7 @@ export function JoinTeamForm() {
             >
               <Input
                 {...form.register("name")}
-                placeholder="Nombre completo"
+                placeholder={t("joinTeam.form.namePlaceholder")}
                 className="w-full bg-white text-black placeholder:text-gray-500 border-0 h-12 transition-all duration-300"
                 data-testid="input-join-name"
               />
@@ -153,7 +155,7 @@ export function JoinTeamForm() {
               <Input
                 {...form.register("email")}
                 type="email"
-                placeholder="E-mail"
+                placeholder={t("joinTeam.form.emailPlaceholder")}
                 className="w-full bg-white text-black placeholder:text-gray-500 border-0 h-12 transition-all duration-300"
                 data-testid="input-join-email"
               />
@@ -169,7 +171,7 @@ export function JoinTeamForm() {
                 className="bg-primary hover:bg-primary/90 text-white px-8 h-12 whitespace-nowrap"
                 data-testid="button-join-submit"
               >
-                {joinTeamMutation.isPending ? "Enviando..." : "Enviar"}
+                {joinTeamMutation.isPending ? t("joinTeam.form.submitting") : t("joinTeam.form.submit")}
               </Button>
             </motion.div>
           </div>

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useReveal, staggerRevealVariants, itemRevealVariants } from "@/hooks/use-reveal";
 import { JoinTeamForm } from "@/components/join-team-form";
 import { LazyImage } from "@/components/lazy-image";
+import { useTranslation } from "@/hooks/use-translation";
 import teamMember1 from "@assets/WILY_1760390323004.jpg";
 import teamMember2 from "@assets/2.jpg";
 import teamMember3 from "@assets/3.jpg";
@@ -105,6 +106,7 @@ const team = [
 ];
 
 export function Team() {
+  const { t } = useTranslation();
   const { ref: titleRef, controls: titleControls } = useReveal({ threshold: 0.1 });
   const { ref: gridRef, controls: gridControls } = useReveal({ threshold: 0.05, delay: 0.2 });
 
@@ -119,10 +121,10 @@ export function Team() {
           className="text-center mb-16"
         >
           <motion.h2 variants={itemRevealVariants} className="text-4xl md:text-5xl font-bold mb-4">
-            Conócenos
+            {t("team.title")}
           </motion.h2>
           <motion.p variants={itemRevealVariants} className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            El equipo de profesionales detrás de cada proyecto exitoso
+            {t("team.subtitle")}
           </motion.p>
         </motion.div>
 

@@ -2,37 +2,42 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useInView } from "react-intersection-observer";
+import { useTranslation } from "@/hooks/use-translation";
 import aiAutomationImg from "@assets/valor360-automatizacion.jpg";
 import audienciasHibridasImg from "@assets/valor360-audiencias.jpg";
 import narrativasImg from "@assets/88220530_1049505392072982_934368232574287872_n_1760398681667.jpg";
 
-const transformationCases = [
-  {
-    id: 1,
-    title: "De procesos manuales a automatización inteligente",
-    description: "Los plazos se acortan y la IA creativa cambió las reglas de la postproducción. ¿Nuestra respuesta? Flujos con IA para edición asistida, motion graphics generativos y versionado multiplataforma que aceleran la entrega y elevan la consistencia a escala.",
-    image: aiAutomationImg,
-    imagePosition: "center",
-  },
-  {
-    id: 2,
-    title: "Las audiencias híbridas y las plataformas que evolucionan minuto a minuto",
-    description: "Las audiencias híbridas y las plataformas que evolucionan minuto a minuto transformaron la forma de comunicar. ¿Nuestra respuesta? Analítica en tiempo real y tableros de decisión que permiten ajustar contenido y distribución al instante, local o globalmente.",
-    image: audienciasHibridasImg,
-    imagePosition: "center",
-  },
-  {
-    id: 3,
-    title: "De contenido genérico a narrativas que convierten",
-    description: "En un feed saturado, los mensajes planos se pierden. Por eso realizamos un Storytelling guiado por datos y pruebas creativas continuo para construir historias que resuenan y generan engagement medible.",
-    image: narrativasImg,
-    imagePosition: "75% center",
-  },
-];
-
 export function Valor360() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { t } = useTranslation();
+
+  const transformationCases = [
+    {
+      id: 1,
+      title: t("valor360.cases.automation.title"),
+      problem: t("valor360.cases.automation.problem"),
+      solution: t("valor360.cases.automation.solution"),
+      image: aiAutomationImg,
+      imagePosition: "center",
+    },
+    {
+      id: 2,
+      title: t("valor360.cases.hybridAudiences.title"),
+      problem: t("valor360.cases.hybridAudiences.problem"),
+      solution: t("valor360.cases.hybridAudiences.solution"),
+      image: audienciasHibridasImg,
+      imagePosition: "center",
+    },
+    {
+      id: 3,
+      title: t("valor360.cases.narratives.title"),
+      problem: t("valor360.cases.narratives.problem"),
+      solution: t("valor360.cases.narratives.solution"),
+      image: narrativasImg,
+      imagePosition: "75% center",
+    },
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -65,10 +70,10 @@ export function Valor360() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nuestro valor <span className="text-accent">360°</span>
+            {t("valor360.title")} <span className="text-accent">{t("valor360.titleHighlight")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Innovación en movimiento. Impacto en tiempo real.
+            {t("valor360.subtitle")}
           </p>
         </motion.div>
 
@@ -103,23 +108,15 @@ export function Valor360() {
                     {transformationCases[currentIndex].title}
                   </h3>
                   <div className="space-y-4">
-                    {transformationCases[currentIndex].description.includes('¿Nuestra respuesta?') ? (
-                      <>
-                        <p className="text-lg text-muted-foreground leading-relaxed">
-                          {transformationCases[currentIndex].description.split('¿Nuestra respuesta?')[0].trim()}
-                        </p>
-                        <div className="border-l-4 border-accent/50 pl-4 bg-accent/5 py-3 rounded-r">
-                          <p className="text-sm font-semibold text-accent/80 mb-2">¿Nuestra respuesta?</p>
-                          <p className="text-lg text-foreground leading-relaxed">
-                            {transformationCases[currentIndex].description.split('¿Nuestra respuesta?')[1].trim()}
-                          </p>
-                        </div>
-                      </>
-                    ) : (
-                      <p className="text-lg text-muted-foreground leading-relaxed">
-                        {transformationCases[currentIndex].description}
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      {transformationCases[currentIndex].problem}
+                    </p>
+                    <div className="border-l-4 border-accent/50 pl-4 bg-accent/5 py-3 rounded-r">
+                      <p className="text-sm font-semibold text-accent/80 mb-2">{t("valor360.ourResponse")}</p>
+                      <p className="text-lg text-foreground leading-relaxed">
+                        {transformationCases[currentIndex].solution}
                       </p>
-                    )}
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -132,6 +129,7 @@ export function Valor360() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               data-testid="button-prev-valor"
+              aria-label={t("valor360.navigation.previous")}
             >
               <ChevronLeft className="w-6 h-6 text-accent" />
             </motion.button>
@@ -142,6 +140,7 @@ export function Valor360() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               data-testid="button-next-valor"
+              aria-label={t("valor360.navigation.next")}
             >
               <ChevronRight className="w-6 h-6 text-accent" />
             </motion.button>
@@ -159,6 +158,7 @@ export function Valor360() {
                     : "bg-muted-foreground/30 w-3 h-3 hover:bg-muted-foreground/50"
                 }`}
                 data-testid={`dot-indicator-${index}`}
+                aria-label={`${t("valor360.navigation.goToSlide")} ${index + 1}`}
               />
             ))}
           </div>

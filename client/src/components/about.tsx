@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { CheckCircle2, Shield, Award, Zap } from "lucide-react";
 import { CinematicTextReveal } from "@/hooks/use-animations";
+import { useTranslation } from "@/hooks/use-translation";
 
 const isoSteps = [
   {
@@ -90,6 +91,7 @@ const features = [
 ];
 
 export function About() {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
@@ -103,10 +105,10 @@ export function About() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Sobre <span className="text-primary">SAETA</span>
+            {t("about.title")} <span className="text-primary">{t("about.titleHighlight")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Operación todo-en-uno: creatividad cinematográfica + cobertura multicámara en vivo con analítica integrada
+            {t("about.subtitle")}
           </p>
         </motion.div>
 

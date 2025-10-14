@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { LazyImage } from "@/components/lazy-image";
+import { useTranslation } from "@/hooks/use-translation";
 import algodoneros from "@assets/algodoneros.webp";
 import amistad from "@assets/amistad.webp";
 import aptiv from "@assets/aptiv.webp";
@@ -22,6 +23,7 @@ const clients = [
 ];
 
 export function ClientsCarousel() {
+  const { t } = useTranslation();
   const [currentSet, setCurrentSet] = useState(0);
   const itemsPerPage = 4;
   const totalSets = Math.ceil(clients.length / itemsPerPage);
@@ -55,10 +57,10 @@ export function ClientsCarousel() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Ellos confían en <span className="text-primary">SAETA</span>
+            {t("testimonials.title")} <span className="text-primary">SAETA</span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Marcas líderes que han confiado en nuestra experiencia
+            {t("testimonials.subtitle")}
           </p>
         </motion.div>
 

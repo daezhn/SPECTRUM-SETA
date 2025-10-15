@@ -30,12 +30,12 @@ const galleryItems = [
   },
   {
     id: "2",
-    title: "F.C. Júarez Video institucional",
-    category: "Brand & Digital",
-    image: eventImg2,
-    description: "Creación profesional de video institucional",
-    client: "F.C. Júarez",
-    results: ["9,000+ Vistas en plataformas digitales", "85% engagement rate", "200+ leads generados"],
+    title: "F.C. Juárez - Video Institucional",
+    category: "Content Studio",
+    image: "/MEDIA/CLIENTES/image.png",
+    description: "Video institucional profesional para equipo de fútbol profesional",
+    client: "F.C. Juárez",
+    results: ["Producción HD", "Material institucional", "Campaña digital"],
   },
   {
     id: "3",

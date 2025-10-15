@@ -82,7 +82,7 @@ export function Gallery() {
   const { ref: titleRef, controls: titleControls } = useReveal({ threshold: 0.1 });
   const { ref: filtersRef, controls: filtersControls } = useReveal({ threshold: 0.1, delay: 0.2 });
   const { ref: gridRef, controls: gridControls } = useReveal({ threshold: 0.05, delay: 0.3 });
-  const [selectedCategory, setSelectedCategory] = useState(t("gallery.categories.all"));
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [selectedItem, setSelectedItem] = useState<typeof galleryItems[0] | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 

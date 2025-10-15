@@ -23,6 +23,7 @@ const galleryItems = [
     title: "Informe de Gobierno",
     category: "Live & Streaming",
     image: eventImg1,
+    video: "/MEDIA/INFORMEGOB.mp4",
     description: "Transmisión en vivo Full HD con multicámara para evento gubernamental de alto impacto",
     client: "Gobierno Estatal",
     results: ["11 cámaras", "6 pantallas LED", "Grabación Full HD"],
@@ -245,12 +246,23 @@ export function Gallery() {
               </button>
 
               <div className="relative aspect-video">
-                <img
-                  src={selectedItem.image}
-                  alt={selectedItem.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                {selectedItem.video ? (
+                  <video
+                    src={selectedItem.video}
+                    controls
+                    autoPlay
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <>
+                    <img
+                      src={selectedItem.image}
+                      alt={selectedItem.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  </>
+                )}
               </div>
 
               <div className="p-8">

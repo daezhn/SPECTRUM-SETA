@@ -44,9 +44,9 @@ const galleryItems = [
     category: "Brand & Digital",
   image: "/0H3A5437.jpg",
     video: "/RENARD JHONSON MAYOR PASO DEL NORTE PAGINA WEB.mp4",
-    description: "Cobertura interna para las elecciones del alcalde de El Paso, Tx.",
+    description: "Cobertura interna para el alcalde de El Paso, Tx.",
     client: "El Paso mayor; Renard Jhonson",
-    results: ["Fotograía y video profesional", "4.8/5 satisfacción", "Alcance global"],
+    results: ["Fotografía y video profesional", "4.8/5 satisfacción", "Alcance global"],
   },
   {
     id: "4",

@@ -9,7 +9,6 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useTranslation } from "@/hooks/use-translation";
 
 import eventImg1 from "/informe-gobierno.jpg";
-import liveImg from "@assets/stock_images/multi_camera_video_p_7e46d6b3.jpg";
 import contentImg from "@assets/stock_images/creative_content_pro_c51ec741.jpg";
 
 const galleryItems = [
@@ -53,15 +52,17 @@ const galleryItems = [
     client: "Liga Estatal de Baseball Chihuahua",
     results: ["Repetición multicamara", "10 equipos simultaneos", "+ 1,400 horas revisadas"],
   },
-  {
-    id: "ia-5",
-    title: "Creación contenido IA",
-    category: "Brand & Digital",
-    image: liveImg,
-    description: "Creación de videos, imagenes, guiones y reels profesionales por medio de inteligencia artificial",
-    client: "JMAS Delicias",
-    results: ["8 piezas creativas", "3K+ impresiones"],
-  },
+    {
+      id: "ia-5",
+      title: "Creación contenido IA",
+      category: "Brand & Digital",
+      image: "/jmas.jpg",
+      video: "/FDownloader.Net_AQMQqhG8w1pOB-EVzzANiVY8pDOBsjFqN2Rk5BuPTKuIxKnTZ5LV-vmNI8isfPXYCTeCwhRFfvaoK-NwDCVOWJnppVaBzXGOFUu1pb8RGVk_jA_720p_(HD).mp4",
+      description: "Creación de videos, imagenes, guiones y reels profesionales por medio de inteligencia artificial",
+      client: "JMAS Delicias",
+      results: ["8 piezas creativas", "3K+ impresiones"],
+      reel: true,
+    },
   {
     id: "community-6",
     title: "Contenido nativo, pauta y community",
@@ -143,7 +144,7 @@ export function Gallery() {
                       <LazyImage
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover scale-105"
+                        className="w-full h-full object-cover"
                         containerClassName="absolute inset-0"
                         aspectRatio="4/3"
                         priority
@@ -209,13 +210,14 @@ export function Gallery() {
                 <ChevronRight className="w-5 h-5 text-white" />
               </button>
 
-              <div className="relative aspect-video">
-                {selectedItem.video ? (
+              <div className={`relative mx-auto ${selectedItem?.reel ? 'aspect-[9/16] max-h-[60vh] max-w-[260px]' : 'aspect-video'}`}>
+                {selectedItem?.video ? (
                   <video
                     src={encodeURI(selectedItem.video)}
                     controls
                     autoPlay
                     className="w-full h-full object-cover"
+                    style={selectedItem.reel ? { borderRadius: '1rem', background: '#000', maxHeight: '60vh', maxWidth: '260px', margin: '0 auto' } : {}}
                   />
                 ) : (
                   <>

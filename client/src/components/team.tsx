@@ -17,7 +17,6 @@ import teamMember11 from "@assets/efrain-hernandez.webp";
 import teamMember12 from "@assets/ricardo-vega.webp";
 import teamMember13 from "@assets/israel-galicia.webp";
 import teamMember14 from "@assets/ulises-holguin.webp";
-import teamMember15 from "@assets/alondra-ornelas.jpg";
 
 const team = [
   {
@@ -108,7 +107,7 @@ const team = [
     id: 15,
     name: "Alondra Ornelas",
     role: "Camarógrafa",
-    image: teamMember15,
+    image: "/alondra.jpg",
   },
 ];
 

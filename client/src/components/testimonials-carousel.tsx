@@ -15,11 +15,11 @@ const clients = [
   { id: 7, name: "F.C. Juárez", logo: fcJuarez, sector: "Deportes" },
   { id: 2, name: "Casa Amistad", logo: amistad, sector: "Organización" },
   { id: 8, name: "Fiscalía del Estado", logo: fiscalia, sector: "Gobierno" },
-  { id: 3, name: "APTIV", logo: aptiv, sector: "Corporativo" },
+  { id: 10, name: "Liga Estatal de Béisbol Chihuahua (ÑEB)", logo: "/ÑEB.png", sector: "Deportes" },
   { id: 4, name: "Congreso del Estado", logo: congresoEstado, sector: "Gobierno" },
   { id: 5, name: "DH Gas", logo: dhgas, sector: "Servicios" },
   { id: 9, name: "Delicias Gobierno Municipal", logo: "/Delicias Gobierno Municipal_Vertical.png", sector: "Gobierno" },
-  { id: 10, name: "Liga Estatal de Béisbol Chihuahua (ÑEB)", logo: "/ÑEB.png", sector: "Deportes" },
+  { id: 3, name: "APTIV", logo: aptiv, sector: "Corporativo" },
 ];
 
 export function ClientsCarousel() {
@@ -74,12 +74,12 @@ export function ClientsCarousel() {
               className="group"
               data-testid={`client-logo-${client.id}`}
             >
-              <div className="relative aspect-square rounded-xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/30 p-6 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20">
+              <div className="relative aspect-square rounded-xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/30 p-6 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20 group-hover:scale-105">
                 <div className="absolute inset-0 p-6">
                   <LazyImage
                     src={client.logo}
                     alt={client.name}
-                    className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300 filter grayscale group-hover:grayscale-0 group-hover:scale-105"
+                    className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300 filter grayscale group-hover:grayscale-0"
                     containerClassName="relative w-full h-full"
                     aspectRatio="1/1"
                   />

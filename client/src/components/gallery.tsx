@@ -68,9 +68,11 @@ const galleryItems = [
     title: "Contenido nativo, pauta y community",
     category: "Content Studio",
     image: "/Gemini_Generated_Image_t570v2t570v2t570.png",
+      video: "/jesusreel.mp4",
+    reel: true,
     description: "Manejo de redes sociales a representantes del estado",
     client: "Jesús Valenciano",
-  results: ["129K followers en FB.", "250K+ vistas", "Contenido de alto impacto diario"],
+    results: ["129K followers en FB.", "250K+ vistas", "Contenido de alto impacto diario"],
   },
 ];
 

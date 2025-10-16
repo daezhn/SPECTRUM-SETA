@@ -3,23 +3,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useReveal, staggerRevealVariants, itemRevealVariants } from "@/hooks/use-reveal";
 import { LazyImage } from "@/components/lazy-image";
 import { useKenBurnsEffect } from "@/hooks/use-animations";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useTranslation } from "@/hooks/use-translation";
 
 import eventImg1 from "/INFORME DE GOBIERNO.jpg";
-import eventImg2 from "@assets/stock_images/corporate_event_conf_40f4a11e.jpg";
-import eventImg3 from "@assets/stock_images/corporate_event_conf_83e553b2.jpg";
 import droneImg from "@assets/stock_images/aerial_drone_cinemat_6a2018be.jpg";
 import liveImg from "@assets/stock_images/multi_camera_video_p_7e46d6b3.jpg";
 import contentImg from "@assets/stock_images/creative_content_pro_c51ec741.jpg";
 
 const galleryItems = [
   {
-    id: "1",
+    id: "gobierno-1",
     title: "Informe de Gobierno",
     category: "Live & Streaming",
     image: eventImg1,
@@ -29,7 +25,7 @@ const galleryItems = [
     results: ["11 cámaras", "6 pantallas LED", "Grabación Full HD"],
   },
   {
-    id: "2",
+    id: "juarez-2",
     title: "F.C. Juárez - Video Institucional",
     category: "Content Studio",
     image: "/MEDIA/CLIENTES/image.png",
@@ -39,17 +35,17 @@ const galleryItems = [
     results: ["Producción HD", "Material institucional", "Campaña digital"],
   },
   {
-    id: "3",
+    id: "renard-3",
     title: "Cobertura y creación de contenido Renard Jhonson",
     category: "Brand & Digital",
-  image: "/0H3A5437.jpg",
+    image: "/0H3A5437.jpg",
     video: "/RENARD JHONSON MAYOR PASO DEL NORTE PAGINA WEB.mp4",
     description: "Cobertura interna para el alcalde de El Paso, Tx.",
     client: "El Paso mayor; Renard Jhonson",
     results: ["Fotografía y video profesional", "4.8/5 satisfacción", "Alcance global"],
   },
   {
-    id: "4",
+    id: "replay-4",
     title: "Replay Challenge",
     category: "Live & Streaming",
     image: droneImg,
@@ -58,7 +54,7 @@ const galleryItems = [
     results: ["Repetición multicamara", "10 equipos simultaneos", "+ 1,400 horas revisadas"],
   },
   {
-    id: "5",
+    id: "ia-5",
     title: "Creación contenido IA",
     category: "Brand & Digital",
     image: liveImg,
@@ -67,7 +63,7 @@ const galleryItems = [
     results: ["8 piezas creativas", "3K+ impresiones"],
   },
   {
-    id: "6",
+    id: "community-6",
     title: "Contenido nativo, pauta y community",
     category: "Content Studio",
     image: contentImg,
@@ -77,20 +73,11 @@ const galleryItems = [
   },
 ];
 
-const categories = ["Todos", "Live & Streaming", "Content Studio", "Brand & Digital"];
-
 export function Gallery() {
   const { t } = useTranslation();
   const { ref: titleRef, controls: titleControls } = useReveal({ threshold: 0.1 });
-  const { ref: filtersRef, controls: filtersControls } = useReveal({ threshold: 0.1, delay: 0.2 });
   const { ref: gridRef, controls: gridControls } = useReveal({ threshold: 0.05, delay: 0.3 });
-  const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [selectedItem, setSelectedItem] = useState<typeof galleryItems[0] | null>(null);
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-
-  const filteredItems = selectedCategory === "Todos"
-    ? galleryItems
-    : galleryItems.filter((item) => item.category === selectedCategory);
 
   const handleNext = () => {
     if (!selectedItem) return;
@@ -124,37 +111,16 @@ export function Gallery() {
           </motion.p>
         </motion.div>
 
-        {/* Category Filters */}
-        <motion.div
-          ref={filtersRef}
-          initial="hidden"
-          animate={filtersControls}
-          variants={staggerRevealVariants}
-          className="flex flex-wrap justify-center gap-2 mb-12"
-        >
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              onClick={() => setSelectedCategory(category)}
-              data-testid={`filter-${category.toLowerCase().replace(/\s+/g, "-")}`}
-              className="rounded-full"
-            >
-              {category}
-            </Button>
-          ))}
-        </motion.div>
-
         {/* Gallery Grid */}
         <motion.div 
           ref={gridRef}
           initial="hidden"
           animate={gridControls}
           variants={staggerRevealVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
         >
           <AnimatePresence mode="popLayout">
-            {filteredItems.map((item, index) => (
+            {galleryItems.map((item, index) => (
               <motion.div
                 key={item.id}
                 layout
@@ -164,12 +130,10 @@ export function Gallery() {
                 data-testid={`gallery-item-${item.id}`}
               >
                 <div
-                  className="group relative overflow-hidden cursor-pointer rounded-xl transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20"
+                  className="group relative overflow-hidden cursor-pointer rounded-2xl transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20"
                   onClick={() => setSelectedItem(item)}
-                  onMouseEnter={() => setHoveredId(item.id)}
-                  onMouseLeave={() => setHoveredId(null)}
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/30 group-hover:border-primary/50 transition-all duration-500">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border/30 group-hover:border-primary/50 transition-all duration-500">
                     <motion.div 
                       className="absolute inset-0"
                       variants={useKenBurnsEffect(7)}
@@ -182,10 +146,10 @@ export function Gallery() {
                         className="w-full h-full object-cover scale-105"
                         containerClassName="absolute inset-0"
                         aspectRatio="4/3"
+                        priority
                       />
                     </motion.div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-                    
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                     <motion.div 
                       className="absolute top-4 left-4"
                       initial={{ opacity: 0 }}
@@ -196,7 +160,6 @@ export function Gallery() {
                         {item.category}
                       </Badge>
                     </motion.div>
-
                     <motion.div 
                       className="absolute bottom-0 left-0 right-0 p-6 text-white"
                       initial={{ opacity: 0 }}
@@ -208,8 +171,7 @@ export function Gallery() {
                       </h3>
                       <p className="text-sm text-white/80 line-clamp-2">{item.description}</p>
                     </motion.div>
-                    
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/15 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
                   </div>
                 </div>
               </motion.div>

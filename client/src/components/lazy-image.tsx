@@ -111,7 +111,7 @@ export function LazyImage({
           ref={imgRef}
           src={src}
           alt={alt}
-          className={className}
+          className={`block ${className}`}
           loading={priority ? "eager" : "lazy"}
           initial={{ opacity: 0 }}
           animate={{ opacity: isLoaded ? 1 : 0 }}

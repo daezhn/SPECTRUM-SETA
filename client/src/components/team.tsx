@@ -34,7 +34,7 @@ const team = [
   {
     id: 3,
     name: "José Montañez",
-    role: "Jefe de producción",
+    role: "Director de producción",
     image: teamMember3,
   },
   {
@@ -46,7 +46,7 @@ const team = [
   {
     id: 5,
     name: "David Valencia",
-    role: "Productor Audiovisual",
+    role: "Producción Audiovisual",
     image: teamMember5,
   },
   {

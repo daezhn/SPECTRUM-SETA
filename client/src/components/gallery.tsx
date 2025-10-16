@@ -8,7 +8,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useTranslation } from "@/hooks/use-translation";
 
-import eventImg1 from "/INFORME DE GOBIERNO.jpg";
+import eventImg1 from "/informe-gobierno.jpg";
 import liveImg from "@assets/stock_images/multi_camera_video_p_7e46d6b3.jpg";
 import contentImg from "@assets/stock_images/creative_content_pro_c51ec741.jpg";
 

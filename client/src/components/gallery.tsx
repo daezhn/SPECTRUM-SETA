@@ -48,7 +48,7 @@ const galleryItems = [
     title: "Replay Challenge",
     category: "Live & Streaming",
     image: "/ÑEB.png",
-    video: "/PRIMER RETO ALGODONEROS VS INDIOS J7 - 1 - Camera12345 - - - - - [22-18-42] [22-18-44].mp4",
+  video: "/RETOLEB.mp4",
     description: "Challenge para retar jugadas en la semiprofesional de baseball LEB Chihuahua",
     client: "Liga Estatal de Baseball Chihuahua",
     results: ["Repetición multicamara", "10 equipos simultaneos", "+ 1,400 horas revisadas"],

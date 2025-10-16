@@ -155,7 +155,7 @@ export function Team() {
                   <LazyImage
                     src={member.image}
                     alt={member.name}
-                    className={`w-full h-full object-cover ${member.id === 10 ? "grayscale" : ""} group-hover:scale-110 transition-transform duration-700`}
+                    className={`w-full h-full object-cover ${member.id === 10 || member.id === 15 ? "grayscale" : ""} group-hover:scale-110 transition-transform duration-700`}
                     containerClassName="absolute inset-0"
                     aspectRatio="3/4"
                   />

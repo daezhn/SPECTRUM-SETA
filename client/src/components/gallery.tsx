@@ -67,10 +67,10 @@ const galleryItems = [
     id: "community-6",
     title: "Contenido nativo, pauta y community",
     category: "Content Studio",
-    image: contentImg,
-    description: "Manejo de redes sociales a represantes del estado",
+    image: "/Gemini_Generated_Image_t570v2t570v2t570.png",
+    description: "Manejo de redes sociales a representantes del estado",
     client: "Jesús Valenciano",
-    results: ["129K followers en FB.", "250K+ vistas"],
+  results: ["129K followers en FB.", "250K+ vistas", "Contenido de alto impacto diario"],
   },
 ];
 

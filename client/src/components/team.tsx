@@ -77,7 +77,7 @@ const team = [
     id: 10,
     name: "David Robles",
     role: "Consultor",
-    image: "", // Esperando path de la foto
+  image: "/Davidrobles.jpg",
   },
   {
     id: 11,
@@ -152,13 +152,13 @@ export function Team() {
             >
               <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/30 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20">
                 <div className="relative aspect-[3/4] overflow-hidden">
-                  <LazyImage
-                    src={member.image}
-                    alt={member.name}
-                    className={`w-full h-full object-cover ${member.id === 10 || member.id === 14 || member.id === 15 ? "grayscale" : ""} group-hover:scale-110 transition-transform duration-700`}
-                    containerClassName="absolute inset-0"
-                    aspectRatio="3/4"
-                  />
+                    <LazyImage
+                      src={member.image}
+                      alt={member.name}
+                      className={`w-full h-full object-cover ${member.id === 10 || member.id === 14 || member.id === 15 || member.name === "David Robles" ? "grayscale" : ""} ${member.name === "David Robles" ? "scale-125" : ""} group-hover:scale-110 transition-transform duration-700`}
+                      containerClassName="absolute inset-0"
+                      aspectRatio="3/4"
+                    />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
                   
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">

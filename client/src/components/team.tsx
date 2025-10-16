@@ -75,9 +75,9 @@ const team = [
   },
   {
     id: 10,
-    name: "Rodrigo Sarracino",
-    role: "Camarografo",
-    image: teamMember10,
+    name: "David Robles",
+    role: "Consultor",
+    image: "", // Esperando path de la foto
   },
   {
     id: 11,
@@ -99,9 +99,9 @@ const team = [
   },
   {
     id: 14,
-    name: "Ulises Holguin",
-    role: "Camarógrafo",
-    image: teamMember14,
+    name: "Rodrigo Sarracino",
+    role: "Camarografo",
+    image: teamMember10,
   },
   {
     id: 15,
@@ -155,7 +155,7 @@ export function Team() {
                   <LazyImage
                     src={member.image}
                     alt={member.name}
-                    className={`w-full h-full object-cover ${member.id === 10 || member.id === 15 ? "grayscale" : ""} group-hover:scale-110 transition-transform duration-700`}
+                    className={`w-full h-full object-cover ${member.id === 10 || member.id === 14 || member.id === 15 ? "grayscale" : ""} group-hover:scale-110 transition-transform duration-700`}
                     containerClassName="absolute inset-0"
                     aspectRatio="3/4"
                   />

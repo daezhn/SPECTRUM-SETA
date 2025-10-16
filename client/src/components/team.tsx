@@ -10,8 +10,7 @@ import teamMember4 from "@assets/4.jpg";
 import teamMember5 from "@assets/5.jpg";
 import teamMember6 from "@assets/6.jpg";
 import teamMember7 from "@assets/7.jpg";
-import teamMember8 from "@assets/Dsvid marrufo_1760397519730.jpg";
-import teamMember9 from "@assets/nancy balderrama_1760397518435.png";
+// Las imágenes de Marrufo y Nancy se referencian por ruta pública
 import teamMember10 from "@assets/rodrigo_1760397895601.jpg";
 import teamMember11 from "@assets/efrain-hernandez.webp";
 import teamMember12 from "@assets/ricardo-vega.webp";
@@ -65,13 +64,13 @@ const team = [
     id: 8,
     name: "David Marrufo",
     role: "Producción Audiovisual",
-    image: teamMember8,
+  image: "/Dsvid marrufo_1760397519730.jpg",
   },
   {
     id: 9,
     name: "Nancy Balderrama ",
     role: "Producción Audiovisual",
-    image: teamMember9,
+  image: "/nancy balderrama_1760397518435.png",
   },
   {
     id: 10,

@@ -42,7 +42,7 @@ const galleryItems = [
     id: "3",
     title: "Cobertura y creación de contenido Renard Jhonson",
     category: "Brand & Digital",
-    image: eventImg3,
+  image: "/0H3A5437.jpg",
     video: "/RENARD JHONSON MAYOR PASO DEL NORTE PAGINA WEB.mp4",
     description: "Cobertura interna para las elecciones del alcalde de El Paso, Tx.",
     client: "El Paso mayor; Renard Jhonson",

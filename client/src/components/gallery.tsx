@@ -9,7 +9,6 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useTranslation } from "@/hooks/use-translation";
 
 import eventImg1 from "/INFORME DE GOBIERNO.jpg";
-import droneImg from "@assets/stock_images/aerial_drone_cinemat_6a2018be.jpg";
 import liveImg from "@assets/stock_images/multi_camera_video_p_7e46d6b3.jpg";
 import contentImg from "@assets/stock_images/creative_content_pro_c51ec741.jpg";
 
@@ -48,7 +47,8 @@ const galleryItems = [
     id: "replay-4",
     title: "Replay Challenge",
     category: "Live & Streaming",
-    image: droneImg,
+    image: "/ÑEB.png",
+    video: "/PRIMER RETO ALGODONEROS VS INDIOS J7 - 1 - Camera12345 - - - - - [22-18-42] [22-18-44].mp4",
     description: "Challenge para retar jugadas en la semiprofesional de baseball LEB Chihuahua",
     client: "Liga Estatal de Baseball Chihuahua",
     results: ["Repetición multicamara", "10 equipos simultaneos", "+ 1,400 horas revisadas"],
@@ -212,7 +212,7 @@ export function Gallery() {
               <div className="relative aspect-video">
                 {selectedItem.video ? (
                   <video
-                    src={selectedItem.video}
+                    src={encodeURI(selectedItem.video)}
                     controls
                     autoPlay
                     className="w-full h-full object-cover"
@@ -220,7 +220,7 @@ export function Gallery() {
                 ) : (
                   <>
                     <img
-                      src={selectedItem.image}
+                      src={encodeURI(selectedItem.image)}
                       alt={selectedItem.title}
                       className="w-full h-full object-cover"
                     />

@@ -21,6 +21,7 @@ export function LazyImage({
   priority = false,
   onLoad,
 }: LazyImageProps) {
+  const resolvedSrc = encodeURI(src);
   const [isLoaded, setIsLoaded] = useState(false);
   const [blurDataUrl, setBlurDataUrl] = useState<string>("");
   const imgRef = useRef<HTMLImageElement>(null);
@@ -55,13 +56,13 @@ export function LazyImage({
   useEffect(() => {
     if (priority || inView) {
       const img = new Image();
-      img.src = src;
+      img.src = resolvedSrc;
       img.onload = () => {
         setIsLoaded(true);
         if (onLoad) onLoad();
       };
     }
-  }, [inView, priority, src, onLoad]);
+  }, [inView, priority, resolvedSrc, onLoad]);
 
   return (
     <div
@@ -109,7 +110,7 @@ export function LazyImage({
       {(priority || inView) && (
         <motion.img
           ref={imgRef}
-          src={src}
+          src={resolvedSrc}
           alt={alt}
           className={`block ${className}`}
           loading={priority ? "eager" : "lazy"}

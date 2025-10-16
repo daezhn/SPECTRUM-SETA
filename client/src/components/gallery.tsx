@@ -33,6 +33,7 @@ const galleryItems = [
     title: "F.C. Juárez - Video Institucional",
     category: "Content Studio",
     image: "/MEDIA/CLIENTES/image.png",
+    video: "/bravosok.mp4",
     description: "Video institucional profesional para equipo de fútbol profesional",
     client: "F.C. Juárez",
     results: ["Producción HD", "Material institucional", "Campaña digital"],

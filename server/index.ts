@@ -1,7 +1,8 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { createServer } from "http";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+import { serveStatic } from "./vite";
+import { log } from "./logger";
 
 const app = express();
 app.use(express.json());
@@ -27,7 +28,7 @@ app.use((req, res, next) => {
       }
 
       if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
+        logLine = logLine.slice(0, 79) + "...";
       }
 
       log(logLine);
@@ -54,6 +55,7 @@ app.use((req, res, next) => {
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
   if (app.get("env") === "development") {
+    const { setupVite } = await import("./vite");
     await setupVite(app, server);
   } else if (!process.env.VERCEL) {
     serveStatic(app);
@@ -77,3 +79,4 @@ app.use((req, res, next) => {
 
 // Export the app for Vercel serverless functions
 export default app;
+

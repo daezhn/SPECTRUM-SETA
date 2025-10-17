@@ -4,6 +4,11 @@
   "outputDirectory": "dist/public",
   "framework": null,
   "cleanUrls": true,
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "server/**"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",

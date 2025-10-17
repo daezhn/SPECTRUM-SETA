@@ -2,8 +2,28 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
+import { normalizeClientMessages, requestChatbotReply } from "@shared/chatbot";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  app.post("/api/chatbot", async (req, res) => {
+    try {
+      const normalizedMessages = normalizeClientMessages(req.body?.messages);
+      const reply = await requestChatbotReply(
+        normalizedMessages,
+        process.env.OPENAI_API_KEY ?? ""
+      );
+
+      res.json({ reply });
+    } catch (error) {
+      console.error("Error generating chatbot reply:", error);
+
+      const message = error instanceof Error ? error.message : "Error desconocido";
+      const status = message.includes("API key") ? 401 : 400;
+
+      res.status(status).json({ error: message });
+    }
+  });
+
   // Contact form submission endpoint
   app.post("/api/contact", async (req, res) => {
     try {

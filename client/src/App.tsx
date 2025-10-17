@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/contexts/language-context";
 import { LoadingAnimation } from "@/components/loading-animation";
+import { Chatbot } from "@/components/chatbot";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
@@ -42,6 +43,7 @@ export default function App() {
             <LoadingAnimation isLoading={isLoading} />
             <Toaster />
             <Router />
+            <Chatbot />
           </TooltipProvider>
         </ThemeProvider>
       </LanguageProvider>

@@ -1,22 +1,20 @@
-<<<<<< codex/fix-chatbot-integration-error-m5zlnd
-// When deployed on Vercel the build step transpiles the server entry to
-// `server/index.js`. Import that compiled bundle explicitly so the serverless
-// function does not attempt to resolve the raw TypeScript sources.
-// In local development the bundler is not used, but Node will still resolve the
-// `.js` extension correctly thanks to tsx.
-import app from "../server/index.js";
-=======
-import express from "express";
-import { registerRoutes } from "../server/routes";
->>>>>> main
+import type { Express } from "express";
 
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+const appPromise: Promise<Express> = (async () => {
+  const isProduction = Boolean(
+    process.env.VERCEL || process.env.NODE_ENV === "production"
+  );
 
-const setupPromise = registerRoutes(app);
+  if (isProduction) {
+    const mod = await import("../dist/server/index.js");
+    return mod.default as Express;
+  }
+
+  const mod = await import("../server/index");
+  return mod.default as Express;
+})();
 
 export default async function handler(req: any, res: any) {
-	await setupPromise;
-	return app(req as any, res as any);
+  const app = await appPromise;
+  return app(req as any, res as any);
 }

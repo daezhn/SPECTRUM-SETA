@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useReveal, staggerRevealVariants, itemRevealVariants } from "@/hooks/use-reveal";
 import { LazyImage } from "@/components/lazy-image";
@@ -81,6 +81,8 @@ export function Gallery() {
   const { ref: titleRef, controls: titleControls } = useReveal({ threshold: 0.1 });
   const { ref: gridRef, controls: gridControls } = useReveal({ threshold: 0.05, delay: 0.3 });
   const [selectedItem, setSelectedItem] = useState<typeof galleryItems[0] | null>(null);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleNext = () => {
     if (!selectedItem) return;
@@ -94,6 +96,38 @@ export function Gallery() {
     const currentIndex = galleryItems.findIndex(item => item.id === selectedItem.id);
     const prevIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
     setSelectedItem(galleryItems[prevIndex]);
+  };
+
+  useEffect(() => {
+    if (!selectedItem?.video) {
+      setIsVideoReady(false);
+      return;
+    }
+
+    setIsVideoReady(false);
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+
+    videoElement.pause();
+    videoElement.currentTime = 0;
+    videoElement.load();
+    const playPromise = videoElement.play();
+    if (playPromise) {
+      playPromise.catch(() => {
+        /* autoplay may be blocked; keep controls visible */
+      });
+    }
+  }, [selectedItem]);
+
+  const handleDialogChange = (open: boolean) => {
+    if (!open) {
+      const videoElement = videoRef.current;
+      if (videoElement) {
+        videoElement.pause();
+        videoElement.currentTime = 0;
+      }
+      setSelectedItem(null);
+    }
   };
 
   return (
@@ -184,7 +218,7 @@ export function Gallery() {
       </div>
 
       {/* Lightbox Dialog */}
-      <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
+  <Dialog open={!!selectedItem} onOpenChange={handleDialogChange}>
         <DialogContent className="max-w-4xl p-0 gap-0 bg-card border-card-border overflow-hidden">
           {selectedItem && (
             <div className="relative">
@@ -214,14 +248,49 @@ export function Gallery() {
 
               <div className={`relative mx-auto ${selectedItem?.reel ? 'aspect-[9/16] max-h-[60vh] max-w-[260px]' : 'aspect-video'}`}>
                 {selectedItem?.video ? (
-                  <video
-                    src={encodeURI(selectedItem.video)}
-                    controls
-                    autoPlay
-                    preload="metadata"
-                    className="w-full h-full object-cover"
-                    style={selectedItem.reel ? { borderRadius: '1rem', background: '#000', maxHeight: '60vh', maxWidth: '260px', margin: '0 auto' } : {}}
-                  />
+                  <>
+                    {!isVideoReady && selectedItem?.image && (
+                      <img
+                        src={encodeURI(selectedItem.image)}
+                        alt={selectedItem?.title ?? "Video preview"}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        style={selectedItem?.reel ? { borderRadius: "1rem", background: "#000", maxHeight: "60vh", maxWidth: "260px", margin: "0 auto" } : {}}
+                      />
+                    )}
+                    <video
+                      ref={videoRef}
+                      src={encodeURI(selectedItem.video)}
+                      controls
+                      autoPlay
+                      muted
+                      playsInline
+                      preload="metadata"
+                      poster={selectedItem?.image ? encodeURI(selectedItem.image) : undefined}
+                      onLoadedData={() => {
+                        setIsVideoReady(true);
+                        const videoElement = videoRef.current;
+                        if (videoElement) {
+                          const playPromise = videoElement.play();
+                          if (playPromise) {
+                            playPromise.catch(() => {
+                              /* autoplay may be blocked; user can start manually */
+                            });
+                          }
+                        }
+                      }}
+                      className={`relative z-10 h-full w-full object-cover transition-opacity duration-500 ${isVideoReady ? "opacity-100" : "opacity-0"}`}
+                      style={selectedItem?.reel ? { borderRadius: "1rem", background: "#000", maxHeight: "60vh", maxWidth: "260px", margin: "0 auto" } : {}}
+                    />
+                    {!isVideoReady && (
+                      <div
+                        className="absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-2xl bg-black/80"
+                        style={selectedItem?.reel ? { borderRadius: "1rem" } : undefined}
+                      >
+                        <div className="h-10 w-10 animate-spin rounded-full border-2 border-primary/40 border-t-primary"></div>
+                        <p className="text-xs font-medium text-white/70">Preparando video…</p>
+                      </div>
+                    )}
+                  </>
                 ) : (
                   <>
                     <img

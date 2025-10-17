@@ -30,6 +30,33 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-dom/client'],
+          'motion': ['framer-motion'],
+          'ui-vendor': [
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-dropdown-menu',
+            '@radix-ui/react-tooltip',
+            '@radix-ui/react-select',
+            '@radix-ui/react-accordion',
+            '@radix-ui/react-tabs',
+          ],
+          'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
+          'query-vendor': ['@tanstack/react-query'],
+        },
+      },
+    },
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug'],
+      },
+    },
   },
   server: {
     fs: {

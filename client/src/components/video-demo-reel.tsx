@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { SiWhatsapp, SiFacebook, SiLinkedin } from "react-icons/si";
 import { useMagneticHover } from "@/hooks/use-animations";
@@ -7,6 +8,32 @@ import demoReelVideo from "@assets/demo-reel.mp4";
 
 export function VideoDemoReel() {
   const { t } = useTranslation();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting && videoRef.current) {
+          videoRef.current.play();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    const currentRef = videoRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
   return (
     <section 
       id="demo-reel" 
@@ -16,14 +43,16 @@ export function VideoDemoReel() {
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
-          autoPlay
+          ref={videoRef}
           muted
+          loop
           playsInline
+          preload="metadata"
           poster={demoReelImage}
           className="absolute inset-0 w-full h-full object-cover"
           data-testid="video-background"
         >
-          <source src={demoReelVideo} type="video/mp4" />
+          {isInView && <source src={demoReelVideo} type="video/mp4" />}
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
       </div>

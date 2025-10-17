@@ -1,10 +1,19 @@
-import type { Express } from "express";
+import type { Express, RequestHandler } from "express";
 import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
 import { normalizeClientMessages, requestChatbotReply } from "@shared/chatbot";
 
+const ROUTE_PREFIXES = ["/api", ""];
+
+function buildPaths(path: string, handler: RequestHandler): Array<[string, RequestHandler]> {
+  return ROUTE_PREFIXES.map((prefix) => {
+    const normalized = `${prefix}${path}`.replace(/\/{2,}/g, "/");
+    return [normalized || "/", handler];
+  });
+}
+
 export async function registerRoutes(app: Express): Promise<void> {
-  app.post("/api/chatbot", async (req, res) => {
+  const chatbotHandler: RequestHandler = async (req, res) => {
     try {
       const normalizedMessages = normalizeClientMessages(req.body?.messages);
 
@@ -13,6 +22,7 @@ export async function registerRoutes(app: Express): Promise<void> {
         JSON.stringify({
           messageCount: normalizedMessages.length,
           lastRole: normalizedMessages.at(-1)?.role,
+          path: req.path,
         })
       );
 
@@ -23,7 +33,7 @@ export async function registerRoutes(app: Express): Promise<void> {
 
       console.log(
         "[chatbot] reply generated",
-        JSON.stringify({ characters: reply.length })
+        JSON.stringify({ characters: reply.length, path: req.path })
       );
 
       res.status(200).json({ reply });
@@ -35,62 +45,59 @@ export async function registerRoutes(app: Express): Promise<void> {
 
       res.status(status).json({ error: message });
     }
+  };
+
+  buildPaths("/chatbot", chatbotHandler).forEach(([path, handler]) => {
+    app.post(path, handler);
   });
 
-  // Contact form submission endpoint
-  app.post("/api/contact", async (req, res) => {
+  const contactSubmitHandler: RequestHandler = async (req, res) => {
     try {
       const validatedData = insertContactSchema.parse(req.body);
       const contact = await storage.createContactSubmission(validatedData);
 
-      // Log the contact submission (in production, this would send an email)
-      console.log("📧 New Contact Submission:", {
+      console.log("[contact] submission created", {
         id: contact.id,
-        name: contact.name,
         email: contact.email,
-        company: contact.company,
         service: contact.service,
-        message: contact.message,
-        createdAt: contact.createdAt,
+        path: req.path,
       });
 
-      // In production, you would send an email here using nodemailer or similar
-      // Example:
-      // await sendEmail({
-      //   to: 'saeta.producciones@gmail.com',
-      //   subject: `Nuevo contacto: ${validatedData.service}`,
-      //   html: generateEmailTemplate(contact)
-      // });
-
-      res.json({ 
-        success: true, 
+      res.json({
+        success: true,
         message: "Mensaje recibido correctamente",
-        contactId: contact.id 
+        contactId: contact.id,
       });
     } catch (error) {
       console.error("Error processing contact submission:", error);
-      res.status(400).json({ 
-        success: false, 
-        error: error instanceof Error ? error.message : "Error al procesar la solicitud" 
+      res.status(400).json({
+        success: false,
+        error: error instanceof Error ? error.message : "Error al procesar la solicitud",
       });
     }
+  };
+
+  buildPaths("/contact", contactSubmitHandler).forEach(([path, handler]) => {
+    app.post(path, handler);
   });
 
-  // Get all contact submissions (for admin purposes)
-  app.get("/api/contact", async (req, res) => {
+  const contactListHandler: RequestHandler = async (_req, res) => {
     try {
       const submissions = await storage.getAllContactSubmissions();
       res.json(submissions);
     } catch (error) {
       console.error("Error fetching contact submissions:", error);
-      res.status(500).json({ 
-        error: "Error al obtener las solicitudes de contacto" 
+      res.status(500).json({
+        error: "Error al obtener las solicitudes de contacto",
       });
     }
+  };
+
+  buildPaths("/contact", contactListHandler).forEach(([path, handler]) => {
+    app.get(path, handler);
   });
 
-  // Get single contact submission
-  app.get("/api/contact/:id", async (req, res) => {
+  const contactSingleHandler: RequestHandler = async (req, res) => {
     try {
       const submission = await storage.getContactSubmission(req.params.id);
       if (!submission) {
@@ -99,9 +106,13 @@ export async function registerRoutes(app: Express): Promise<void> {
       res.json(submission);
     } catch (error) {
       console.error("Error fetching contact submission:", error);
-      res.status(500).json({ 
-        error: "Error al obtener la solicitud de contacto" 
+      res.status(500).json({
+        error: "Error al obtener la solicitud de contacto",
       });
     }
+  };
+
+  buildPaths("/contact/:id", contactSingleHandler).forEach(([path, handler]) => {
+    app.get(path, handler);
   });
 }

@@ -14,6 +14,23 @@ const appPromise: Promise<Express> = (async () => {
 })();
 
 export default async function handler(req: any, res: any) {
+  if (typeof req.url === "string") {
+    try {
+      const url = new URL(req.url, "http://localhost");
+      const pathParam = url.searchParams.get("path");
+      if (pathParam) {
+        url.searchParams.delete("path");
+        const rebuiltPath = pathParam.startsWith("/")
+          ? pathParam
+          : `/${pathParam}`;
+        const remainingQuery = url.searchParams.toString();
+        req.url = `/api${rebuiltPath}${remainingQuery ? `?${remainingQuery}` : ""}`;
+      }
+    } catch (error) {
+      console.error("Error parsing request URL", error);
+    }
+  }
+
   const app = await appPromise;
   return app(req as any, res as any);
 }

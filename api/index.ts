@@ -14,17 +14,35 @@ const appPromise: Promise<Express> = (async () => {
 })();
 
 export default async function handler(req: any, res: any) {
+  const forwardedPath =
+    req.headers["x-vercel-forwarded-path"] ||
+    req.headers["x-forwarded-uri"] ||
+    req.headers["x-vercel-original-path"];
+
+  console.log(
+    "[api] incoming request",
+    req.method,
+    req.url,
+    "[forwarded:",
+    forwardedPath,
+    "]"
+  );
+
   if (typeof req.url === "string") {
     try {
       const url = new URL(req.url, "http://localhost");
       const pathParam = url.searchParams.get("path");
       if (pathParam) {
         url.searchParams.delete("path");
-        const rebuiltPath = pathParam.startsWith("/")
-          ? pathParam
-          : `/${pathParam}`;
+        const decodedPath = decodeURIComponent(pathParam);
+        const rebuiltPath = decodedPath.startsWith("/")
+          ? decodedPath
+          : `/${decodedPath}`;
         const remainingQuery = url.searchParams.toString();
-        req.url = `/api${rebuiltPath}${remainingQuery ? `?${remainingQuery}` : ""}`;
+        const rewrittenUrl = `/api${rebuiltPath}${remainingQuery ? `?${remainingQuery}` : ""}`;
+        req.url = rewrittenUrl;
+        req.originalUrl = rewrittenUrl;
+        console.log("[api] rewritten url", req.url);
       }
     } catch (error) {
       console.error("Error parsing request URL", error);

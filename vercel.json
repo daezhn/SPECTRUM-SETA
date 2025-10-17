@@ -6,7 +6,10 @@
   "cleanUrls": true,
   "functions": {
     "api/index.ts": {
-      "includeFiles": "server/**"
+      "includeFiles": [
+        "server/**",
+        "dist/server/**"
+      ]
     }
   },
   "rewrites": [

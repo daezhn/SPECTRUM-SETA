@@ -23,34 +23,14 @@ export function LazyImage({
 }: LazyImageProps) {
   const resolvedSrc = encodeURI(src);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [blurDataUrl, setBlurDataUrl] = useState<string>("");
   const imgRef = useRef<HTMLImageElement>(null);
 
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
-    rootMargin: "50px",
+    rootMargin: "100px", // Increased from 50px for earlier loading
     skip: priority, // Skip intersection observer for priority images
   });
-
-  // Generate a simple blur placeholder (you could also generate this server-side)
-  useEffect(() => {
-    // Create a simple gradient blur placeholder
-    const canvas = document.createElement("canvas");
-    canvas.width = 40;
-    canvas.height = 40;
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      // Create gradient based on image theme
-      const gradient = ctx.createLinearGradient(0, 0, 40, 40);
-      gradient.addColorStop(0, "rgba(147, 51, 234, 0.1)");
-      gradient.addColorStop(0.5, "rgba(147, 51, 234, 0.05)");
-      gradient.addColorStop(1, "rgba(147, 51, 234, 0.1)");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 40, 40);
-      setBlurDataUrl(canvas.toDataURL());
-    }
-  }, []);
 
   // Load image when in view or if priority
   useEffect(() => {
@@ -70,14 +50,11 @@ export function LazyImage({
       className={`relative overflow-hidden ${containerClassName}`}
       style={aspectRatio ? { aspectRatio } : undefined}
     >
-      {/* Blur placeholder */}
-      {blurDataUrl && !isLoaded && (
+      {/* Simple blur placeholder */}
+      {!isLoaded && (
         <div
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-primary/3 to-primary/5"
           style={{
-            backgroundImage: `url(${blurDataUrl})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
             filter: "blur(20px)",
             transform: "scale(1.1)",
           }}
@@ -116,7 +93,7 @@ export function LazyImage({
           loading={priority ? "eager" : "lazy"}
           initial={{ opacity: 0 }}
           animate={{ opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }} // Reduced from 0.6s
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
         />
       )}

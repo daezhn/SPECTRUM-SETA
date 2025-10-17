@@ -7,12 +7,26 @@ export async function registerRoutes(app: Express): Promise<void> {
   app.post("/api/chatbot", async (req, res) => {
     try {
       const normalizedMessages = normalizeClientMessages(req.body?.messages);
+
+      console.log(
+        "[chatbot] request received",
+        JSON.stringify({
+          messageCount: normalizedMessages.length,
+          lastRole: normalizedMessages.at(-1)?.role,
+        })
+      );
+
       const reply = await requestChatbotReply(
         normalizedMessages,
         process.env.OPENAI_API_KEY ?? ""
       );
 
-      res.json({ reply });
+      console.log(
+        "[chatbot] reply generated",
+        JSON.stringify({ characters: reply.length })
+      );
+
+      res.status(200).json({ reply });
     } catch (error) {
       console.error("Error generating chatbot reply:", error);
 

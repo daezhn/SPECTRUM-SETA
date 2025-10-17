@@ -23,7 +23,6 @@ export function LazyImage({
 }: LazyImageProps) {
   const resolvedSrc = encodeURI(src);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [blurDataUrl, setBlurDataUrl] = useState<string>("");
   const imgRef = useRef<HTMLImageElement>(null);
 
   const { ref, inView } = useInView({
@@ -33,24 +32,8 @@ export function LazyImage({
     skip: priority, // Skip intersection observer for priority images
   });
 
-  // Generate a simple blur placeholder (you could also generate this server-side)
-  useEffect(() => {
-    // Create a simple gradient blur placeholder
-    const canvas = document.createElement("canvas");
-    canvas.width = 40;
-    canvas.height = 40;
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      // Create gradient based on image theme
-      const gradient = ctx.createLinearGradient(0, 0, 40, 40);
-      gradient.addColorStop(0, "rgba(147, 51, 234, 0.1)");
-      gradient.addColorStop(0.5, "rgba(147, 51, 234, 0.05)");
-      gradient.addColorStop(1, "rgba(147, 51, 234, 0.1)");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 40, 40);
-      setBlurDataUrl(canvas.toDataURL());
-    }
-  }, []);
+  // Simple gradient placeholder (no need to generate canvas every time)
+  const blurDataUrl = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='rgba(147,51,234,0.1)'/%3E%3Cstop offset='50%25' stop-color='rgba(147,51,234,0.05)'/%3E%3Cstop offset='100%25' stop-color='rgba(147,51,234,0.1)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='40' height='40' fill='url(%23g)'/%3E%3C/svg%3E";
 
   // Load image when in view or if priority
   useEffect(() => {

@@ -1,18 +1,30 @@
+import { lazy, Suspense } from "react";
 import { Navbar } from "@/components/navbar";
 import { VideoDemoReel } from "@/components/video-demo-reel";
 import { Hero } from "@/components/hero";
 import { StatsCounter } from "@/components/stats-counter";
-import { WhyHireUs } from "@/components/why-hire-us";
-import { Valor360 } from "@/components/valor-360";
-import { Services } from "@/components/services";
-import { ClientsCarousel } from "@/components/testimonials-carousel";
-import { Gallery } from "@/components/gallery";
-import { Team } from "@/components/team";
-import { About } from "@/components/about";
-import { CommercialPartners } from "@/components/commercial-partners";
-import { SpectrumSection } from "@/components/spectrum-section";
-import { Contact } from "@/components/contact";
-import { Footer } from "@/components/footer";
+
+// Lazy load heavy components for better performance
+const WhyHireUs = lazy(() => import("@/components/why-hire-us").then(m => ({ default: m.WhyHireUs })));
+const Valor360 = lazy(() => import("@/components/valor-360").then(m => ({ default: m.Valor360 })));
+const Services = lazy(() => import("@/components/services").then(m => ({ default: m.Services })));
+const ClientsCarousel = lazy(() => import("@/components/testimonials-carousel").then(m => ({ default: m.ClientsCarousel })));
+const Gallery = lazy(() => import("@/components/gallery").then(m => ({ default: m.Gallery })));
+const Team = lazy(() => import("@/components/team").then(m => ({ default: m.Team })));
+const About = lazy(() => import("@/components/about").then(m => ({ default: m.About })));
+const CommercialPartners = lazy(() => import("@/components/commercial-partners").then(m => ({ default: m.CommercialPartners })));
+const SpectrumSection = lazy(() => import("@/components/spectrum-section").then(m => ({ default: m.SpectrumSection })));
+const Contact = lazy(() => import("@/components/contact").then(m => ({ default: m.Contact })));
+const Footer = lazy(() => import("@/components/footer").then(m => ({ default: m.Footer })));
+
+// Loading fallback component
+function SectionLoader() {
+  return (
+    <div className="min-h-[200px] flex items-center justify-center">
+      <div className="w-8 h-8 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -21,17 +33,39 @@ export default function Home() {
       <VideoDemoReel />
       <Hero />
       <StatsCounter />
-      <WhyHireUs />
-      <Valor360 />
-      <Services />
-      <Gallery />
-      <About />
-      <CommercialPartners />
-      <SpectrumSection />
-      <Team />
-      <ClientsCarousel />
-      <Contact />
-      <Footer />
+      <Suspense fallback={<SectionLoader />}>
+        <WhyHireUs />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <Valor360 />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <Services />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <Gallery />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <About />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <CommercialPartners />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <SpectrumSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <Team />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ClientsCarousel />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <Contact />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

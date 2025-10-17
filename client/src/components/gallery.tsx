@@ -218,6 +218,7 @@ export function Gallery() {
                     src={encodeURI(selectedItem.video)}
                     controls
                     autoPlay
+                    preload="metadata"
                     className="w-full h-full object-cover"
                     style={selectedItem.reel ? { borderRadius: '1rem', background: '#000', maxHeight: '60vh', maxWidth: '260px', margin: '0 auto' } : {}}
                   />

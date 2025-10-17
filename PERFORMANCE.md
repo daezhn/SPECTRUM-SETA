@@ -213,4 +213,4 @@ npm start
 
 ---
 
-Last Updated: 2025-10-17
+Last Updated: October 2025

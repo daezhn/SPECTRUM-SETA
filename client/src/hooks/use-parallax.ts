@@ -1,15 +1,19 @@
-import { useScroll, useTransform, MotionValue } from "framer-motion";
+import { useScroll, useTransform, MotionValue, type UseScrollOptions } from "framer-motion";
 import { useRef } from "react";
+
+type ScrollOffset = NonNullable<UseScrollOptions["offset"]>;
 
 interface ParallaxOptions {
   speed?: number;
-  offset?: [string, string];
+  offset?: ScrollOffset;
   easing?: (x: number) => number;
 }
 
+const defaultOffset: ScrollOffset = ["start start", "end start"];
+
 export function useParallax({
   speed = 0.5,
-  offset = ["start start", "end start"],
+  offset = defaultOffset,
   easing,
 }: ParallaxOptions = {}) {
   const ref = useRef<HTMLDivElement>(null);

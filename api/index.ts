@@ -5,12 +5,11 @@ const appPromise: Promise<Express> = (async () => {
     process.env.VERCEL || process.env.NODE_ENV === "production"
   );
 
-  if (isProduction) {
-    const mod = await import("../dist/server/index.js");
-    return mod.default as Express;
-  }
+  const moduleUrl = isProduction
+    ? new URL("../dist/server/index.js", import.meta.url)
+    : new URL("../server/index.ts", import.meta.url);
 
-  const mod = await import("../server/index");
+  const mod = await import(moduleUrl.href);
   return mod.default as Express;
 })();
 

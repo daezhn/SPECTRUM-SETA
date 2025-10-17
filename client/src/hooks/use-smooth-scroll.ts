@@ -4,9 +4,9 @@ export function useSmoothScroll() {
   useEffect(() => {
     // Add smooth scroll behavior to the document
     document.documentElement.style.scrollBehavior = "smooth";
-    
+
     // Add momentum scrolling for iOS
-    document.body.style.webkitOverflowScrolling = "touch" as any;
+    document.body.style.setProperty("-webkit-overflow-scrolling", "touch");
     
     // Optional: Add custom easing for wheel events
     let scrollTimeout: NodeJS.Timeout;
@@ -24,6 +24,7 @@ export function useSmoothScroll() {
     return () => {
       document.documentElement.style.scrollBehavior = "auto";
       window.removeEventListener("wheel", handleWheel);
+      document.body.style.removeProperty("-webkit-overflow-scrolling");
       clearTimeout(scrollTimeout);
     };
   }, []);

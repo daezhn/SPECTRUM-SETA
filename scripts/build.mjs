@@ -9,5 +9,5 @@ await esbuild({
   packages: "external",
   bundle: true,
   format: "esm",
-  outfile: "server/index.js",
+  outfile: "dist/server/index.js",
 });

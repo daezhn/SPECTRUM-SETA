@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MessageSquare, Send, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -7,28 +7,33 @@ interface ChatMessage {
   content: string;
 }
 
-const BOT_SYSTEM_PROMPT = `Eres Spectrum, el asistente virtual de Saeta.
-- Responde siempre en español, con tono profesional, cálido y directo.
-- Comparte información sobre los servicios de producción audiovisual, marketing, transmisiones en vivo, contenido digital y branding.
-- Saeta opera en Chihuahua, México. Datos de contacto: hola@saeta.mx y WhatsApp +52 1 614 123 4567.
-- Si la pregunta no está relacionada con Saeta, contesta brevemente y sugiere contactar a un humano.`;
+const BOT_SYSTEM_PROMPT = [
+  "Eres Spectrum, el asistente virtual de Saeta.",
+  "- Responde siempre en español, con tono profesional, cálido y directo.",
+  "- Si te preguntan por correo, siempre responde: gerencia@saeta.com",
+  "- Comparte información sobre los servicios de producción audiovisual, marketing, transmisiones en vivo, contenido digital y branding.",
+  "- Saeta opera en Chihuahua, México. Datos de contacto: gerencia@saeta.com y WhatsApp +52 1 614 123 4567.",
+  "- Si la pregunta no está relacionada con Saeta, contesta brevemente y sugiere contactar a un humano.",
+].join("\n");
 
-export function Chatbot() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      role: "assistant",
-      content: "¡Hola! Soy Spectrum, ¿cómo puedo ayudarte hoy?",
-    },
-  ]);
+function Chatbot() {
+  const [messages, setMessages] = useState<ChatMessage[]>(
+    [
+      {
+        role: "assistant",
+        content: "¡Hola! Soy un asistente virtual, ¿cómo puedo ayudarte hoy?",
+      },
+    ]
+  );
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isOpen]);
+  }, [messages]);
 
   const toggleChat = () => {
     setIsOpen((prev) => !prev);
@@ -68,15 +73,16 @@ export function Chatbot() {
       } else {
         throw new Error(data.error ?? "No se recibió respuesta");
       }
-    } catch (error) {
+    } catch (err) {
+      let msg = "Ups, algo salió mal. ¿Intentamos de nuevo?";
+      if (err && typeof err === "object" && "message" in err) {
+        msg = `Ups, algo salió mal: ${(err as any).message}. ¿Intentamos de nuevo?`;
+      }
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content:
-            error instanceof Error
-              ? `Ups, algo salió mal: ${error.message}. ¿Intentamos de nuevo?`
-              : "Ups, algo salió mal. ¿Intentamos de nuevo?",
+          content: msg,
         },
       ]);
     } finally {
@@ -148,3 +154,5 @@ export function Chatbot() {
     </>
   );
 }
+
+export { Chatbot };

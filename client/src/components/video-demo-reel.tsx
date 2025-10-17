@@ -3,7 +3,9 @@ import { SiWhatsapp, SiFacebook, SiLinkedin } from "react-icons/si";
 import { useMagneticHover } from "@/hooks/use-animations";
 import { useTranslation } from "@/hooks/use-translation";
 import demoReelImage from "@assets/stock_images/professional_video_p_4c4e9095.jpg";
-import demoReelVideo from "@assets/demo-reel.mp4";
+
+// Use public folder for large video to avoid bundling
+const demoReelVideo = "/demo-reel.mp4";
 
 export function VideoDemoReel() {
   const { t } = useTranslation();
@@ -18,7 +20,9 @@ export function VideoDemoReel() {
         <video
           autoPlay
           muted
+          loop
           playsInline
+          preload="metadata"
           poster={demoReelImage}
           className="absolute inset-0 w-full h-full object-cover"
           data-testid="video-background"

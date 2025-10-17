@@ -1,10 +1,9 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
 import { normalizeClientMessages, requestChatbotReply } from "@shared/chatbot";
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export async function registerRoutes(app: Express): Promise<void> {
   app.post("/api/chatbot", async (req, res) => {
     try {
       const normalizedMessages = normalizeClientMessages(req.body?.messages);
@@ -91,7 +90,4 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
-
-  const httpServer = createServer(app);
-  return httpServer;
 }

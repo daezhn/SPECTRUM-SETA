@@ -5,7 +5,6 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Chatbot } from "@/components/chatbot";
 import { LanguageProvider } from "@/contexts/language-context";
 import { LoadingAnimation } from "@/components/loading-animation";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
@@ -43,7 +42,6 @@ export default function App() {
             <LoadingAnimation isLoading={isLoading} />
             <Toaster />
             <Router />
-            <Chatbot />
           </TooltipProvider>
         </ThemeProvider>
       </LanguageProvider>
